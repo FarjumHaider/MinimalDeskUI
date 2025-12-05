@@ -1,0 +1,1110 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 75;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		120A404C2CC3A16E00A8FB5E /* AppLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120A404B2CC3A16E00A8FB5E /* AppLocker.swift */; };
+		1223266B2CA462C00081A282 /* WidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1223266A2CA462C00081A282 /* WidgetViewModel.swift */; };
+		1223266D2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1223266C2CA468E50081A282 /* FavAppWidgetConfig.swift */; };
+		1223266E2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1223266C2CA468E50081A282 /* FavAppWidgetConfig.swift */; };
+		1223266F2CA4DADE0081A282 /* FavAppWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1223266C2CA468E50081A282 /* FavAppWidgetConfig.swift */; };
+		1232B2CF2C4187E500DD2FEE /* FirebaseDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232B2CE2C4187E500DD2FEE /* FirebaseDataViewModel.swift */; };
+		1240EACE2CA1D26C001A71AA /* CustomAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1240EACD2CA1D26C001A71AA /* CustomAppView.swift */; };
+		124AF72B2C47A3F5008AD47C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FB2C46279B008AD47C /* WidgetKit.framework */; };
+		124AF72C2C47A3F5008AD47C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FD2C46279B008AD47C /* SwiftUI.framework */; };
+		124AF72F2C47A3F5008AD47C /* MinimalDeskDateWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AF72E2C47A3F5008AD47C /* MinimalDeskDateWidgetBundle.swift */; };
+		124AF7312C47A3F5008AD47C /* MinimalDeskDateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AF7302C47A3F5008AD47C /* MinimalDeskDateWidget.swift */; };
+		124AF7332C47A3F6008AD47C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 124AF7322C47A3F6008AD47C /* Assets.xcassets */; };
+		124AF7372C47A3F6008AD47C /* MinimalDeskDateWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 124AF72A2C47A3F5008AD47C /* MinimalDeskDateWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		124AF7402C47F88E008AD47C /* DateWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AF73F2C47F88E008AD47C /* DateWidgetViews.swift */; };
+		124AF7412C47F88E008AD47C /* DateWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AF73F2C47F88E008AD47C /* DateWidgetViews.swift */; };
+		124AF7432C480161008AD47C /* WidgetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AF7422C480161008AD47C /* WidgetList.swift */; };
+		127EC5AF2CA09E650083616A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127EC5AE2CA09E650083616A /* ToastView.swift */; };
+		127EC5B02CA09E650083616A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127EC5AE2CA09E650083616A /* ToastView.swift */; };
+		127FCD6A2CECFD4200773D9D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 127FCD692CECFD4200773D9D /* GoogleService-Info.plist */; };
+		1286B0792C8DA146002C44EA /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1286B0782C8DA146002C44EA /* SubscriptionView.swift */; };
+		129694F82CC444CB000A9372 /* AppLockerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129694F72CC444CB000A9372 /* AppLockerViewModel.swift */; };
+		12AD58562C9F5F0F009903E9 /* FontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD58552C9F5F0F009903E9 /* FontListView.swift */; };
+		12C249152C5F77C200074874 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FB2C46279B008AD47C /* WidgetKit.framework */; };
+		12C249162C5F77C200074874 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FD2C46279B008AD47C /* SwiftUI.framework */; };
+		12C249192C5F77C200074874 /* FavAppWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C249182C5F77C200074874 /* FavAppWidgetBundle.swift */; };
+		12C2491B2C5F77C200074874 /* FavAppWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C2491A2C5F77C200074874 /* FavAppWidget.swift */; };
+		12C2491D2C5F77C300074874 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12C2491C2C5F77C300074874 /* Assets.xcassets */; };
+		12C249212C5F77C300074874 /* FavAppWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		12C249272C5F7D1D00074874 /* OpenAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C249262C5F7D1D00074874 /* OpenAppIntent.swift */; };
+		12C249282C5F7D1D00074874 /* OpenAppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C249262C5F7D1D00074874 /* OpenAppIntent.swift */; };
+		1866445A2DF596A0009BD74B /* Siren in Frameworks */ = {isa = PBXBuildFile; productRef = 186644592DF596A0009BD74B /* Siren */; };
+		1BEDD01C2DE8C9E10020BAB0 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1BEDD01B2DE8C9E10020BAB0 /* SwiftyStoreKit */; };
+		1BEDD01E2DE8CB1A0020BAB0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDD01D2DE8CB1A0020BAB0 /* String+Extension.swift */; };
+		1BEDD0202DE8EC9A0020BAB0 /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */; };
+		1BEDD0212DE8EC9A0020BAB0 /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */; };
+		1BF6DE482DF78D15004DE980 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE472DF78D15004DE980 /* FirebaseAnalytics */; };
+		1BF6DE4A2DF78D15004DE980 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE492DF78D15004DE980 /* FirebaseCrashlytics */; };
+		1BF6DE4C2DF78D15004DE980 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4B2DF78D15004DE980 /* FirebaseDatabase */; };
+		1BF6DE4E2DF78D15004DE980 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4D2DF78D15004DE980 /* FirebaseFirestore */; };
+		1BF6DE502DF78D15004DE980 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4F2DF78D15004DE980 /* FirebaseMessaging */; };
+		1BF6DE522DF78D15004DE980 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE512DF78D15004DE980 /* FirebaseStorage */; };
+		C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A32C39594600825521 /* MinimalDeskApp.swift */; };
+		C84B21A62C39594600825521 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A52C39594600825521 /* RootView.swift */; };
+		C84B21A82C39594800825521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84B21A72C39594800825521 /* Assets.xcassets */; };
+		C84B21AB2C39594800825521 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84B21AA2C39594800825521 /* Preview Assets.xcassets */; };
+		C84B21CE2C39689C00825521 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21CD2C39689C00825521 /* AddView.swift */; };
+		C84B21D12C396DF200825521 /* TabBarModule in Frameworks */ = {isa = PBXBuildFile; productRef = C84B21D02C396DF200825521 /* TabBarModule */; };
+		C84B21D32C396F3200825521 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21D22C396F3000825521 /* Widget.swift */; };
+		C84B21D52C396FBB00825521 /* Tutorials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21D42C396FB900825521 /* Tutorials.swift */; };
+		C84B21D72C39702800825521 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21D62C39702400825521 /* Settings.swift */; };
+		C896779C2C688B7400BDF603 /* CustomWallpaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C896779B2C688B7400BDF603 /* CustomWallpaper.swift */; };
+		C8BCA7082C425CDA0026DC58 /* AppListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BCA7072C425CD90026DC58 /* AppListView.swift */; };
+		C8C78BF42C439D53008CE138 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = C8C78BF32C439D53008CE138 /* AlertToast */; };
+		C8C78BF72C43AD94008CE138 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = C8C78BF62C43AD94008CE138 /* Reachability */; };
+		C8D763DA2C3A0905008615A2 /* CustomWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D763D92C3A0904008615A2 /* CustomWidget.swift */; };
+		CE4C5CAD2DFAA9ED0010F6BD /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07AC1852CF79B2F001B9814 /* Store.swift */; };
+		CEC2730C2DE253EF00B8EA1F /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2730B2DE253EF00B8EA1F /* SafariView.swift */; };
+		CEC2730D2DE253EF00B8EA1F /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2730B2DE253EF00B8EA1F /* SafariView.swift */; };
+		CEC2730F2DE25D0300B8EA1F /* PdfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2730E2DE25D0300B8EA1F /* PdfView.swift */; };
+		CEC273102DE25D0300B8EA1F /* PdfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2730E2DE25D0300B8EA1F /* PdfView.swift */; };
+		CEC273122DE25D4300B8EA1F /* instructions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CEC273112DE25D4300B8EA1F /* instructions.pdf */; };
+		E045B3902CF4DB0B0043E799 /* PublicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045B38F2CF4DB0B0043E799 /* PublicModels.swift */; };
+		E05DD4A92D00EB18001A0266 /* AppIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05DD4A82D00EB18001A0266 /* AppIconsView.swift */; };
+		E07854562CF7B64C00E654DC /* PropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E07854552CF7B64C00E654DC /* PropertyList.plist */; };
+		E07AC1802CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E07AC17F2CF77091001B9814 /* MinimalDeskStoreKit.storekit */; };
+		E07AC1812CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E07AC17F2CF77091001B9814 /* MinimalDeskStoreKit.storekit */; };
+		E07AC1822CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E07AC17F2CF77091001B9814 /* MinimalDeskStoreKit.storekit */; };
+		E07AC1862CF79B35001B9814 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07AC1852CF79B2F001B9814 /* Store.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		124AF7352C47A3F6008AD47C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C84B21982C39594600825521 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 124AF7292C47A3F5008AD47C;
+			remoteInfo = MinimalDeskDateWidgetExtension;
+		};
+		12C2491F2C5F77C300074874 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C84B21982C39594600825521 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12C249132C5F77C200074874;
+			remoteInfo = FavAppWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		124AF70E2C46279D008AD47C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				12C249212C5F77C300074874 /* FavAppWidgetExtension.appex in Embed Foundation Extensions */,
+				124AF7372C47A3F6008AD47C /* MinimalDeskDateWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		120A404B2CC3A16E00A8FB5E /* AppLocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocker.swift; sourceTree = "<group>"; };
+		1223266A2CA462C00081A282 /* WidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViewModel.swift; sourceTree = "<group>"; };
+		1223266C2CA468E50081A282 /* FavAppWidgetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavAppWidgetConfig.swift; sourceTree = "<group>"; };
+		1232B2CE2C4187E500DD2FEE /* FirebaseDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataViewModel.swift; sourceTree = "<group>"; };
+		1240EACD2CA1D26C001A71AA /* CustomAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppView.swift; sourceTree = "<group>"; };
+		124AF6FB2C46279B008AD47C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		124AF6FD2C46279B008AD47C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		124AF72A2C47A3F5008AD47C /* MinimalDeskDateWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MinimalDeskDateWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		124AF72E2C47A3F5008AD47C /* MinimalDeskDateWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalDeskDateWidgetBundle.swift; sourceTree = "<group>"; };
+		124AF7302C47A3F5008AD47C /* MinimalDeskDateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalDeskDateWidget.swift; sourceTree = "<group>"; };
+		124AF7322C47A3F6008AD47C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		124AF7342C47A3F6008AD47C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		124AF73B2C47D613008AD47C /* MinimalDeskDateWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinimalDeskDateWidgetExtension.entitlements; sourceTree = "<group>"; };
+		124AF73C2C47D674008AD47C /* MinimalDesk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinimalDesk.entitlements; sourceTree = "<group>"; };
+		124AF73F2C47F88E008AD47C /* DateWidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateWidgetViews.swift; sourceTree = "<group>"; };
+		124AF7422C480161008AD47C /* WidgetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetList.swift; sourceTree = "<group>"; };
+		127EC5AE2CA09E650083616A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		127FCD692CECFD4200773D9D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1286B0782C8DA146002C44EA /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		129694F72CC444CB000A9372 /* AppLockerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockerViewModel.swift; sourceTree = "<group>"; };
+		12AD58552C9F5F0F009903E9 /* FontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListView.swift; sourceTree = "<group>"; };
+		12AD59DB2CA01E85009903E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FavAppWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		12C249182C5F77C200074874 /* FavAppWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavAppWidgetBundle.swift; sourceTree = "<group>"; };
+		12C2491A2C5F77C200074874 /* FavAppWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavAppWidget.swift; sourceTree = "<group>"; };
+		12C2491C2C5F77C300074874 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12C2491E2C5F77C300074874 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12C249252C5F792900074874 /* FavAppWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FavAppWidgetExtension.entitlements; sourceTree = "<group>"; };
+		12C249262C5F7D1D00074874 /* OpenAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAppIntent.swift; sourceTree = "<group>"; };
+		1BEDD01D2DE8CB1A0020BAB0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
+		C84B21A02C39594600825521 /* MinimalDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C84B21A32C39594600825521 /* MinimalDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalDeskApp.swift; sourceTree = "<group>"; };
+		C84B21A52C39594600825521 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		C84B21A72C39594800825521 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C84B21AA2C39594800825521 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C84B21CD2C39689C00825521 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		C84B21D22C396F3000825521 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		C84B21D42C396FB900825521 /* Tutorials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorials.swift; sourceTree = "<group>"; };
+		C84B21D62C39702400825521 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C896779B2C688B7400BDF603 /* CustomWallpaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWallpaper.swift; sourceTree = "<group>"; };
+		C8BCA7072C425CD90026DC58 /* AppListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListView.swift; sourceTree = "<group>"; };
+		C8D763D92C3A0904008615A2 /* CustomWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWidget.swift; sourceTree = "<group>"; };
+		CEC2730B2DE253EF00B8EA1F /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		CEC2730E2DE25D0300B8EA1F /* PdfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfView.swift; sourceTree = "<group>"; };
+		CEC273112DE25D4300B8EA1F /* instructions.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = instructions.pdf; sourceTree = "<group>"; };
+		E045B38F2CF4DB0B0043E799 /* PublicModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicModels.swift; sourceTree = "<group>"; };
+		E05DD4A82D00EB18001A0266 /* AppIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconsView.swift; sourceTree = "<group>"; };
+		E07854552CF7B64C00E654DC /* PropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PropertyList.plist; sourceTree = "<group>"; };
+		E07AC17F2CF77091001B9814 /* MinimalDeskStoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = MinimalDeskStoreKit.storekit; sourceTree = "<group>"; };
+		E07AC1852CF79B2F001B9814 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CE9861412DC24FC700C5D224 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			assetTagsByRelativePath = {
+				animationSetupGuideVideo.mov = (
+					"tutorial-videos",
+				);
+				darkModeSetupGuide.mp4 = (
+					"tutorial-videos",
+				);
+				minimalScreenSetupGuide.mp4 = (
+					"tutorial-videos",
+				);
+				wallpaperSetupGuideVideo.mp4 = (
+					"tutorial-videos",
+				);
+				widgetSetupGuideVideo.mov = (
+					"tutorial-videos",
+				);
+			};
+			target = C84B219F2C39594600825521 /* MinimalDesk */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		12AD57982C9F5CF3009903E9 /* Font */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Font; sourceTree = "<group>"; };
+		E045AC902CF10B0D0043E799 /* Videos */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (CE9861412DC24FC700C5D224 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Videos; sourceTree = "<group>"; };
+		E05DD7D02D04D2E7001A0266 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		124AF7272C47A3F5008AD47C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124AF72C2C47A3F5008AD47C /* SwiftUI.framework in Frameworks */,
+				124AF72B2C47A3F5008AD47C /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12C249112C5F77C200074874 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12C249162C5F77C200074874 /* SwiftUI.framework in Frameworks */,
+				12C249152C5F77C200074874 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C84B219D2C39594600825521 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1866445A2DF596A0009BD74B /* Siren in Frameworks */,
+				C8C78BF42C439D53008CE138 /* AlertToast in Frameworks */,
+				1BF6DE502DF78D15004DE980 /* FirebaseMessaging in Frameworks */,
+				1BF6DE482DF78D15004DE980 /* FirebaseAnalytics in Frameworks */,
+				1BF6DE4A2DF78D15004DE980 /* FirebaseCrashlytics in Frameworks */,
+				1BEDD01C2DE8C9E10020BAB0 /* SwiftyStoreKit in Frameworks */,
+				1BF6DE4E2DF78D15004DE980 /* FirebaseFirestore in Frameworks */,
+				C8C78BF72C43AD94008CE138 /* Reachability in Frameworks */,
+				1BF6DE522DF78D15004DE980 /* FirebaseStorage in Frameworks */,
+				1BF6DE4C2DF78D15004DE980 /* FirebaseDatabase in Frameworks */,
+				C84B21D12C396DF200825521 /* TabBarModule in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		120A404A2CC3A13C00A8FB5E /* AppLocker */ = {
+			isa = PBXGroup;
+			children = (
+				120A404B2CC3A16E00A8FB5E /* AppLocker.swift */,
+				129694F72CC444CB000A9372 /* AppLockerViewModel.swift */,
+			);
+			path = AppLocker;
+			sourceTree = "<group>";
+		};
+		122326692CA4626F0081A282 /* CustomWidgetSubViews */ = {
+			isa = PBXGroup;
+			children = (
+				12AD58552C9F5F0F009903E9 /* FontListView.swift */,
+			);
+			path = CustomWidgetSubViews;
+			sourceTree = "<group>";
+		};
+		124AF6FA2C46279B008AD47C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				124AF6FB2C46279B008AD47C /* WidgetKit.framework */,
+				124AF6FD2C46279B008AD47C /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		124AF72D2C47A3F5008AD47C /* MinimalDeskDateWidget */ = {
+			isa = PBXGroup;
+			children = (
+				124AF72E2C47A3F5008AD47C /* MinimalDeskDateWidgetBundle.swift */,
+				124AF7302C47A3F5008AD47C /* MinimalDeskDateWidget.swift */,
+				124AF73F2C47F88E008AD47C /* DateWidgetViews.swift */,
+				124AF7322C47A3F6008AD47C /* Assets.xcassets */,
+				124AF7342C47A3F6008AD47C /* Info.plist */,
+			);
+			path = MinimalDeskDateWidget;
+			sourceTree = "<group>";
+		};
+		12AD59D62C9FFC4B009903E9 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				C84B21CD2C39689C00825521 /* AddView.swift */,
+				C8BCA7072C425CD90026DC58 /* AppListView.swift */,
+				1240EACD2CA1D26C001A71AA /* CustomAppView.swift */,
+				1232B2CE2C4187E500DD2FEE /* FirebaseDataViewModel.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		12AD59D72C9FFC69009903E9 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				C84B21D22C396F3000825521 /* Widget.swift */,
+				124AF7422C480161008AD47C /* WidgetList.swift */,
+				C896779B2C688B7400BDF603 /* CustomWallpaper.swift */,
+				C8D763D92C3A0904008615A2 /* CustomWidget.swift */,
+				122326692CA4626F0081A282 /* CustomWidgetSubViews */,
+				1223266A2CA462C00081A282 /* WidgetViewModel.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		12AD59D82C9FFCB7009903E9 /* Tutorials */ = {
+			isa = PBXGroup;
+			children = (
+				1BEDD01D2DE8CB1A0020BAB0 /* String+Extension.swift */,
+				C84B21D42C396FB900825521 /* Tutorials.swift */,
+			);
+			path = Tutorials;
+			sourceTree = "<group>";
+		};
+		12AD59D92C9FFCCC009903E9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C84B21D62C39702400825521 /* Settings.swift */,
+				E05DD4A82D00EB18001A0266 /* AppIconsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		12AD59DA2C9FFCF3009903E9 /* Utilities+Others */ = {
+			isa = PBXGroup;
+			children = (
+				1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */,
+				CEC273112DE25D4300B8EA1F /* instructions.pdf */,
+				127EC5AE2CA09E650083616A /* ToastView.swift */,
+				1286B0782C8DA146002C44EA /* SubscriptionView.swift */,
+				12C249262C5F7D1D00074874 /* OpenAppIntent.swift */,
+				CEC2730B2DE253EF00B8EA1F /* SafariView.swift */,
+				CEC2730E2DE25D0300B8EA1F /* PdfView.swift */,
+			);
+			path = "Utilities+Others";
+			sourceTree = "<group>";
+		};
+		12C249172C5F77C200074874 /* FavAppWidget */ = {
+			isa = PBXGroup;
+			children = (
+				12C249182C5F77C200074874 /* FavAppWidgetBundle.swift */,
+				12C2491A2C5F77C200074874 /* FavAppWidget.swift */,
+				12C2491C2C5F77C300074874 /* Assets.xcassets */,
+				12C2491E2C5F77C300074874 /* Info.plist */,
+				1223266C2CA468E50081A282 /* FavAppWidgetConfig.swift */,
+			);
+			path = FavAppWidget;
+			sourceTree = "<group>";
+		};
+		C84B21972C39594600825521 = {
+			isa = PBXGroup;
+			children = (
+				E07854552CF7B64C00E654DC /* PropertyList.plist */,
+				E07AC1852CF79B2F001B9814 /* Store.swift */,
+				E07AC17F2CF77091001B9814 /* MinimalDeskStoreKit.storekit */,
+				127FCD692CECFD4200773D9D /* GoogleService-Info.plist */,
+				E045AC902CF10B0D0043E799 /* Videos */,
+				12C249252C5F792900074874 /* FavAppWidgetExtension.entitlements */,
+				124AF73B2C47D613008AD47C /* MinimalDeskDateWidgetExtension.entitlements */,
+				C84B21A32C39594600825521 /* MinimalDeskApp.swift */,
+				12AD57982C9F5CF3009903E9 /* Font */,
+				C84B21A22C39594600825521 /* MinimalDesk */,
+				124AF72D2C47A3F5008AD47C /* MinimalDeskDateWidget */,
+				12C249172C5F77C200074874 /* FavAppWidget */,
+				124AF6FA2C46279B008AD47C /* Frameworks */,
+				C84B21A12C39594600825521 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C84B21A12C39594600825521 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C84B21A02C39594600825521 /* MinimalDesk.app */,
+				124AF72A2C47A3F5008AD47C /* MinimalDeskDateWidgetExtension.appex */,
+				12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C84B21A22C39594600825521 /* MinimalDesk */ = {
+			isa = PBXGroup;
+			children = (
+				E05DD7D02D04D2E7001A0266 /* Onboarding */,
+				12AD59DB2CA01E85009903E9 /* Info.plist */,
+				C84B21A72C39594800825521 /* Assets.xcassets */,
+				124AF73C2C47D674008AD47C /* MinimalDesk.entitlements */,
+				C84B21A52C39594600825521 /* RootView.swift */,
+				12AD59D62C9FFC4B009903E9 /* Add */,
+				12AD59D72C9FFC69009903E9 /* Widget */,
+				12AD59D82C9FFCB7009903E9 /* Tutorials */,
+				12AD59D92C9FFCCC009903E9 /* Settings */,
+				120A404A2CC3A13C00A8FB5E /* AppLocker */,
+				12AD59DA2C9FFCF3009903E9 /* Utilities+Others */,
+				C84B21A92C39594800825521 /* Preview Content */,
+				E045B38F2CF4DB0B0043E799 /* PublicModels.swift */,
+			);
+			path = MinimalDesk;
+			sourceTree = "<group>";
+		};
+		C84B21A92C39594800825521 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C84B21AA2C39594800825521 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		124AF7292C47A3F5008AD47C /* MinimalDeskDateWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 124AF7382C47A3F6008AD47C /* Build configuration list for PBXNativeTarget "MinimalDeskDateWidgetExtension" */;
+			buildPhases = (
+				124AF7262C47A3F5008AD47C /* Sources */,
+				124AF7272C47A3F5008AD47C /* Frameworks */,
+				124AF7282C47A3F5008AD47C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MinimalDeskDateWidgetExtension;
+			productName = MinimalDeskDateWidgetExtension;
+			productReference = 124AF72A2C47A3F5008AD47C /* MinimalDeskDateWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		12C249132C5F77C200074874 /* FavAppWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12C249222C5F77C300074874 /* Build configuration list for PBXNativeTarget "FavAppWidgetExtension" */;
+			buildPhases = (
+				12C249102C5F77C200074874 /* Sources */,
+				12C249112C5F77C200074874 /* Frameworks */,
+				12C249122C5F77C200074874 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FavAppWidgetExtension;
+			productName = FavAppWidgetExtension;
+			productReference = 12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C84B219F2C39594600825521 /* MinimalDesk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C84B21C42C39594800825521 /* Build configuration list for PBXNativeTarget "MinimalDesk" */;
+			buildPhases = (
+				C84B219C2C39594600825521 /* Sources */,
+				C84B219D2C39594600825521 /* Frameworks */,
+				C84B219E2C39594600825521 /* Resources */,
+				124AF70E2C46279D008AD47C /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				124AF7362C47A3F6008AD47C /* PBXTargetDependency */,
+				12C249202C5F77C300074874 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				12AD57982C9F5CF3009903E9 /* Font */,
+				E045AC902CF10B0D0043E799 /* Videos */,
+				E05DD7D02D04D2E7001A0266 /* Onboarding */,
+			);
+			name = MinimalDesk;
+			packageProductDependencies = (
+				C84B21D02C396DF200825521 /* TabBarModule */,
+				C8C78BF32C439D53008CE138 /* AlertToast */,
+				C8C78BF62C43AD94008CE138 /* Reachability */,
+				1BEDD01B2DE8C9E10020BAB0 /* SwiftyStoreKit */,
+				186644592DF596A0009BD74B /* Siren */,
+				1BF6DE472DF78D15004DE980 /* FirebaseAnalytics */,
+				1BF6DE492DF78D15004DE980 /* FirebaseCrashlytics */,
+				1BF6DE4B2DF78D15004DE980 /* FirebaseDatabase */,
+				1BF6DE4D2DF78D15004DE980 /* FirebaseFirestore */,
+				1BF6DE4F2DF78D15004DE980 /* FirebaseMessaging */,
+				1BF6DE512DF78D15004DE980 /* FirebaseStorage */,
+			);
+			productName = MinimalDesk;
+			productReference = C84B21A02C39594600825521 /* MinimalDesk.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C84B21982C39594600825521 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					"tutorial-videos",
+				);
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					124AF7292C47A3F5008AD47C = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					12C249132C5F77C200074874 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					C84B219F2C39594600825521 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = C84B219B2C39594600825521 /* Build configuration list for PBXProject "MinimalDesk" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C84B21972C39594600825521;
+			packageReferences = (
+				C84B21CF2C396DF200825521 /* XCRemoteSwiftPackageReference "swiftui-tab-bar" */,
+				C8C78BF22C439D53008CE138 /* XCRemoteSwiftPackageReference "AlertToast" */,
+				C8C78BF52C43AD66008CE138 /* XCRemoteSwiftPackageReference "Reachability.swift" */,
+				1BEDC6352DE8B7BA0020BAB0 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+				186644582DF596A0009BD74B /* XCRemoteSwiftPackageReference "Siren" */,
+				1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 60;
+			productRefGroup = C84B21A12C39594600825521 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C84B219F2C39594600825521 /* MinimalDesk */,
+				124AF7292C47A3F5008AD47C /* MinimalDeskDateWidgetExtension */,
+				12C249132C5F77C200074874 /* FavAppWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		124AF7282C47A3F5008AD47C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E07AC1812CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */,
+				124AF7332C47A3F6008AD47C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12C249122C5F77C200074874 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E07AC1822CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */,
+				12C2491D2C5F77C300074874 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C84B219E2C39594600825521 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C84B21AB2C39594800825521 /* Preview Assets.xcassets in Resources */,
+				E07854562CF7B64C00E654DC /* PropertyList.plist in Resources */,
+				127FCD6A2CECFD4200773D9D /* GoogleService-Info.plist in Resources */,
+				CEC273122DE25D4300B8EA1F /* instructions.pdf in Resources */,
+				E07AC1802CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */,
+				C84B21A82C39594800825521 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		124AF7262C47A3F5008AD47C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				124AF7312C47A3F5008AD47C /* MinimalDeskDateWidget.swift in Sources */,
+				124AF7412C47F88E008AD47C /* DateWidgetViews.swift in Sources */,
+				124AF72F2C47A3F5008AD47C /* MinimalDeskDateWidgetBundle.swift in Sources */,
+				1223266F2CA4DADE0081A282 /* FavAppWidgetConfig.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12C249102C5F77C200074874 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1223266D2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */,
+				127EC5AF2CA09E650083616A /* ToastView.swift in Sources */,
+				12C249192C5F77C200074874 /* FavAppWidgetBundle.swift in Sources */,
+				CE4C5CAD2DFAA9ED0010F6BD /* Store.swift in Sources */,
+				12C2491B2C5F77C200074874 /* FavAppWidget.swift in Sources */,
+				CEC2730C2DE253EF00B8EA1F /* SafariView.swift in Sources */,
+				CEC2730F2DE25D0300B8EA1F /* PdfView.swift in Sources */,
+				12C249282C5F7D1D00074874 /* OpenAppIntent.swift in Sources */,
+				1BEDD0202DE8EC9A0020BAB0 /* SubscriptionViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C84B219C2C39594600825521 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				127EC5B02CA09E650083616A /* ToastView.swift in Sources */,
+				CEC2730D2DE253EF00B8EA1F /* SafariView.swift in Sources */,
+				C84B21D72C39702800825521 /* Settings.swift in Sources */,
+				C84B21A62C39594600825521 /* RootView.swift in Sources */,
+				C8D763DA2C3A0905008615A2 /* CustomWidget.swift in Sources */,
+				C84B21D52C396FBB00825521 /* Tutorials.swift in Sources */,
+				E07AC1862CF79B35001B9814 /* Store.swift in Sources */,
+				C84B21CE2C39689C00825521 /* AddView.swift in Sources */,
+				1286B0792C8DA146002C44EA /* SubscriptionView.swift in Sources */,
+				124AF7402C47F88E008AD47C /* DateWidgetViews.swift in Sources */,
+				1BEDD0212DE8EC9A0020BAB0 /* SubscriptionViewModel.swift in Sources */,
+				C8BCA7082C425CDA0026DC58 /* AppListView.swift in Sources */,
+				1240EACE2CA1D26C001A71AA /* CustomAppView.swift in Sources */,
+				E045B3902CF4DB0B0043E799 /* PublicModels.swift in Sources */,
+				1223266E2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */,
+				124AF7432C480161008AD47C /* WidgetList.swift in Sources */,
+				1232B2CF2C4187E500DD2FEE /* FirebaseDataViewModel.swift in Sources */,
+				1223266B2CA462C00081A282 /* WidgetViewModel.swift in Sources */,
+				C84B21D32C396F3200825521 /* Widget.swift in Sources */,
+				C896779C2C688B7400BDF603 /* CustomWallpaper.swift in Sources */,
+				C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */,
+				12AD58562C9F5F0F009903E9 /* FontListView.swift in Sources */,
+				CEC273102DE25D0300B8EA1F /* PdfView.swift in Sources */,
+				E05DD4A92D00EB18001A0266 /* AppIconsView.swift in Sources */,
+				12C249272C5F7D1D00074874 /* OpenAppIntent.swift in Sources */,
+				1BEDD01E2DE8CB1A0020BAB0 /* String+Extension.swift in Sources */,
+				120A404C2CC3A16E00A8FB5E /* AppLocker.swift in Sources */,
+				129694F82CC444CB000A9372 /* AppLockerViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		124AF7362C47A3F6008AD47C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 124AF7292C47A3F5008AD47C /* MinimalDeskDateWidgetExtension */;
+			targetProxy = 124AF7352C47A3F6008AD47C /* PBXContainerItemProxy */;
+		};
+		12C249202C5F77C300074874 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12C249132C5F77C200074874 /* FavAppWidgetExtension */;
+			targetProxy = 12C2491F2C5F77C300074874 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		124AF7392C47A3F6008AD47C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = MinimalDeskDateWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalDeskDateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MinimalDeskDateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.MinimalDeskDateWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		124AF73A2C47A3F6008AD47C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = MinimalDeskDateWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalDeskDateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MinimalDeskDateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.MinimalDeskDateWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		12C249232C5F77C300074874 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FavAppWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FavAppWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FavAppWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.FavAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12C249242C5F77C300074874 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FavAppWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FavAppWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FavAppWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.FavAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C84B21C22C39594800825521 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C84B21C32C39594800825521 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C84B21C52C39594800825521 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"App logo 61\" \"App logo 51\" \"App logo 41\" \"App logo 31\" \"App logo 21\" \"App logo 11\"";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = MinimalDesk/MinimalDesk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 41;
+				DEVELOPMENT_ASSET_PATHS = "\"MinimalDesk/Preview Content\"";
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalDesk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LessPhone;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Permission needed to save wallpaper";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.9;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C84B21C62C39594800825521 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"App logo 61\" \"App logo 51\" \"App logo 41\" \"App logo 31\" \"App logo 21\" \"App logo 11\"";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = MinimalDesk/MinimalDesk.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 41;
+				DEVELOPMENT_ASSET_PATHS = "\"MinimalDesk/Preview Content\"";
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MinimalDesk/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LessPhone;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Permission needed to save wallpaper";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.9;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		124AF7382C47A3F6008AD47C /* Build configuration list for PBXNativeTarget "MinimalDeskDateWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				124AF7392C47A3F6008AD47C /* Debug */,
+				124AF73A2C47A3F6008AD47C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12C249222C5F77C300074874 /* Build configuration list for PBXNativeTarget "FavAppWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12C249232C5F77C300074874 /* Debug */,
+				12C249242C5F77C300074874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C84B219B2C39594600825521 /* Build configuration list for PBXProject "MinimalDesk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C84B21C22C39594800825521 /* Debug */,
+				C84B21C32C39594800825521 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C84B21C42C39594800825521 /* Build configuration list for PBXNativeTarget "MinimalDesk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C84B21C52C39594800825521 /* Debug */,
+				C84B21C62C39594800825521 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		186644582DF596A0009BD74B /* XCRemoteSwiftPackageReference "Siren" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ArtSabintsev/Siren.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.3;
+			};
+		};
+		1BEDC6352DE8B7BA0020BAB0 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.4;
+			};
+		};
+		1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.14.0;
+			};
+		};
+		C84B21CF2C396DF200825521 /* XCRemoteSwiftPackageReference "swiftui-tab-bar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zijievv/swiftui-tab-bar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+		C8C78BF22C439D53008CE138 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
+		C8C78BF52C43AD66008CE138 /* XCRemoteSwiftPackageReference "Reachability.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		186644592DF596A0009BD74B /* Siren */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 186644582DF596A0009BD74B /* XCRemoteSwiftPackageReference "Siren" */;
+			productName = Siren;
+		};
+		1BEDD01B2DE8C9E10020BAB0 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BEDC6352DE8B7BA0020BAB0 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+		1BF6DE472DF78D15004DE980 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		1BF6DE492DF78D15004DE980 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		1BF6DE4B2DF78D15004DE980 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		1BF6DE4D2DF78D15004DE980 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		1BF6DE4F2DF78D15004DE980 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		1BF6DE512DF78D15004DE980 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BF6DE462DF78D15004DE980 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		C84B21D02C396DF200825521 /* TabBarModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C84B21CF2C396DF200825521 /* XCRemoteSwiftPackageReference "swiftui-tab-bar" */;
+			productName = TabBarModule;
+		};
+		C8C78BF32C439D53008CE138 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8C78BF22C439D53008CE138 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		C8C78BF62C43AD94008CE138 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8C78BF52C43AD66008CE138 /* XCRemoteSwiftPackageReference "Reachability.swift" */;
+			productName = Reachability;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = C84B21982C39594600825521 /* Project object */;
+}
