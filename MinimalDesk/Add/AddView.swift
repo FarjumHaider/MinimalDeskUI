@@ -18,6 +18,9 @@ struct AddView: View {
    @State private var currentCardIndex: Int? = 0
    @State private var showLimitCrossed = false
    @ObservedObject private var viewModel = FirebaseDataViewModel.shared
+   //@ObservedObject private var widgetVM = WidgetViewModel.shared
+    
+   @ObservedObject private var widgetVM = WidgetViewModel.shared
    @State private var presentSubscriptionViewForCustom = false
    @State private var isWidgetListPresented = false
    @State private var isPresented = false
@@ -374,7 +377,8 @@ struct AddView: View {
                                .listRowBackground(Color.clear)
                                .listRowInsets(EdgeInsets())
                                .listRowSeparator(.hidden)
-                               .background(Color.white)
+                               .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
+                           //favAppWidgetConfig
                        }
                        .onMove { indices, newOffset in
                            moveItems(at: indices, to: newOffset, in: index)
@@ -382,9 +386,9 @@ struct AddView: View {
                    }
                    .listStyle(.plain)
                    .padding(15)
-                   .foregroundColor(.black)
+                   .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
                    .scrollContentBackground(.hidden)
-                   .background(Color.white)
+                   .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
                }
            }
            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.45)

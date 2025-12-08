@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 import WidgetKit
 
-class WidgetViewModel {
+class WidgetViewModel: ObservableObject {
     let resetConfig: FavAppWidgetConfig = .init(
         fontType: "Chalkduster",
         fontSize: 30,
-        fontColor: "#FFFFFF",
-        backgroundColor: "#212121",
+        fontColor: "#000000",
+        backgroundColor: "#FFFFFF",
         alignment: "left",
         spacing: 16,
         maxNumberOfApps: 5

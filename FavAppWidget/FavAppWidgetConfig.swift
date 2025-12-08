@@ -20,8 +20,8 @@ struct FavAppWidgetConfig: Codable {
     static var defaultConfig: FavAppWidgetConfig = .init(
         fontType: "Impact",
         fontSize: 30,
-        fontColor: "#FFFFFF",
-        backgroundColor: "#212121",
+        fontColor: "#000000",
+        backgroundColor: "#FFFFFF",
         alignment: "left",
         spacing: 16,
         maxNumberOfApps: 5

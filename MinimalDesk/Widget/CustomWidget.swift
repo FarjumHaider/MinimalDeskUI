@@ -31,7 +31,7 @@ struct CustomWidget: View {
     @State private var isFontListPresented = false
     @State private var isDoneButtonDisabled = true
     
-    let colorHexList = [
+    let BackgroundColorHexList = [
         "#F4EADE",
         "#FFDFE0",
         "#E1EBEA",
@@ -43,7 +43,39 @@ struct CustomWidget: View {
         "#EBDCB1",
         "#C4DFE6",
         "#FFE2D0",
-        "#E5DCDF"
+        "#E5DCDF",
+        "#000000",
+    ]
+    
+    let FontColorHexList = [
+        "#F4EADE",
+        "#000000",
+        "#333333",
+        "#666666",
+        "#999999",
+        "#B5B5B5",
+        "#D3D3D3",
+        "#E0E0E0",
+        "#EFEFEF",
+        "#F9F9F9",
+        "#FFFFFF"
+    ]
+    
+    struct FontWeightOption {
+        let weight: Font.Weight
+        let name: String
+    }
+    
+    let weightOptions: [FontWeightOption] = [
+        FontWeightOption(weight: .ultraLight, name: "Ultra Light"),
+        FontWeightOption(weight: .thin, name: "Thin"),
+        FontWeightOption(weight: .light, name: "Light"),
+        FontWeightOption(weight: .regular, name: "Regular"),
+        FontWeightOption(weight: .medium, name: "Medium"),
+        FontWeightOption(weight: .semibold, name: "Semi Bold"),
+        FontWeightOption(weight: .bold, name: "Bold"),
+        FontWeightOption(weight: .heavy, name: "Heavy"),
+        FontWeightOption(weight: .black, name: "Black")
     ]
     
     private let viewModel = WidgetViewModel.shared
@@ -89,16 +121,18 @@ struct CustomWidget: View {
             .padding()
             
                 ScrollView(showsIndicators: false) {
-                    VStack() {
+                    VStack {
                         
                         Text("Background Color")
                             .foregroundColor(Color(hex: "#646464"))
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 14) {
-                                ForEach(colorHexList, id: \.self) { hex in
+                                ForEach(BackgroundColorHexList, id: \.self) { hex in
                                     
                                     //VStack {
                                     RoundedRectangle(cornerRadius: 16)
@@ -108,7 +142,7 @@ struct CustomWidget: View {
                                                 .stroke(
                                                     isSelected(value1: widgetBackground, value2: hex ) ,
                                                     // No border when not selected
-                                                    lineWidth: 2
+                                                    lineWidth: 1
                                                 )
                                         )
                                         .frame(width: 40, height: 40)
@@ -138,13 +172,15 @@ struct CustomWidget: View {
                             .foregroundColor(Color(hex: "#646464"))
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
                         
                         ScrollView(showsIndicators: false) {
                             VStack() {
                                 
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     HStack(spacing: 14) {
-                                        ForEach(colorHexList, id: \.self) { hex in
+                                        ForEach(FontColorHexList, id: \.self) { hex in
                                             
                                             //VStack {
                                             RoundedRectangle(cornerRadius: 16)
@@ -154,7 +190,7 @@ struct CustomWidget: View {
                                                         .stroke(
                                                             isSelected(value1: fontColor, value2: hex ) ,
                                                             // No border when not selected
-                                                            lineWidth: 2
+                                                            lineWidth: 1
                                                         )
                                                 )
                                                 .frame(width: 40, height: 40)
@@ -181,10 +217,69 @@ struct CustomWidget: View {
                         }
                     }
                     
-                    Text("Font Style")
+                    VStack {
+                        Text("Font Style")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        ScrollView(showsIndicators: false) {
+                            VStack() {
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 8) {
+                                        ForEach(weightOptions, id: \.name) { option in
+                                            Text(option.name)
+                                                .fontWeight(option.weight)
+                                                .padding(.vertical, 12.35)
+                                                .padding(.horizontal, 19.76)
+                                            //VStack {
+   
+                                                //.frame(width: 40, height: 40)
+                                                //.cornerRadius(16)
+                                                //.onTapGesture { fontColor = hex }
+                                            ///}
+                                            
+                                        }
+                                    }
+                                    //.padding(.horizontal, 16)
+                                    //.padding(.leading, viewModel.cards <= 1 ? (screenWidth * 0.30) / 2.0 : 0)
+                                }
+                                .onChange(of: fontColor) { _, _ in
+                                    guard viewModel.favAppWidgetConfig.fontColor != fontColor else { return }
+                                    
+                                    viewModel.favAppWidgetConfig.fontColor = fontColor
+                                    isDoneButtonDisabled = false
+                                }
+
+                                //.ignoresSafeArea()
+                                //.scrollTargetLayout()
+                                
+                            }
+                        }
+                    }
+                    
+
                     Text("Alignment")
+                        .foregroundColor(Color(hex: "#646464"))
+                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .padding([.top, .bottom], 10)
+                        .frame(width: screenWidth * 0.92, alignment: .leading)
                     Text("Font Size")
+                        .foregroundColor(Color(hex: "#646464"))
+                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .padding([.top, .bottom], 10)
+                        .frame(width: screenWidth * 0.92, alignment: .leading)
                     Text("Spacing")
+                        .foregroundColor(Color(hex: "#646464"))
+                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .padding([.top, .bottom], 10)
+                        .frame(width: screenWidth * 0.92, alignment: .leading)
                 }
             
             
@@ -192,8 +287,8 @@ struct CustomWidget: View {
             
         }
         //.padding()
-        .background(Color.white)
-        //.background(Color("backgroundColor"))
+        //.background(Color.white)
+        .background(Color("backgroundColor"))
 //        .onAppear {
 //            gap = 20.0
 //            widthToSet = (screenWidth - 3 * gap) / 2.0
