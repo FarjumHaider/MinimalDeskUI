@@ -378,6 +378,8 @@ struct AddView: View {
                                .listRowInsets(EdgeInsets())
                                .listRowSeparator(.hidden)
                                .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
+                               .fontDesign(CustomWidget.FontTypeConverter(FontString: widgetVM.favAppWidgetConfig.fontType).value)
+                               //.font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 30))
                            //favAppWidgetConfig
                        }
                        .onMove { indices, newOffset in
@@ -389,8 +391,11 @@ struct AddView: View {
                    .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
                    .scrollContentBackground(.hidden)
                    .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
+                   .fontWeight(CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value)
+                   
                }
            }
+           .font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 50))
            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.45)
            .background(index == viewModel.cards ? Color.gray.opacity(0.3) : Color.clear)
            .clipShape(RoundedRectangle(cornerRadius: 30))

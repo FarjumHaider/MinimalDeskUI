@@ -10,7 +10,8 @@ import SwiftUI
 
 struct FavAppWidgetConfig: Codable {
     var fontType: String
-    var fontSize: Int
+    var fontWeight: String
+    var fontSize: Double
     var fontColor: String
     var backgroundColor: String
     var alignment: String
@@ -19,6 +20,7 @@ struct FavAppWidgetConfig: Codable {
     
     static var defaultConfig: FavAppWidgetConfig = .init(
         fontType: "Impact",
+        fontWeight: "regular",
         fontSize: 30,
         fontColor: "#000000",
         backgroundColor: "#FFFFFF",

@@ -6,6 +6,9 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SpaceMono-Regular.ttf</string>
+		<string>AveriaSerifLibre-Regular.ttf</string>
+		<string>Nunito-Regular.ttf</string>
 		<string>WorkSans-Regular.ttf</string>
 		<string>Ubuntu-LightItalic.ttf</string>
 		<string>Poppins-SemiBoldItalic.ttf</string>

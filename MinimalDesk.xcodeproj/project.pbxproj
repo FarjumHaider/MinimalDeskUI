@@ -48,6 +48,8 @@
 		1BF6DE4E2DF78D15004DE980 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4D2DF78D15004DE980 /* FirebaseFirestore */; };
 		1BF6DE502DF78D15004DE980 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4F2DF78D15004DE980 /* FirebaseMessaging */; };
 		1BF6DE522DF78D15004DE980 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE512DF78D15004DE980 /* FirebaseStorage */; };
+		AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55C2EE3A5460050762A /* ChecklistView.swift */; };
+		AD88D5602EE3A5690050762A /* CycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55F2EE3A5690050762A /* CycleView.swift */; };
 		C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A32C39594600825521 /* MinimalDeskApp.swift */; };
 		C84B21A62C39594600825521 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A52C39594600825521 /* RootView.swift */; };
 		C84B21A82C39594800825521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84B21A72C39594800825521 /* Assets.xcassets */; };
@@ -141,6 +143,8 @@
 		12C249262C5F7D1D00074874 /* OpenAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAppIntent.swift; sourceTree = "<group>"; };
 		1BEDD01D2DE8CB1A0020BAB0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
+		AD88D55C2EE3A5460050762A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		AD88D55F2EE3A5690050762A /* CycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleView.swift; sourceTree = "<group>"; };
 		C84B21A02C39594600825521 /* MinimalDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84B21A32C39594600825521 /* MinimalDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalDeskApp.swift; sourceTree = "<group>"; };
 		C84B21A52C39594600825521 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -164,6 +168,74 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		ADFD201D2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-BoldItalic.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-Italic.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-Light.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-LightItalic.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-Regular.ttf",
+				"Nunito/Nunito-Black.ttf",
+				"Nunito/Nunito-BlackItalic.ttf",
+				"Nunito/Nunito-Bold.ttf",
+				"Nunito/Nunito-BoldItalic.ttf",
+				"Nunito/Nunito-ExtraBold.ttf",
+				"Nunito/Nunito-ExtraBoldItalic.ttf",
+				"Nunito/Nunito-ExtraLight.ttf",
+				"Nunito/Nunito-ExtraLightItalic.ttf",
+				"Nunito/Nunito-Italic-VariableFont_wght.ttf",
+				"Nunito/Nunito-Italic.ttf",
+				"Nunito/Nunito-Light.ttf",
+				"Nunito/Nunito-LightItalic.ttf",
+				"Nunito/Nunito-Medium.ttf",
+				"Nunito/Nunito-MediumItalic.ttf",
+				"Nunito/Nunito-Regular.ttf",
+				"Nunito/Nunito-SemiBold.ttf",
+				"Nunito/Nunito-SemiBoldItalic.ttf",
+				"Nunito/Nunito-VariableFont_wght.ttf",
+				"Space_Mono/SpaceMono-Bold.ttf",
+				"Space_Mono/SpaceMono-BoldItalic.ttf",
+				"Space_Mono/SpaceMono-Italic.ttf",
+				"Space_Mono/SpaceMono-Regular.ttf",
+			);
+			target = 124AF7292C47A3F5008AD47C /* MinimalDeskDateWidgetExtension */;
+		};
+		ADFD201E2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Averia_Serif_Libre/AveriaSerifLibre-Bold.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-BoldItalic.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-Italic.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-Light.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-LightItalic.ttf",
+				"Averia_Serif_Libre/AveriaSerifLibre-Regular.ttf",
+				"Nunito/Nunito-Black.ttf",
+				"Nunito/Nunito-BlackItalic.ttf",
+				"Nunito/Nunito-Bold.ttf",
+				"Nunito/Nunito-BoldItalic.ttf",
+				"Nunito/Nunito-ExtraBold.ttf",
+				"Nunito/Nunito-ExtraBoldItalic.ttf",
+				"Nunito/Nunito-ExtraLight.ttf",
+				"Nunito/Nunito-ExtraLightItalic.ttf",
+				"Nunito/Nunito-Italic-VariableFont_wght.ttf",
+				"Nunito/Nunito-Italic.ttf",
+				"Nunito/Nunito-Light.ttf",
+				"Nunito/Nunito-LightItalic.ttf",
+				"Nunito/Nunito-Medium.ttf",
+				"Nunito/Nunito-MediumItalic.ttf",
+				"Nunito/Nunito-Regular.ttf",
+				"Nunito/Nunito-SemiBold.ttf",
+				"Nunito/Nunito-SemiBoldItalic.ttf",
+				"Nunito/Nunito-VariableFont_wght.ttf",
+				"Space_Mono/SpaceMono-Bold.ttf",
+				"Space_Mono/SpaceMono-BoldItalic.ttf",
+				"Space_Mono/SpaceMono-Italic.ttf",
+				"Space_Mono/SpaceMono-Regular.ttf",
+			);
+			target = 12C249132C5F77C200074874 /* FavAppWidgetExtension */;
+		};
 		CE9861412DC24FC700C5D224 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			assetTagsByRelativePath = {
@@ -188,7 +260,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		12AD57982C9F5CF3009903E9 /* Font */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Font; sourceTree = "<group>"; };
+		12AD57982C9F5CF3009903E9 /* Font */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ADFD201D2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ADFD201E2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Font; sourceTree = "<group>"; };
 		E045AC902CF10B0D0043E799 /* Videos */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (CE9861412DC24FC700C5D224 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Videos; sourceTree = "<group>"; };
 		E05DD7D02D04D2E7001A0266 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -339,6 +411,22 @@
 			path = FavAppWidget;
 			sourceTree = "<group>";
 		};
+		AD88D55B2EE3A5160050762A /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				AD88D55C2EE3A5460050762A /* ChecklistView.swift */,
+			);
+			path = Checklist;
+			sourceTree = "<group>";
+		};
+		AD88D55E2EE3A5550050762A /* Cycle */ = {
+			isa = PBXGroup;
+			children = (
+				AD88D55F2EE3A5690050762A /* CycleView.swift */,
+			);
+			path = Cycle;
+			sourceTree = "<group>";
+		};
 		C84B21972C39594600825521 = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +460,8 @@
 		C84B21A22C39594600825521 /* MinimalDesk */ = {
 			isa = PBXGroup;
 			children = (
+				AD88D55E2EE3A5550050762A /* Cycle */,
+				AD88D55B2EE3A5160050762A /* Checklist */,
 				E05DD7D02D04D2E7001A0266 /* Onboarding */,
 				12AD59DB2CA01E85009903E9 /* Info.plist */,
 				C84B21A72C39594800825521 /* Assets.xcassets */,
@@ -598,6 +688,8 @@
 				C84B21D52C396FBB00825521 /* Tutorials.swift in Sources */,
 				E07AC1862CF79B35001B9814 /* Store.swift in Sources */,
 				C84B21CE2C39689C00825521 /* AddView.swift in Sources */,
+				AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */,
+				AD88D5602EE3A5690050762A /* CycleView.swift in Sources */,
 				1286B0792C8DA146002C44EA /* SubscriptionView.swift in Sources */,
 				124AF7402C47F88E008AD47C /* DateWidgetViews.swift in Sources */,
 				1BEDD0212DE8EC9A0020BAB0 /* SubscriptionViewModel.swift in Sources */,

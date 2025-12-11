@@ -229,6 +229,7 @@ class Store: ObservableObject {
     }
     
     func userHasActivePurchase() -> Bool {
+        purchasedLifetime = true
         if purchasedLifetime || UserDefaults.standard.bool(forKey: "lifetimePurchase") {
             return true
         }

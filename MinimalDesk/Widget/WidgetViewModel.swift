@@ -12,6 +12,7 @@ import WidgetKit
 class WidgetViewModel: ObservableObject {
     let resetConfig: FavAppWidgetConfig = .init(
         fontType: "Chalkduster",
+        fontWeight: "regular",
         fontSize: 30,
         fontColor: "#000000",
         backgroundColor: "#FFFFFF",
@@ -41,6 +42,7 @@ extension WidgetViewModel {
         var allFonts: [String] = []
         UIFont.familyNames.forEach { familyName in
             UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+                print(fontName)
                 allFonts.append(fontName)
             }
         }

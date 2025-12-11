@@ -86,6 +86,39 @@ struct SimpleEntry: TimelineEntry {
     let emoji: String
 }
 
+struct FontTypeConverter {
+    let FontString: String
+    
+    var value: Font.Design {
+        switch FontString.lowercased() {
+        case "default": return .default
+        case "serif": return .serif
+        case "rounded": return .rounded
+        case "monospaced": return .monospaced
+        default: return .default
+        }
+    }
+}
+
+struct FontWeightConverter {
+    let weightString: String
+    
+    var value: Font.Weight {
+        switch weightString.lowercased() {
+        case "ultralight": return .ultraLight
+        case "thin": return .thin
+        case "light": return .light
+        case "regular": return .regular
+        case "medium": return .medium
+        case "semibold": return .semibold
+        case "bold": return .bold
+        case "heavy": return .heavy
+        case "black": return .black
+        default: return .regular
+        }
+    }
+}
+
 // MARK: - Entry View
 struct FavAppWidgetEntryView : View {
     var entry: Provider.Entry
@@ -122,25 +155,14 @@ struct FavAppWidgetEntryView : View {
                     .foregroundColor(Color(hex: widgetConfig.fontColor))
                     .ignoresSafeArea()
             } else {
-                HStack {
-                    if getAlignment(widgetConfig.alignment) == .trailing {
-                        Spacer()
+                
+                if widgetConfig.alignment == "top" ||  widgetConfig.alignment == "bottom" {
+                    VStack {
+                        cardAlignment(alignment: "vertical")
                     }
-                    
-                    VStack(alignment: getAlignment(widgetConfig.alignment), spacing: widgetConfig.spacing) {
-                        ForEach(favApps.prefix(widgetConfig.maxNumberOfApps), id: \.self) { app in
-                            Button(intent: OpenAppIntent(urlStr: app["link"] ?? "Empty Link")) {
-                                Text(app["name"] ?? "Loading...")
-                                    .foregroundColor(Color(hex: widgetConfig.fontColor))
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .font(Font.custom(widgetConfig.fontType, size: CGFloat(widgetConfig.fontSize)))
-                        }
-                    }
-                    .padding(.horizontal, 25)
-                    
-                    if getAlignment(widgetConfig.alignment) == .leading {
-                        Spacer()
+                } else {
+                    HStack {
+                        cardAlignment(alignment: "horizonatal")
                     }
                 }
             }
@@ -198,16 +220,56 @@ struct FavAppWidgetEntryView : View {
         
     }
     
+    @ViewBuilder
+    private func cardAlignment(alignment: String) -> some View {
+        //HStack {
+        if getAlignment(widgetConfig.alignment) == .trailing || getAlignment1(widgetConfig.alignment) == .bottom {
+                Spacer()
+            }
+            
+        VStack(alignment: alignment == "horizonatal" ? getAlignment(widgetConfig.alignment) : getAlignment1(widgetConfig.alignment), spacing: widgetConfig.spacing) {
+                ForEach(favApps.prefix(widgetConfig.maxNumberOfApps), id: \.self) { app in
+                    Button(intent: OpenAppIntent(urlStr: app["link"] ?? "Empty Link")) {
+                        Text(app["name"] ?? "Loading...")
+                            .foregroundColor(Color(hex: widgetConfig.fontColor))
+                            .font(.system(
+                                size: CGFloat(widgetConfig.fontSize),
+                                weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value,
+                                design: FontTypeConverter(FontString: widgetConfig.fontType).value
+                            ))
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    //.font(Font.custom(widgetConfig.fontType, size: CGFloat(widgetConfig.fontSize)))
+                }
+            }
+            .padding(.horizontal, 25)
+            
+            if getAlignment(widgetConfig.alignment) == .leading || getAlignment1(widgetConfig.alignment) == .top  {
+                Spacer()
+            }
+        ///}
+    }
+    
     private var isLocked: Bool {
         return cardIndex > 0 && !isSubscribed
     }
     
     
-    private func getAlignment(_ alignmentString: String) -> HorizontalAlignment {
+    private func getAlignment(_ alignmentString: String) -> HorizontalAlignment? {
         switch alignmentString {
-        case "center": return .center
+        case "hCenter": return .center
         case "right": return .trailing
-        default: return .leading
+        case "left": return .trailing
+        default: return nil
+        }
+    }
+    
+    private func getAlignment1(_ alignmentString: String) -> VerticalAlignment? {
+        switch alignmentString {
+        case "vCenter": return .center
+        case "top": return .top
+        case "bottom": return .bottom
+        default: return nil
         }
     }
 }
