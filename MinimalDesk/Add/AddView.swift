@@ -357,9 +357,17 @@ struct AddView: View {
        }
    }
 
+   @ViewBuilder
    private func CardView(for index: Int, geo: GeometryProxy) -> some View {
+       
+       let frameAlignment = Alignment(
+           horizontal: widgetVM.alignmentPair.0,
+           vertical: widgetVM.alignmentPair.1
+       )
+       
        ZStack(alignment: .bottomTrailing) {
-           VStack(alignment: .leading, spacing: 0) {
+           //VStack(alignment: .leading, spacing: 0) {
+           VStack{
                if index == viewModel.cards {
                    Image(systemName: "plus")
                        .resizable()
@@ -367,13 +375,22 @@ struct AddView: View {
                        .frame(width: 30, height: 30)
                        .foregroundColor(.white)
                } else {
-                   List {
+                   VStack {
                        // show the app list in every card // farjum
+                       
+                       // left -> leading, center
+                       // right -> trailing, center
+                       // center -> center, center
+                       // top -> center, top
+                       // bottom  -> center, bottom
+
+
+                       
                        ForEach(viewModel.appsOnAddView[index], id: \.self) { app in
                            Text(app)
                                .font(.title3)
                                .font(.system(size: 16 , weight: .medium))
-                               .frame(maxWidth: .infinity, alignment: .leading)
+                               .frame(maxWidth: .infinity, alignment: frameAlignment)
                                .listRowBackground(Color.clear)
                                .listRowInsets(EdgeInsets())
                                .listRowSeparator(.hidden)
@@ -390,11 +407,16 @@ struct AddView: View {
                    .padding(15)
                    .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
                    .scrollContentBackground(.hidden)
-                   .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
                    .fontWeight(CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value)
+                   .frame(
+                       maxWidth: .infinity,
+                       maxHeight: .infinity,
+                       alignment: frameAlignment
+                   )
                    
                }
            }
+           .background(index == viewModel.cards ? Color.clear : Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
            .font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 50))
            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.45)
            .background(index == viewModel.cards ? Color.gray.opacity(0.3) : Color.clear)

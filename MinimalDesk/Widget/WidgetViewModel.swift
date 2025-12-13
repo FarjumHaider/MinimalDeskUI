@@ -21,6 +21,29 @@ class WidgetViewModel: ObservableObject {
         maxNumberOfApps: 5
     )
     
+    // MARK: - Alignment Pair
+    var alignmentPair: (HorizontalAlignment, VerticalAlignment) {
+        switch favAppWidgetConfig.alignment {
+        case "left":
+            return (.leading, .center)
+
+        case "right":
+            return (.trailing, .center)
+
+        case "hCenter", "vCenter":
+            return (.center, .center)
+
+        case "top":
+            return (.center, .top)
+
+        case "bottom":
+            return (.center, .bottom)
+            
+        default:
+            return (.center, .bottom)
+        }
+    }
+    
     static var shared = WidgetViewModel()
     
     private let userdefault = UserDefaults(suiteName: "group.minimaldesk")

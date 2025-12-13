@@ -155,7 +155,6 @@ struct FavAppWidgetEntryView : View {
                     .foregroundColor(Color(hex: widgetConfig.fontColor))
                     .ignoresSafeArea()
             } else {
-                
                 if widgetConfig.alignment == "top" ||  widgetConfig.alignment == "bottom" {
                     VStack {
                         cardAlignment(alignment: "vertical")
@@ -222,51 +221,49 @@ struct FavAppWidgetEntryView : View {
     
     @ViewBuilder
     private func cardAlignment(alignment: String) -> some View {
-        //HStack {
-        if getAlignment(widgetConfig.alignment) == .trailing || getAlignment1(widgetConfig.alignment) == .bottom {
-                Spacer()
-            }
-            
-        VStack(alignment: alignment == "horizonatal" ? getAlignment(widgetConfig.alignment) : getAlignment1(widgetConfig.alignment), spacing: widgetConfig.spacing) {
-                ForEach(favApps.prefix(widgetConfig.maxNumberOfApps), id: \.self) { app in
-                    Button(intent: OpenAppIntent(urlStr: app["link"] ?? "Empty Link")) {
-                        Text(app["name"] ?? "Loading...")
-                            .foregroundColor(Color(hex: widgetConfig.fontColor))
-                            .font(.system(
-                                size: CGFloat(widgetConfig.fontSize),
-                                weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value,
-                                design: FontTypeConverter(FontString: widgetConfig.fontType).value
-                            ))
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    //.font(Font.custom(widgetConfig.fontType, size: CGFloat(widgetConfig.fontSize)))
+        if getHorizontalAlignment(widgetConfig.alignment) == .trailing || getVerticalAlignment(widgetConfig.alignment) == .bottom  {
+            Spacer()
+        }
+        
+        VStack(alignment: (alignment == "horizonatal" ? getHorizontalAlignment(widgetConfig.alignment) ?? .center : .center), spacing: widgetConfig.spacing) {
+            ForEach(favApps.prefix(widgetConfig.maxNumberOfApps), id: \.self) { app in
+                Button(intent: OpenAppIntent(urlStr: app["link"] ?? "Empty Link")) {
+                    Text(app["name"] ?? "Loading...")
+                        .foregroundColor(Color(hex: widgetConfig.fontColor))
+                        .fontWeight(FontWeightConverter(weightString: widgetConfig.fontWeight).value)
+                        .fontDesign(FontTypeConverter(FontString: widgetConfig.fontType).value)
+//                        .font(.system(
+//                            size: CGFloat(widgetConfig.fontSize),
+//                            weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value,
+//                            design: FontTypeConverter(FontString: widgetConfig.fontType).value
+//                        ))
                 }
+                .buttonStyle(PlainButtonStyle())
+                //.font(Font.custom(widgetConfig.fontType, size: CGFloat(widgetConfig.fontSize)))
             }
-            .padding(.horizontal, 25)
-            
-            if getAlignment(widgetConfig.alignment) == .leading || getAlignment1(widgetConfig.alignment) == .top  {
-                Spacer()
-            }
-        ///}
+        }
+        .padding(.horizontal, 25)
+        
+        if getHorizontalAlignment(widgetConfig.alignment) == .leading || getVerticalAlignment(widgetConfig.alignment) == .top   {
+            Spacer()
+        }
     }
     
     private var isLocked: Bool {
         return cardIndex > 0 && !isSubscribed
     }
     
-    
-    private func getAlignment(_ alignmentString: String) -> HorizontalAlignment? {
+    private func getHorizontalAlignment(_ alignmentString: String) -> HorizontalAlignment? {
         switch alignmentString {
-        case "hCenter": return .center
+        case "hCenter", "vCenter": return .center
         case "right": return .trailing
-        case "left": return .trailing
+        case "left": return .leading
         default: return nil
         }
     }
     
-    private func getAlignment1(_ alignmentString: String) -> VerticalAlignment? {
+    private func getVerticalAlignment(_ alignmentString: String) -> VerticalAlignment? {
         switch alignmentString {
-        case "vCenter": return .center
         case "top": return .top
         case "bottom": return .bottom
         default: return nil
