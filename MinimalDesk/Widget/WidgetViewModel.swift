@@ -21,7 +21,6 @@ class WidgetViewModel: ObservableObject {
         maxNumberOfApps: 5
     )
     
-    // MARK: - Alignment Pair
     var alignmentPair: (HorizontalAlignment, VerticalAlignment) {
         switch favAppWidgetConfig.alignment {
         case "left":

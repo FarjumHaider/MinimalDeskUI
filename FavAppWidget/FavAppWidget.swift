@@ -229,9 +229,13 @@ struct FavAppWidgetEntryView : View {
             ForEach(favApps.prefix(widgetConfig.maxNumberOfApps), id: \.self) { app in
                 Button(intent: OpenAppIntent(urlStr: app["link"] ?? "Empty Link")) {
                     Text(app["name"] ?? "Loading...")
-                        .foregroundColor(Color(hex: widgetConfig.fontColor))
-                        .fontWeight(FontWeightConverter(weightString: widgetConfig.fontWeight).value)
+                        
+                        //.font(.system(size: widgetConfig.fontSize))
+                        //.fontWeight(FontWeightConverter(weightString: widgetConfig.fontWeight).value)
+                        .font(.system(size: widgetConfig.fontSize, weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value))
                         .fontDesign(FontTypeConverter(FontString: widgetConfig.fontType).value)
+                        .foregroundColor(Color(hex: widgetConfig.fontColor))
+
 //                        .font(.system(
 //                            size: CGFloat(widgetConfig.fontSize),
 //                            weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value,

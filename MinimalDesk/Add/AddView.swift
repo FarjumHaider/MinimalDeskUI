@@ -375,7 +375,7 @@ struct AddView: View {
                        .frame(width: 30, height: 30)
                        .foregroundColor(.white)
                } else {
-                   VStack {
+                   VStack(spacing: widgetVM.favAppWidgetConfig.spacing) {
                        // show the app list in every card // farjum
                        
                        // left -> leading, center
@@ -388,14 +388,32 @@ struct AddView: View {
                        
                        ForEach(viewModel.appsOnAddView[index], id: \.self) { app in
                            Text(app)
-                               .font(.title3)
-                               .font(.system(size: 16 , weight: .medium))
+                               //.font(.title3)
+                               //.font(.system(weight: CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value))
+//                               .font(.system(size: widgetVM.favAppWidgetConfig.fontSize))
+//                               .fontWeight(CustomWidget.FontWeightConverter(
+//                                   weightString: widgetVM.favAppWidgetConfig.fontWeight
+//                               ).value)
+//                               .font(.system(
+//                                   size: widgetVM.favAppWidgetConfig.fontSize,
+//                                   weight: CustomWidget.FontWeightConverter(
+//                                       weightString: widgetVM.favAppWidgetConfig.fontWeight
+//                                   ).value
+//                               ))
+                               .font(.system(
+                                
+                                    size: widgetVM.favAppWidgetConfig.fontSize,
+                                    weight: CustomWidget.FontWeightConverter(weightString:widgetVM.favAppWidgetConfig.fontWeight).value,
+                                    design: CustomWidget.FontTypeConverter(FontString: widgetVM.favAppWidgetConfig.fontType).value
+                               
+                               ))
+
                                .frame(maxWidth: .infinity, alignment: frameAlignment)
                                .listRowBackground(Color.clear)
                                .listRowInsets(EdgeInsets())
                                .listRowSeparator(.hidden)
                                .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
-                               .fontDesign(CustomWidget.FontTypeConverter(FontString: widgetVM.favAppWidgetConfig.fontType).value)
+                               //.fontDesign(CustomWidget.FontTypeConverter(FontString: widgetVM.favAppWidgetConfig.fontType).value)
                                //.font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 30))
                            //favAppWidgetConfig
                        }
@@ -407,7 +425,7 @@ struct AddView: View {
                    .padding(15)
                    .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
                    .scrollContentBackground(.hidden)
-                   .fontWeight(CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value)
+                   //.fontWeight(CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value)
                    .frame(
                        maxWidth: .infinity,
                        maxHeight: .infinity,
@@ -417,7 +435,7 @@ struct AddView: View {
                }
            }
            .background(index == viewModel.cards ? Color.clear : Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
-           .font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 50))
+           //.font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 50))
            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.45)
            .background(index == viewModel.cards ? Color.gray.opacity(0.3) : Color.clear)
            .clipShape(RoundedRectangle(cornerRadius: 30))

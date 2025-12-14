@@ -17,8 +17,8 @@ struct CustomWidget: View {
     @State var bottomGap:CGFloat = 0
     @State var gapNeedToGive:CGFloat = 0
     
-    @State var widgetBackground: String
-    @State var fontColor: String
+    @State var widgetBackground: Color
+    @State var fontColor: Color
     @State var fontType: String
     @State var fontWeight: String
     @State var alignment: String
@@ -31,6 +31,8 @@ struct CustomWidget: View {
     @State private var isCustomWallPaperPressed = false
     @State private var isFontListPresented = false
     @State private var isDoneButtonDisabled = true
+    //@State private var showPicker = false
+    @State private var paletteColor = ""
     
     // A structure to convert String -> Font.Weight
     struct FontWeightConverter {
@@ -67,7 +69,7 @@ struct CustomWidget: View {
     }
     
     
-    let BackgroundColorHexList = [
+    let backgroundColorHexList = [
         "#F4EADE",
         "#FFDFE0",
         "#E1EBEA",
@@ -83,7 +85,11 @@ struct CustomWidget: View {
         "#000000",
     ]
     
-    let FontColorHexList = [
+    var backgroundColorList: [Color] {
+        backgroundColorHexList.compactMap { Color(hex: $0) }
+    }
+    
+    let fontColorHexList = [
         "#F4EADE",
         "#000000",
         "#333333",
@@ -96,6 +102,10 @@ struct CustomWidget: View {
         "#F9F9F9",
         "#FFFFFF"
     ]
+    
+    var fontColorList: [Color] {
+        fontColorHexList.compactMap { Color(hex: $0) }
+    }
     
     struct FontWeightOption {
         let weight: String
@@ -132,9 +142,9 @@ struct CustomWidget: View {
     private let viewModel = WidgetViewModel.shared
     
     init() {
-        widgetBackground = viewModel.favAppWidgetConfig.backgroundColor
-        //fontColor = Color(hex: viewModel.favAppWidgetConfig.fontColor)
-        fontColor = viewModel.favAppWidgetConfig.fontColor
+        widgetBackground = Color(hex: viewModel.favAppWidgetConfig.backgroundColor)
+        fontColor = Color(hex: viewModel.favAppWidgetConfig.fontColor)
+        //fontColor = viewModel.favAppWidgetConfig.fontColor
         fontType = viewModel.favAppWidgetConfig.fontType
         fontWeight = viewModel.favAppWidgetConfig.fontWeight
         alignment = viewModel.favAppWidgetConfig.alignment
@@ -184,16 +194,30 @@ struct CustomWidget: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 14) {
-                            ForEach(BackgroundColorHexList, id: \.self) { hex in
+                            
+                            ZStack {
+                                Image("palette")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                                    .allowsHitTesting(false)
+
+                                ColorPicker("", selection: $widgetBackground, supportsOpacity: false)
+                                    .labelsHidden()
+                                    .frame(width: 40, height: 40)
+                                    .opacity(0.02) // invisible but tappable
+                            }
+                            
+                            ForEach(backgroundColorList, id: \.self) { hex in
                                 
                                 //VStack {
                                 RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color(hex: hex))                      // Background color of circle
+                                    .fill(Color(hex: hex.toHex()!))                // Background color
                                     .overlay(                               // Add border using overlay
                                         RoundedRectangle(cornerRadius: 16)
                                             .stroke(
-                                                isSelected(value1: widgetBackground, value2: hex ) ,
-                                                // No border when not selected
+                                                isSelected(value1: widgetBackground.toHex()!, value2: hex.toHex()! ) ,
                                                 lineWidth: 1
                                             )
                                     )
@@ -205,18 +229,14 @@ struct CustomWidget: View {
                             }
                         }
                         .padding(.horizontal, 14)
-                        //.padding(.leading, viewModel.cards <= 1 ? (screenWidth * 0.30) / 2.0 : 0)
                     }
-                    //.padding(.top,15)
                     .onChange(of: widgetBackground) { _, _ in
-                        guard viewModel.favAppWidgetConfig.backgroundColor != widgetBackground else { return }
+                        guard let backgroundcolorHex = widgetBackground.toHex(),
+                              backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
                         
-                        viewModel.favAppWidgetConfig.backgroundColor = widgetBackground
+                        viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
                         isDoneButtonDisabled = false
                     }
-                    //.ignoresSafeArea()
-                    //.scrollTargetLayout()
-                    
                 }
                 
                 VStack {
@@ -227,45 +247,51 @@ struct CustomWidget: View {
                         .padding([.top, .bottom], 10)
                         .frame(width: screenWidth * 0.92, alignment: .leading)
                     
-                    ScrollView(showsIndicators: false) {
-                        VStack() {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 14) {
                             
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 14) {
-                                    ForEach(FontColorHexList, id: \.self) { hex in
-                                        
-                                        //VStack {
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .fill(Color(hex: hex))                      // Background color of circle
-                                            .overlay(                               // Add border using overlay
-                                                RoundedRectangle(cornerRadius: 16)
-                                                    .stroke(
-                                                        isSelected(value1: fontColor, value2: hex ) ,
-                                                        // No border when not selected
-                                                        lineWidth: 1
-                                                    )
-                                            )
-                                            .frame(width: 40, height: 40)
-                                            //.cornerRadius(16)
-                                            .onTapGesture { fontColor = hex }
-                                        ///}
-                                        
-                                    }
-                                }
-                                .padding(.horizontal, 14)
-                                //.padding(.leading, viewModel.cards <= 1 ? (screenWidth * 0.30) / 2.0 : 0)
-                            }
-                            .onChange(of: fontColor) { _, _ in
-                                guard viewModel.favAppWidgetConfig.fontColor != fontColor else { return }
-                                
-                                viewModel.favAppWidgetConfig.fontColor = fontColor
-                                isDoneButtonDisabled = false
-                            }
+                            ZStack {
+                                Image("palette")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                                    .allowsHitTesting(false)
+                                    //.background(Color.red)
 
-                            //.ignoresSafeArea()
-                            //.scrollTargetLayout()
+                                ColorPicker("", selection: $fontColor, supportsOpacity: false)
+                                    .labelsHidden()
+                                    .frame(width: 40, height: 40)
+                                    .opacity(0.02) // invisible but tappable
+                            }
                             
+                            ForEach(fontColorList, id: \.self) { hex in
+                                
+                                //VStack {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(Color(hex: hex.toHex()!))                      // Background color of circle
+                                    .overlay(                               // Add border using overlay
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(
+                                                isSelected(value1: fontColor.toHex()!, value2: hex.toHex()! ) ,
+                                                // No border when not selected
+                                                lineWidth: 1
+                                            )
+                                    )
+                                    .frame(width: 40, height: 40)
+                                    .onTapGesture { fontColor = hex }
+                                ///}
+                                
+                            }
                         }
+                        .padding(.horizontal, 14)
+                    }
+                    .onChange(of: fontColor) { _, _ in
+                        guard let fontColorHex = fontColor.toHex(),
+                              fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
+                        
+                        viewModel.favAppWidgetConfig.fontColor = fontColorHex
+                        isDoneButtonDisabled = false
                     }
                 }
                 
@@ -452,6 +478,11 @@ struct CustomWidget: View {
                     Slider(value: $fontSize, in: 10...40, step: 1)
                         .frame(width: screenWidth * 0.92, alignment: .center)
                         .tint(Color(hex: "#010101"))
+                        .onChange(of: fontSize) { oldValue, newValue in
+                            guard oldValue != newValue else { return }
+                            viewModel.favAppWidgetConfig.fontSize = fontSize
+                            isDoneButtonDisabled = false
+                        }
                 }
                 
 
@@ -474,6 +505,11 @@ struct CustomWidget: View {
                     Slider(value: $space, in: 10...40, step: 1)
                         .frame(width: screenWidth * 0.92, alignment: .center)
                         .tint(Color.black)
+                        .onChange(of: space) { oldValue, newValue in
+                            guard oldValue != newValue else { return }
+                            viewModel.favAppWidgetConfig.spacing = space
+                            isDoneButtonDisabled = false
+                        }
                 }
                 
                 VStack {
