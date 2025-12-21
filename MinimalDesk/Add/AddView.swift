@@ -400,6 +400,8 @@ struct AddView: View {
 //                                       weightString: widgetVM.favAppWidgetConfig.fontWeight
 //                                   ).value
 //                               ))
+                               .textCase(widgetVM.favAppWidgetConfig.caseText == "default" ? nil : .uppercase)
+
                                .font(.system(
                                 
                                     size: widgetVM.favAppWidgetConfig.fontSize,

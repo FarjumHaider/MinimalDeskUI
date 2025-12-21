@@ -232,6 +232,7 @@ struct FavAppWidgetEntryView : View {
                         
                         //.font(.system(size: widgetConfig.fontSize))
                         //.fontWeight(FontWeightConverter(weightString: widgetConfig.fontWeight).value)
+                        .textCase(widgetConfig.caseText == "default" ? nil : .uppercase)
                         .font(.system(size: widgetConfig.fontSize, weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value))
                         .fontDesign(FontTypeConverter(FontString: widgetConfig.fontType).value)
                         .foregroundColor(Color(hex: widgetConfig.fontColor))

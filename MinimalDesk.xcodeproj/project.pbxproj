@@ -50,6 +50,7 @@
 		1BF6DE522DF78D15004DE980 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE512DF78D15004DE980 /* FirebaseStorage */; };
 		AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55C2EE3A5460050762A /* ChecklistView.swift */; };
 		AD88D5602EE3A5690050762A /* CycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55F2EE3A5690050762A /* CycleView.swift */; };
+		ADA256B12EF5D55C00F68031 /* CustomDateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */; };
 		C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A32C39594600825521 /* MinimalDeskApp.swift */; };
 		C84B21A62C39594600825521 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A52C39594600825521 /* RootView.swift */; };
 		C84B21A82C39594800825521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84B21A72C39594800825521 /* Assets.xcassets */; };
@@ -145,6 +146,7 @@
 		1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
 		AD88D55C2EE3A5460050762A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		AD88D55F2EE3A5690050762A /* CycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleView.swift; sourceTree = "<group>"; };
+		ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateWidget.swift; sourceTree = "<group>"; };
 		C84B21A02C39594600825521 /* MinimalDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84B21A32C39594600825521 /* MinimalDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalDeskApp.swift; sourceTree = "<group>"; };
 		C84B21A52C39594600825521 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				124AF7422C480161008AD47C /* WidgetList.swift */,
 				C896779B2C688B7400BDF603 /* CustomWallpaper.swift */,
 				C8D763D92C3A0904008615A2 /* CustomWidget.swift */,
+				ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */,
 				122326692CA4626F0081A282 /* CustomWidgetSubViews */,
 				1223266A2CA462C00081A282 /* WidgetViewModel.swift */,
 			);
@@ -694,6 +697,7 @@
 				124AF7402C47F88E008AD47C /* DateWidgetViews.swift in Sources */,
 				1BEDD0212DE8EC9A0020BAB0 /* SubscriptionViewModel.swift in Sources */,
 				C8BCA7082C425CDA0026DC58 /* AppListView.swift in Sources */,
+				ADA256B12EF5D55C00F68031 /* CustomDateWidget.swift in Sources */,
 				1240EACE2CA1D26C001A71AA /* CustomAppView.swift in Sources */,
 				E045B3902CF4DB0B0043E799 /* PublicModels.swift in Sources */,
 				1223266E2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */,

@@ -18,7 +18,8 @@ class WidgetViewModel: ObservableObject {
         backgroundColor: "#FFFFFF",
         alignment: "left",
         spacing: 16,
-        maxNumberOfApps: 5
+        maxNumberOfApps: 5,
+        caseText: "default"
     )
     
     var alignmentPair: (HorizontalAlignment, VerticalAlignment) {
@@ -48,12 +49,21 @@ class WidgetViewModel: ObservableObject {
     private let userdefault = UserDefaults(suiteName: "group.minimaldesk")
     @Published var favAppWidgetConfig: FavAppWidgetConfig
     
+    @Published var dateConfig: DateConfig
+    
     private init() {
         favAppWidgetConfig = FavAppWidgetConfig.defaultConfig
+        
+        dateConfig = DateConfig.defaultConfig
         
         let config = userdefault?.value(forKey: "favorite-apps-config") as? Data ?? Data()
         if let widgetConfig = try? JSONDecoder().decode(FavAppWidgetConfig.self, from: config) {
             favAppWidgetConfig = widgetConfig
+        }
+        
+        let config1 = userdefault?.value(forKey: "favorite-date-config") as? Data ?? Data()
+        if let widgetConfig1 = try? JSONDecoder().decode(DateConfig.self, from: config1) {
+            dateConfig = widgetConfig1
         }
     }
 }
@@ -82,8 +92,16 @@ extension WidgetViewModel {
         WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget5")
     }
     
+    func setDateWidgetConfig() {
+        userdefault?.setValue(try? JSONEncoder().encode(dateConfig), forKey: "favorite-date-config")
+        WidgetCenter.shared.reloadTimelines(ofKind: "MinimalDeskDateWidget")
+    }
+    
+    
     func setTopWidget(theme: String) {
         userdefault?.set(theme, forKey: "current-widget-theme")
+        userdefault?.setValue(try? JSONEncoder().encode(dateConfig), forKey: "favorite-date-config")
+        
         WidgetCenter.shared.reloadTimelines(ofKind: "MinimalDeskDateWidget")
     }
     

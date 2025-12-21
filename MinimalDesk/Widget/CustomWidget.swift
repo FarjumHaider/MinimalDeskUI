@@ -25,12 +25,14 @@ struct CustomWidget: View {
     @State var space: Double
     @State var fontSize: Double
     @State var widget: Int
+    @State var caseText: String
     
     @State var presentColorView = false
     @State private var isWidgetListPresented = false
     @State private var isCustomWallPaperPressed = false
     @State private var isFontListPresented = false
     @State private var isDoneButtonDisabled = true
+    @State private var shouldShowProgressView = false
     //@State private var showPicker = false
     @State private var paletteColor = ""
     
@@ -151,402 +153,456 @@ struct CustomWidget: View {
         space = viewModel.favAppWidgetConfig.spacing
         fontSize = viewModel.favAppWidgetConfig.fontSize
         widget = viewModel.favAppWidgetConfig.maxNumberOfApps
+        caseText = viewModel.favAppWidgetConfig.caseText
     }
     
     var body: some View {
-        VStack() {
-            //Color("backgroundColor")
+        
+        ZStack {
+            
+            VStack() {
+                //Color("backgroundColor")
                 //.ignoresSafeArea()
-//            Color.black
-
-            
-            HStack {
-                Text("Pagination One")
-                Image(systemName: "chevron.down")
-                    .font(.system(size: 20))
-                    .foregroundColor(.black)
-
-                Spacer()
-
-                Text("Done")
-                    .font(.system(size: 17))
-                    .fontWeight(.semibold)
-                    .foregroundColor(.blue)
-                    .onTapGesture {
-                        guard isDoneButtonDisabled == false else { return }
-                        
-                        viewModel.setNewFavWidgetConfig()
-                        dismiss()
-                    }
-
-            }
-            .padding()
-            
-            ScrollView(showsIndicators: false) {
-                VStack {
+                //            Color.black
+                
+                
+                HStack {
+                    Text("Pagination One")
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 20))
+                        .foregroundColor(.black)
                     
-                    Text("Background Color")
-                        .foregroundColor(Color(hex: "#646464"))
-                        .font(.system(size: 16))
+                    Spacer()
+                    
+                    Text("Done")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
-                        .padding([.top, .bottom], 10)
-                        .frame(width: screenWidth * 0.92, alignment: .leading)
+                        .foregroundColor(.blue)
+                        .onTapGesture {
+                            guard isDoneButtonDisabled == false else { return }
+                            
+                            viewModel.setNewFavWidgetConfig()
+                            showProgressView()
+                            
+                            //dismiss()
+                        }
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 14) {
-                            
-                            ZStack {
-                                Image("palette")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                                    .allowsHitTesting(false)
-
-                                ColorPicker("", selection: $widgetBackground, supportsOpacity: false)
-                                    .labelsHidden()
-                                    .frame(width: 40, height: 40)
-                                    .opacity(0.02) // invisible but tappable
-                            }
-                            
-                            ForEach(backgroundColorList, id: \.self) { hex in
+                }
+                .padding()
+                
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        
+                        Text("Background Color")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 14) {
                                 
-                                //VStack {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color(hex: hex.toHex()!))                // Background color
-                                    .overlay(                               // Add border using overlay
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(
-                                                isSelected(value1: widgetBackground.toHex()!, value2: hex.toHex()! ) ,
-                                                lineWidth: 1
-                                            )
-                                    )
-                                    .frame(width: 40, height: 40)
+                                ZStack {
+                                    Image("palette")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                                        .allowsHitTesting(false)
+                                    
+                                    ColorPicker("", selection: $widgetBackground, supportsOpacity: false)
+                                        .labelsHidden()
+                                        .frame(width: 40, height: 40)
+                                        .opacity(0.02) // invisible but tappable
+                                }
+                                
+                                ForEach(backgroundColorList, id: \.self) { hex in
+                                    
+                                    //VStack {
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(Color(hex: hex.toHex()!))                // Background color
+                                        .overlay(                               // Add border using overlay
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    isSelected(value1: widgetBackground.toHex()!, value2: hex.toHex()! ) ,
+                                                    lineWidth: 1
+                                                )
+                                        )
+                                        .frame(width: 40, height: 40)
                                     //.cornerRadius(16)
-                                    .onTapGesture { widgetBackground = hex }
-                                ///}
-                                
+                                        .onTapGesture { widgetBackground = hex }
+                                    ///}
+                                    
+                                }
                             }
+                            .padding(.horizontal, 14)
                         }
-                        .padding(.horizontal, 14)
-                    }
-                    .onChange(of: widgetBackground) { _, _ in
-                        guard let backgroundcolorHex = widgetBackground.toHex(),
-                              backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
-                        
-                        viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
-                        isDoneButtonDisabled = false
-                    }
-                }
-                
-                VStack {
-                    Text("Text Color")
-                        .foregroundColor(Color(hex: "#646464"))
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                        .padding([.top, .bottom], 10)
-                        .frame(width: screenWidth * 0.92, alignment: .leading)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 14) {
+                        .onChange(of: widgetBackground) { _, _ in
                             
-                            ZStack {
-                                Image("palette")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                                    .allowsHitTesting(false)
+                            print("Farjum in 1 \(widgetBackground.toHex())")
+                            
+                            guard let backgroundcolorHex = widgetBackground.toHex(),
+                                  backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
+                            
+                            print("Farjum out 2 \(widgetBackground.toHex())")
+                            viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
+                            isDoneButtonDisabled = false
+                        }
+                    }
+                    
+                    VStack {
+                        Text("Text Color")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 14) {
+                                
+                                ZStack {
+                                    Image("palette")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                                        .allowsHitTesting(false)
                                     //.background(Color.red)
-
-                                ColorPicker("", selection: $fontColor, supportsOpacity: false)
-                                    .labelsHidden()
-                                    .frame(width: 40, height: 40)
-                                    .opacity(0.02) // invisible but tappable
+                                    
+                                    ColorPicker("", selection: $fontColor, supportsOpacity: false)
+                                        .labelsHidden()
+                                        .frame(width: 40, height: 40)
+                                        .opacity(0.02) // invisible but tappable
+                                }
+                                
+                                ForEach(fontColorList, id: \.self) { hex in
+                                    
+                                    //VStack {
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(Color(hex: hex.toHex()!))                      // Background color of circle
+                                        .overlay(                               // Add border using overlay
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    isSelected(value1: fontColor.toHex()!, value2: hex.toHex()! ) ,
+                                                    // No border when not selected
+                                                    lineWidth: 1
+                                                )
+                                        )
+                                        .frame(width: 40, height: 40)
+                                        .onTapGesture { fontColor = hex }
+                                    ///}
+                                    
+                                }
                             }
+                            .padding(.horizontal, 14)
+                        }
+                        .onChange(of: fontColor) { _, _ in
+                            guard let fontColorHex = fontColor.toHex(),
+                                  fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
                             
-                            ForEach(fontColorList, id: \.self) { hex in
-                                
-                                //VStack {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color(hex: hex.toHex()!))                      // Background color of circle
-                                    .overlay(                               // Add border using overlay
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(
-                                                isSelected(value1: fontColor.toHex()!, value2: hex.toHex()! ) ,
-                                                // No border when not selected
-                                                lineWidth: 1
-                                            )
-                                    )
-                                    .frame(width: 40, height: 40)
-                                    .onTapGesture { fontColor = hex }
-                                ///}
-                                
-                            }
+                            viewModel.favAppWidgetConfig.fontColor = fontColorHex
+                            isDoneButtonDisabled = false
                         }
-                        .padding(.horizontal, 14)
                     }
-                    .onChange(of: fontColor) { _, _ in
-                        guard let fontColorHex = fontColor.toHex(),
-                              fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
+                    
+                    VStack {
+                        Text("Font Style")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
                         
-                        viewModel.favAppWidgetConfig.fontColor = fontColorHex
-                        isDoneButtonDisabled = false
-                    }
-                }
-                
-                VStack {
-                    Text("Font Style")
-                        .foregroundColor(Color(hex: "#646464"))
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                        .padding([.top, .bottom], 10)
-                        .frame(width: screenWidth * 0.92, alignment: .leading)
-                    
-                    // font weight
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8) {
-                            ForEach(weightOptions, id: \.name) { option in
-                                Text(option.name)
-                                    .fontWeight(FontWeightConverter(weightString: option.weight).value)
-                                    .padding(.vertical, 12.35)
-                                    .padding(.horizontal, 19.76)
-                                    .background(fontWeight == option.weight ? Color(hex: "#E2E2E4") : Color.clear)
-                                    .cornerRadius(10)
-                                    .onTapGesture {
-                                        fontWeight = option.weight
-                                        
-                                        guard viewModel.favAppWidgetConfig.fontWeight != fontWeight else { return }
-                                        
-                                        viewModel.favAppWidgetConfig.fontWeight = fontWeight
-                                        isDoneButtonDisabled = false
-                                    }
+                        // font weight
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8) {
+                                ForEach(weightOptions, id: \.name) { option in
+                                    Text(option.name)
+                                        .fontWeight(FontWeightConverter(weightString: option.weight).value)
+                                        .padding(.vertical, 12.35)
+                                        .padding(.horizontal, 19.76)
+                                        .background(fontWeight == option.weight ? Color(hex: "#E2E2E4") : Color.clear)
+                                        .cornerRadius(10)
+                                        .onTapGesture {
+                                            fontWeight = option.weight
+                                            
+                                            guard viewModel.favAppWidgetConfig.fontWeight != fontWeight else { return }
+                                            
+                                            viewModel.favAppWidgetConfig.fontWeight = fontWeight
+                                            isDoneButtonDisabled = false
+                                        }
+                                }
                             }
                         }
-                    }
-                    
-                    
-//                        FontDesignOption(design: .default, name: "Default"),
-//                        FontDesignOption(design: .serif, name: "Serif"),
-//                        FontDesignOption(design: .rounded, name: "Rounded"),
-//                        FontDesignOption(design: .monospaced, name: "Monospaced")
-                    
-//                        Text("Monospaced")
-//                            .fontDesign(.default)
-//                            //.font(.custom("SpaceMono-Bold", size: 20))
-//
-//                        Text("Monospaced")
-//                            .fontDesign(.default)
-//                            //.font(.custom("SpaceMono-Bold", size: 20))
-//
-//                        Text("Monospaced")
-//                            .fontDesign(.serif)
-//                            //.font(.custom("SpaceMono-Bold", size: 20))
-//
-//                        Text("Monospaced")
-//                            .fontDesign(.rounded)
-//                            //.font(.custom("SpaceMono-Bold", size: 20))
-//
-//                        Text("Monospaced")
-//                            .fontDesign(.monospaced)
-//                            //.font(.custom("SpaceMono-Bold", size: 20))
-                    
-                    
-                    /// font design
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 8) {
-                            ForEach(fontDesigns) { fontDesing in
-                                Text(fontDesing.name)
+                        
+                        
+                        //                        FontDesignOption(design: .default, name: "Default"),
+                        //                        FontDesignOption(design: .serif, name: "Serif"),
+                        //                        FontDesignOption(design: .rounded, name: "Rounded"),
+                        //                        FontDesignOption(design: .monospaced, name: "Monospaced")
+                        
+                        //                        Text("Monospaced")
+                        //                            .fontDesign(.default)
+                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
+                        //
+                        //                        Text("Monospaced")
+                        //                            .fontDesign(.default)
+                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
+                        //
+                        //                        Text("Monospaced")
+                        //                            .fontDesign(.serif)
+                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
+                        //
+                        //                        Text("Monospaced")
+                        //                            .fontDesign(.rounded)
+                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
+                        //
+                        //                        Text("Monospaced")
+                        //                            .fontDesign(.monospaced)
+                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
+                        
+                        
+                        /// font design
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8) {
+                                ForEach(fontDesigns) { fontDesing in
+                                    Text(fontDesing.name)
                                     //.font(.system(.footnote, design: fontDesing.design))
-                                    .fontDesign(fontDesing.design)
-                                    .fontWeight(fontDesing.weight)
-                                    .font(Font.custom(fontDesing.customFont, size: 17))
+                                        .fontDesign(fontDesing.design)
+                                        .fontWeight(fontDesing.weight)
+                                        .font(Font.custom(fontDesing.customFont, size: 17))
                                     
                                     //.font(.system(size: 20, design: .))
-                                    .padding(.vertical, 12.35)
-                                    .padding(.horizontal, 19.76)
-                                    .background(fontType == fontDesing.name.lowercased() ? Color(hex: "#E2E2E4") : Color.clear)
+                                        .padding(.vertical, 12.35)
+                                        .padding(.horizontal, 19.76)
+                                        .background(fontType == fontDesing.name.lowercased() ? Color(hex: "#E2E2E4") : Color.clear)
+                                        .cornerRadius(10)
+                                        .onTapGesture {
+                                            fontType = fontDesing.name.lowercased()
+                                            
+                                            guard viewModel.favAppWidgetConfig.fontType != fontType else { return }
+                                            
+                                            viewModel.favAppWidgetConfig.fontType = fontType
+                                            isDoneButtonDisabled = false
+                                        }
+                                    
+                                }
+                            }
+                            //.padding(.horizontal, 16)
+                            //.padding(.leading, viewModel.cards <= 1 ? (screenWidth * 0.30) / 2.0 : 0)
+                        }
+                        //                        .onChange(of: fontColor) { _, _ in
+                        //                            guard viewModel.favAppWidgetConfig.fontColor != fontColor else { return }
+                        //
+                        //                            viewModel.favAppWidgetConfig.fontColor = fontColor
+                        //                            isDoneButtonDisabled = false
+                        //                        }
+                        
+                    }
+                    
+                    VStack {
+                        Text("Alignment")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 30) {
+                                Image(systemName: "align.horizontal.left")
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 30)
+                                    .background(alignment == "left" ? Color(hex: "#E2E2E4") : Color.clear)
                                     .cornerRadius(10)
                                     .onTapGesture {
-                                        fontType = fontDesing.name.lowercased()
-                                        
-                                        guard viewModel.favAppWidgetConfig.fontType != fontType else { return }
-                                        
-                                        viewModel.favAppWidgetConfig.fontType = fontType
-                                        isDoneButtonDisabled = false
+                                        alignment = "left"
                                     }
                                 
+                                Image(systemName: "align.horizontal.center")
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 30)
+                                    .background(alignment == "hCenter" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        alignment = "hCenter"
+                                    }
+                                
+                                Image(systemName: "align.horizontal.right")
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 30)
+                                    .background(alignment == "right" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        alignment = "right"
+                                    }
+                                
+                                Image(systemName: "align.vertical.top")
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 30)
+                                    .background(alignment == "top" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        alignment = "top"
+                                    }
+                                
+                                Image(systemName: "align.vertical.center")
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 30)
+                                    .background(alignment == "vCenter" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        alignment = "vCenter"
+                                    }
+                                
+                                Image(systemName: "align.vertical.bottom")
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 30)
+                                    .background(alignment == "bottom" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .cornerRadius(10)
+                                    .onTapGesture {
+                                        alignment = "bottom"
+                                    }
                             }
                         }
+                        .font(.system(size: 20))
+                        .frame(width: screenWidth * 0.92, alignment: .leading)
+                        .onChange(of: alignment) { oldValue, newValue in
+                            guard oldValue != newValue else { return }
+                            viewModel.favAppWidgetConfig.alignment = alignment
+                            isDoneButtonDisabled = false
+                        }
                         //.padding(.horizontal, 16)
-                        //.padding(.leading, viewModel.cards <= 1 ? (screenWidth * 0.30) / 2.0 : 0)
+                        
                     }
-//                        .onChange(of: fontColor) { _, _ in
-//                            guard viewModel.favAppWidgetConfig.fontColor != fontColor else { return }
-//
-//                            viewModel.favAppWidgetConfig.fontColor = fontColor
-//                            isDoneButtonDisabled = false
-//                        }
-
-                }
-                
-                VStack {
-                    Text("Alignment")
-                        .foregroundColor(Color(hex: "#646464"))
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                        .padding([.top, .bottom], 10)
-                        .frame(width: screenWidth * 0.92, alignment: .leading)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 30) {
-                            Image(systemName: "align.horizontal.left")
+                    
+                    VStack {
+                        Text("Font Size")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        Slider(value: $fontSize, in: 10...40, step: 1)
+                            .frame(width: screenWidth * 0.92, alignment: .center)
+                            .tint(Color(hex: "#010101"))
+                            .onChange(of: fontSize) { oldValue, newValue in
+                                guard oldValue != newValue else { return }
+                                viewModel.favAppWidgetConfig.fontSize = fontSize
+                                isDoneButtonDisabled = false
+                            }
+                    }
+                    
+                    
+                    //                Slider(
+                    //                    value: Binding(
+                    //                        get: { Double(fontSize) },
+                    //                        set: { fontSize = Int($0) }
+                    //                    ),
+                    //                    in: 10...40,
+                    //                    step: 1
+                    //                )
+                    VStack {
+                        Text("Spacing")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        Slider(value: $space, in: 10...40, step: 1)
+                            .frame(width: screenWidth * 0.92, alignment: .center)
+                            .tint(Color.black)
+                            .onChange(of: space) { oldValue, newValue in
+                                guard oldValue != newValue else { return }
+                                viewModel.favAppWidgetConfig.spacing = space
+                                isDoneButtonDisabled = false
+                            }
+                    }
+                    
+                    VStack {
+                        Text("Case")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        //                    HStack(alignment: .leading) {
+                        //                        Text("AB")
+                        //                        Text("Ab")
+                        //                    }
+                        
+                        HStack( spacing: 30) {
+                            Text("AB")
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 30)
-                                .background(alignment == "left" ? Color(hex: "#E2E2E4") : Color.clear)
+                                .background(caseText == "uppercase" ? Color(hex: "#E2E2E4") : Color.clear)
                                 .cornerRadius(10)
                                 .onTapGesture {
-                                    alignment = "left"
+                                    caseText = "uppercase"
                                 }
-                            
-                            Image(systemName: "align.horizontal.center")
+                            //.textCase(.uppercase)
+                            Text("Ab")
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 30)
-                                .background(alignment == "hCenter" ? Color(hex: "#E2E2E4") : Color.clear)
+                                .background(caseText == "default" ? Color(hex: "#E2E2E4") : Color.clear)
                                 .cornerRadius(10)
                                 .onTapGesture {
-                                    alignment = "hCenter"
+                                    caseText = "default"
                                 }
-                            
-                            Image(systemName: "align.horizontal.right")
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 30)
-                                .background(alignment == "right" ? Color(hex: "#E2E2E4") : Color.clear)
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    alignment = "right"
-                                }
-                            
-                            Image(systemName: "align.vertical.top")
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 30)
-                                .background(alignment == "top" ? Color(hex: "#E2E2E4") : Color.clear)
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    alignment = "top"
-                                }
-                            
-                            Image(systemName: "align.vertical.center")
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 30)
-                                .background(alignment == "vCenter" ? Color(hex: "#E2E2E4") : Color.clear)
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    alignment = "vCenter"
-                                }
-                            
-                            Image(systemName: "align.vertical.bottom")
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 30)
-                                .background(alignment == "bottom" ? Color(hex: "#E2E2E4") : Color.clear)
-                                .cornerRadius(10)
-                                .onTapGesture {
-                                    alignment = "bottom"
-                                }
+                            //.textCase(.uppercase)
                         }
-                    }
-                    .font(.system(size: 20))
-                    .frame(width: screenWidth * 0.92, alignment: .leading)
-                    .onChange(of: alignment) { oldValue, newValue in
-                        guard oldValue != newValue else { return }
-                        viewModel.favAppWidgetConfig.alignment = alignment
-                        isDoneButtonDisabled = false
-                    }
-                    //.padding(.horizontal, 16)
-                    
-                }
-
-
-                VStack {
-                    Text("Font Size")
-                        .foregroundColor(Color(hex: "#646464"))
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                        .padding([.top, .bottom], 10)
-                        .frame(width: screenWidth * 0.92, alignment: .leading)
-                    
-                    Slider(value: $fontSize, in: 10...40, step: 1)
-                        .frame(width: screenWidth * 0.92, alignment: .center)
-                        .tint(Color(hex: "#010101"))
-                        .onChange(of: fontSize) { oldValue, newValue in
+                        .onChange(of: caseText, { oldValue, newValue in
                             guard oldValue != newValue else { return }
-                            viewModel.favAppWidgetConfig.fontSize = fontSize
+                            viewModel.favAppWidgetConfig.caseText = caseText
                             isDoneButtonDisabled = false
-                        }
-                }
-                
-
-//                Slider(
-//                    value: Binding(
-//                        get: { Double(fontSize) },
-//                        set: { fontSize = Int($0) }
-//                    ),
-//                    in: 10...40,
-//                    step: 1
-//                )
-                VStack {
-                    Text("Spacing")
-                        .foregroundColor(Color(hex: "#646464"))
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                        .padding([.top, .bottom], 10)
+                        })
                         .frame(width: screenWidth * 0.92, alignment: .leading)
-                    
-                    Slider(value: $space, in: 10...40, step: 1)
-                        .frame(width: screenWidth * 0.92, alignment: .center)
-                        .tint(Color.black)
-                        .onChange(of: space) { oldValue, newValue in
-                            guard oldValue != newValue else { return }
-                            viewModel.favAppWidgetConfig.spacing = space
-                            isDoneButtonDisabled = false
-                        }
-                }
-                
-                VStack {
-                    Text("Case")
-                        .foregroundColor(Color(hex: "#646464"))
-                        .font(.system(size: 16))
-                        .fontWeight(.semibold)
-                        .padding([.top, .bottom], 10)
-                        .frame(width: screenWidth * 0.92, alignment: .leading)
-                    
-//                    HStack(alignment: .leading) {
-//                        Text("AB")
-//                        Text("Ab")
-//                    }
-                    
-                    HStack( spacing: 30) {
-                        Text("AB")
-                        Text("Ab")
                     }
-                    .frame(width: screenWidth * 0.92, alignment: .leading)
+                    
                 }
+                
 
+                
+                
+            }
+            .background(Color("backgroundColor"))
+
+            if shouldShowProgressView {
+                Color.black.opacity(0.1) // Dim background
+                    .ignoresSafeArea()
+
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .scaleEffect(1.5)
+//                ZStack {
+//                    //                    Color.black
+//                    //                        .opacity(0.8)
+//                    //                        .blur(radius: 3.0)
+//                    
+//                    ProgressView()
+//                        .progressViewStyle(.circular)
+//                        .tint(.blue)
+//                        .scaleEffect(1.5)
+//                }
             }
             
-            
- 
-            
         }
-        //.padding()
-        //.background(Color.white)
-        .background(Color("backgroundColor"))
-//        .onAppear {
-//            gap = 20.0
-//            widthToSet = (screenWidth - 3 * gap) / 2.0
-//            bottomGap = (screenHeight - 3 * widthToSet - 4*gap - 70) / 3.0
-//            gapNeedToGive = (screenWidth - 3*30)/3
-//        }
+        .animation(.easeInOut, value: shouldShowProgressView)
+    }
+    
+    private func showProgressView() {
+        shouldShowProgressView = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.shouldShowProgressView = false
+            dismiss()
+        }
     }
 }
 

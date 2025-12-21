@@ -10,6 +10,7 @@ import SwiftUI
 
 struct DateWidgetView: View {
     let height: CGFloat
+    @State var widgetConfig: DateConfig
     
     private var theme: String {
         let userdefault = UserDefaults(suiteName: "group.minimaldesk")
@@ -21,18 +22,47 @@ struct DateWidgetView: View {
     }
     
     var body: some View {
-        switch theme {
-        case "DateTimeViewType1": DateTimeViewType1(height: height)
-        case "DateTimeViewType2": DateTimeViewType2()
-        case "DateTimeViewType3": DateTimeViewType3()
-        case "DateTimeViewType4": DateTimeViewType4()
-        case "DateTimeViewType5": DateTimeViewType5()
-        case "DateTimeViewType6": DateTimeViewType6()
-        case "DateTimeViewType7": DateTimeViewType7()
-        case "DateTimeViewType8": DateTimeViewType8()
-        default:                  DateTimeViewType2()
+        VStack {
+            switch theme {
+//            case "DateTimeViewType1": DateTimeViewType1(height: height)
+//                    .background(Color.cyan)
+//            case "DateTimeViewType2": DateTimeViewType2()
+//                    .background(Color(hex: widgetConfig.arr[0]))
+//            case "DateTimeViewType3": DateTimeViewType3()
+//                    .background(Color(hex: widgetConfig.backgroundColor))
+//            case "DateTimeViewType4": DateTimeViewType4()
+//                    .background(Color(hex: widgetConfig.backgroundColor))
+            case "DateTimeViewType5": DateTimeViewType5()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[0].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[0].fontColor))
+                    
+            case "DateTimeViewType6": DateTimeViewType6()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[3].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[3].fontColor))
+            case "DateTimeViewType7": DateTimeViewType7()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[1].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[1].fontColor))
+            case "DateTimeViewType8": DateTimeViewType8()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[2].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[2].fontColor))
+            default:                  DateTimeViewType2()
+            }
         }
+        .onAppear {
+            let userDefault = UserDefaults(suiteName: "group.minimaldesk") ?? UserDefaults()
+            let config = userDefault.value(forKey: "favorite-date-config") as? Data ?? Data()
+            if let widgetConfig = try? JSONDecoder().decode(DateConfig.self, from: config) {
+                DateConfig.defaultConfig = widgetConfig
+                self.widgetConfig = widgetConfig
+            }
+        }
+
     }
+
 }
 
 struct DateTimeViewType1: View {
@@ -189,7 +219,7 @@ struct DateTimeViewType5: View {
                 
                 Text(":")
                     .font(.title2)
-                    .foregroundColor(.white)
+                    //.foregroundColor(.white)
                 
                 Text(minute)
                     .font(.title2)
@@ -199,16 +229,16 @@ struct DateTimeViewType5: View {
                 
                 Text(amPm)
                     .font(.title2)
-                    .foregroundColor(.white)
+                    //.foregroundColor(.white)
             }
             
             HStack {
                 Text("\(month) \(day), \(year)")
                     .font(.title3)
-                    .foregroundColor(.white)
+                    //.foregroundColor(.white)
             }
         }
-        .foregroundColor(.black)
+        //.foregroundColor(.black)
     }
 }
 
@@ -225,36 +255,30 @@ struct DateTimeViewType6: View {
     private var year: String { date.formatted(.dateTime.year()) }
     
     var body: some View {
-        VStack (alignment: .leading, spacing: 5.0) {
+        VStack (alignment: .leading) {
             HStack(alignment: .center) {
                 Text(date.formatted(.dateTime.weekday(.wide)))
-                    .foregroundColor(.white)
                     .font(.title)
             }
             
-            HStack {
+            HStack(alignment: .center) {
                 Text(hour)
                     .font(.title2)
-                    .padding(10)
-                    .background(.white)
-                    .clipShape(Circle())
+                    //.padding(10)
                 
                 Text(":")
                     .font(.title2)
-                    .foregroundColor(.white)
                 
                 Text(minute)
                     .font(.title2)
-                    .padding(10)
-                    .background(.white)
+                    //.padding(10)
                     .clipShape(Circle())
                 
                 Text(amPm)
                     .font(.title2)
-                    .foregroundColor(.white)
             }
         }
-        .foregroundColor(.black)
+        //.foregroundColor(.black)
     }
 }
 
@@ -291,15 +315,13 @@ struct DateTimeViewType7: View {
                     .font(.title2)
                     .padding(.vertical, 5)
                     .padding(.horizontal)
-                    .overlay {
-                        Capsule()
-                            .stroke(.white, lineWidth: 1.0)
-                    }
-                    .foregroundColor(.white)
+                    .background(.white).background(.white)
+                    .clipShape(Capsule())
+                    //.foregroundColor(.white)
             }
-            .foregroundColor(.black)
+            //.foregroundColor(.black)
         }
-        .foregroundColor(.white)
+        //.foregroundColor(.black)
     }
 }
 
@@ -311,6 +333,11 @@ struct DateTimeViewType8: View {
             Text(date.formatted(.dateTime.month(.wide).day().year()))
                 .font(.title2)
         }
-        .foregroundColor(.white)
+        //.foregroundColor(.black)
     }
+}
+
+
+#Preview {
+    DateTimeViewType5()
 }

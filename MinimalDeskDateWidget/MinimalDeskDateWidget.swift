@@ -62,7 +62,30 @@ import SwiftUI
 
 
 
-struct Provider: AppIntentTimelineProvider {
+struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), emoji: "😀")
+    }
+    
+    func getSnapshot(in context: Context, completion: @escaping @Sendable (SimpleEntry) -> Void) {
+        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        completion(entry)
+    }
+    
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<SimpleEntry>) -> Void) {
+        var entries: [SimpleEntry] = []
+        let currentDate = Date()
+        
+        for offset in 0..<60 {
+            let entryDate = Calendar.current.date(byAdding: .minute, value: offset, to: currentDate)!
+            let entry = SimpleEntry(date: entryDate, emoji: "😀")
+            entries.append(entry)
+        }
+        
+        let timeline = Timeline(entries: entries, policy: .never)
+        completion(timeline)
+    }
+    
     typealias Entry = SimpleEntry
     typealias Intent = WidgetConfigIntent
     
@@ -90,28 +113,28 @@ struct Provider: AppIntentTimelineProvider {
 //        return Timeline(entries: entries, policy: .atEnd)
 //    }
     
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), backgroundColor: WidgetBackgroundColor.black.rawValue)
-    }
+//    func placeholder(in context: Context) -> SimpleEntry {
+//        SimpleEntry(date: Date(), backgroundColor: WidgetBackgroundColor.black.rawValue)
+//    }
     
     
     
-    func snapshot(for configuration: WidgetConfigIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), backgroundColor: configuration.backgroundColor.rawValue)
-    }
-    
-    func timeline(for configuration: WidgetConfigIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
-        let currentDate = Date()
-        
-        for offset in 0..<60 {
-            let entryDate = Calendar.current.date(byAdding: .minute, value: offset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, backgroundColor: configuration.backgroundColor.rawValue)
-            entries.append(entry)
-        }
-        
-        return Timeline(entries: entries, policy: .atEnd)
-    }
+//    func snapshot(for configuration: WidgetConfigIntent, in context: Context) async -> SimpleEntry {
+//        SimpleEntry(date: Date(), backgroundColor: configuration.backgroundColor.rawValue)
+//    }
+//    
+//    func timeline(for configuration: WidgetConfigIntent, in context: Context) async -> Timeline<SimpleEntry> {
+//        var entries: [SimpleEntry] = []
+//        let currentDate = Date()
+//        
+//        for offset in 0..<60 {
+//            let entryDate = Calendar.current.date(byAdding: .minute, value: offset, to: currentDate)!
+//            let entry = SimpleEntry(date: entryDate, backgroundColor: configuration.backgroundColor.rawValue)
+//            entries.append(entry)
+//        }
+//        
+//        return Timeline(entries: entries, policy: .atEnd)
+//    }
     
 }
 
@@ -125,22 +148,24 @@ struct Provider: AppIntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     //let transparencyOption: BackgroundTransparency
-    let backgroundColor: String
+    //let backgroundColor: String
+    let emoji: String
 }
 
 struct MinimalDeskDateWidgetEntryView : View {
     var entry: Provider.Entry
     
-    @State private var widgetConfig: FavAppWidgetConfig
+    @State private var widgetConfig: DateConfig
     let height = 90.0
     
     init(entry: Provider.Entry) {
         self.entry = entry
-        self.widgetConfig = FavAppWidgetConfig.defaultConfig
+        self.widgetConfig = DateConfig.defaultConfig
     }
     
     var body: some View {
-        DateWidgetView(height: height)
+        DateWidgetView(height: height, widgetConfig: widgetConfig)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -151,24 +176,34 @@ struct MinimalDeskDateWidget: Widget {
     let kind: String = "MinimalDeskDateWidget"
     
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: WidgetConfigIntent.self, provider: Provider()) { entry in
-            MinimalDeskDateWidgetEntryView(entry: entry)
-                .containerBackground(Color(hex: entry.backgroundColor), for: .widget)
-                  
-                
-            
-            
-//                .containerBackground(for: .widget, alignment: .center) {
-//                    if entry.transparencyOption == .opaque {
-//                        Color(hex: entry.backgroundColor)
-//                    } else {
-//                        ContainerRelativeShape()
-//                            .foregroundStyle(.ultraThinMaterial)
-//                    }
-//                }
-            
-            
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            if #available(iOS 17.0, *) {
+                MinimalDeskDateWidgetEntryView(entry: entry)
+                    .containerBackground(for: .widget, alignment: .center, content: { EmptyView() })
+            } else {
+                MinimalDeskDateWidgetEntryView(entry: entry)
+                    .padding()
+                    .background()
+            }
         }
+//        AppIntentConfiguration(kind: kind, intent: WidgetConfigIntent.self, provider: Provider()) { entry in
+//            MinimalDeskDateWidgetEntryView(entry: entry)
+//                .containerBackground(Color(hex: entry.backgroundColor), for: .widget)
+//                  
+//                
+//            
+//            
+////                .containerBackground(for: .widget, alignment: .center) {
+////                    if entry.transparencyOption == .opaque {
+////                        Color(hex: entry.backgroundColor)
+////                    } else {
+////                        ContainerRelativeShape()
+////                            .foregroundStyle(.ultraThinMaterial)
+////                    }
+////                }
+//            
+//            
+//        }
         .configurationDisplayName("Date & Time Widget")
         .description("Add this widget to the top of your home screen page")
         .supportedFamilies([.systemMedium])

@@ -17,6 +17,7 @@ struct FavAppWidgetConfig: Codable {
     var alignment: String
     var spacing: CGFloat
     var maxNumberOfApps: Int
+    var caseText: String
     
     static var defaultConfig: FavAppWidgetConfig = .init(
         fontType: "Impact",
@@ -26,9 +27,29 @@ struct FavAppWidgetConfig: Codable {
         backgroundColor: "#FFFFFF",
         alignment: "left",
         spacing: 16,
-        maxNumberOfApps: 5
+        maxNumberOfApps: 5,
+        caseText: "default"
     )
 }
+
+struct FavAppWidgetConfig1: Codable {
+    var fontColor: String
+    var backgroundColor: String
+}
+
+struct DateConfig: Codable {
+    var arr: [FavAppWidgetConfig1]
+
+    static var defaultConfig: DateConfig = .init (
+        arr: [
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF")
+        ]
+    )
+}
+
 
 extension Color {
     init(hex: String) {
