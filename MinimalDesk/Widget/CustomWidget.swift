@@ -70,6 +70,97 @@ struct CustomWidget: View {
         }
     }
     
+    let gradientColorsHex: [String] = [
+        "#EA84DD", "#97E3EF",
+        "#EB5372", "#F3B39D",
+        "#A9A0FF", "#CD81E7",
+        "#FFE3FB", "#C4F7FF",
+        "#F08AE7", "#FF557C",
+        "#6190E8", "#A7BFE8",
+        "#4AFADF", "#E0F793",
+        "#DCEA7A", "#BB9BF7",
+        "#F6CD68", "#FF9B6A",
+        "#F2D850", "#F657AA",
+        "#FFB082", "#FF67E2",
+        "#8575FA", "#D77CED",
+        "#04BEFD", "#86FBB7",
+        "#EA8A97", "#AEBBF3",
+        "#37F0CB", "#EEED40",
+        "#F6C6F9", "#AC93FF",
+        "#FF8AAD", "#9FFFAD",
+        "#55BBF9", "#A9FCB9",
+        "#EF629F", "#EECDC3",
+        "#9CE9A4", "#D6718E",
+        "#EF85FC", "#8686FF",
+        "#FACCC1", "#FDA7A7",
+        "#7F8DC3", "#ED99AE",
+        "#FDD648", "#FA7C90",
+        "#BA94F9", "#8572F0",
+        "#767AE5", "#F3DCE4",
+        "#FFD900", "#FF6B90",
+        "#FF7F66", "#E03883",
+        "#00B1C0", "#95E587",
+        "#F9C58D", "#F492F0",
+        "#9FEDF9", "#F7C7C3",
+        "#F0FD89", "#A4E018",
+        "#FF0097", "#FC7373",
+        "#6C94EE", "#11CDF7",
+        "#FF4370", "#FFAF98",
+        "#27B7E9", "#E078F1",
+        "#13E1F9", "#8AE7AD",
+        "#F7857E", "#CCFAD2",
+        "#FCBC9C", "#6EE7A8",
+        "#EFA2AC", "#FED8DC",
+        "#FA4545", "#F57073",
+        "#FA7099", "#FF7040",
+        "#F094FA", "#F5576E",
+        "#FF144E", "#F17550",
+        "#FF0845", "#97E3EF",
+
+        // ⚠️ skipped invalid RGB with emoji
+
+        "#FA4545", "#FAC74D",
+        "#FF8C21", "#FFE040",
+        "#FF8C21", "#F5576E",
+        "#FF8C21", "#FF6121",
+        "#FF8C21", "#FFB099",
+        "#FF8C21", "#E5F294",
+        "#CCC938", "#F2C754",
+        "#A3DE61", "#F0CF29",
+        "#EBC43D", "#FFD18F",
+        "#F5ED47", "#80F5E8",
+        "#F5FFA6", "#F5B080",
+        "#F5FFA6", "#F5E380",
+        "#D4FC79", "#96E6A1",
+        "#84FAB0", "#8FD3F4",
+        "#2AF598", "#009EFD",
+        "#37ECBA", "#72AFD3",
+        "#37ECBA", "#75D473",
+        "#3A65D3", "#75D473",
+        "#0538FF", "#70E3F5",
+        "#0538FF", "#40FFC7",
+        "#0538FF", "#6B57F5",
+        "#1F4CFF", "#6197E4",
+        "#0538FF", "#5799F7",
+        "#0596FF", "#5799F7",
+        "#30D8EE", "#3E89F5",
+        "#3D8CFA", "#40FFC7",
+        "#94EDFA", "#6B57F5",
+        "#08F0FF", "#3C89F6",
+        "#08E3FF", "#5799F7",
+        "#08FFB8", "#5799F7",
+        "#C238CC", "#B554F2",
+        "#A6E8FF", "#B280F5",
+        "#B23DEB", "#DE8FFF",
+        "#3D73EB", "#DE8FFF",
+        "#CCFFA6", "#B280F5",
+        "#F3A6FF", "#B280F5"
+    ]
+    
+    var gradientColorsList: [Color] {
+        gradientColorsHex.compactMap { Color(hex: $0) }
+    }
+
     
     let backgroundColorHexList = [
         "#F4EADE",
@@ -251,6 +342,44 @@ struct CustomWidget: View {
                         }
                     }
                     
+                    // Gradient Background Color
+                    VStack {
+                        Text("Gradient Background Color")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 14) {
+                                
+                                ForEach(gradientColorsList, id: \.self) { hex in
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(Color(hex: hex.toHex()!))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    isSelected(value1: widgetBackground.toHex()!, value2: hex.toHex()! ) ,
+                                                    lineWidth: 1
+                                                )
+                                        )
+                                        .frame(width: 40, height: 40)
+                                        .onTapGesture { widgetBackground = hex }
+                                }
+                            }
+                            .padding(.horizontal, 14)
+                        }
+                        .onChange(of: widgetBackground) { _, _ in
+                            guard let backgroundcolorHex = widgetBackground.toHex(),
+                                  backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
+                            
+                            viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
+                            isDoneButtonDisabled = false
+                        }
+                    }
+                    
+                    
                     VStack {
                         Text("Text Color")
                             .foregroundColor(Color(hex: "#646464"))
@@ -307,6 +436,45 @@ struct CustomWidget: View {
                         }
                     }
                     
+                    // gradian
+                    
+                    VStack {
+                        Text("Gradient Text Color")
+                            .foregroundColor(Color(hex: "#646464"))
+                            .font(.system(size: 16))
+                            .fontWeight(.semibold)
+                            .padding([.top, .bottom], 10)
+                            .frame(width: screenWidth * 0.92, alignment: .leading)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 14) {
+                                
+                                ForEach(gradientColorsList, id: \.self) { hex in
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(Color(hex: hex.toHex()!))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    isSelected(value1: fontColor.toHex()!, value2: hex.toHex()! ) ,
+                                                    lineWidth: 1
+                                                )
+                                        )
+                                        .frame(width: 40, height: 40)
+                                        .onTapGesture { fontColor = hex }
+                                }
+                            }
+                            .padding(.horizontal, 14)
+                        }
+                        .onChange(of: fontColor) { _, _ in
+                            guard let fontColorHex = fontColor.toHex(),
+                                  fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
+                            
+                            viewModel.favAppWidgetConfig.fontColor = fontColorHex
+                            isDoneButtonDisabled = false
+                        }
+                    }
+                    
+                    
                     VStack {
                         Text("Font Style")
                             .foregroundColor(Color(hex: "#646464"))
@@ -336,32 +504,6 @@ struct CustomWidget: View {
                                 }
                             }
                         }
-                        
-                        
-                        //                        FontDesignOption(design: .default, name: "Default"),
-                        //                        FontDesignOption(design: .serif, name: "Serif"),
-                        //                        FontDesignOption(design: .rounded, name: "Rounded"),
-                        //                        FontDesignOption(design: .monospaced, name: "Monospaced")
-                        
-                        //                        Text("Monospaced")
-                        //                            .fontDesign(.default)
-                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
-                        //
-                        //                        Text("Monospaced")
-                        //                            .fontDesign(.default)
-                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
-                        //
-                        //                        Text("Monospaced")
-                        //                            .fontDesign(.serif)
-                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
-                        //
-                        //                        Text("Monospaced")
-                        //                            .fontDesign(.rounded)
-                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
-                        //
-                        //                        Text("Monospaced")
-                        //                            .fontDesign(.monospaced)
-                        //                            //.font(.custom("SpaceMono-Bold", size: 20))
                         
                         
                         /// font design
