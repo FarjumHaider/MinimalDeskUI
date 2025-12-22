@@ -13,10 +13,10 @@ struct ToastView: View {
         VStack {
             Text(message)
                 .multilineTextAlignment(.center)
-                .foregroundColor(.white)
+                .foregroundColor(Color("textColor"))
                 .padding(.vertical, 10)
                 .padding(.horizontal, 20)
-                .background(Color.black.opacity(0.7))
+                //.background(Color.black.opacity(0.7))
                 .cornerRadius(25)
         }
         .frame(maxWidth: .infinity)

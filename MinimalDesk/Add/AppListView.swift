@@ -52,7 +52,10 @@ struct AppListView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Color.black.edgesIgnoringSafeArea(.all)
+            //Color.black.edgesIgnoringSafeArea(.all)
+            
+            Color("backgroundColor")
+                .edgesIgnoringSafeArea(.all)
             
             VStack {
                 backButton()
@@ -76,7 +79,6 @@ struct AppListView: View {
                 ToastView(message: "Max 6 apps can be selected")
             }
         }
-        .foregroundColor(.gray)
     }
 }
 
@@ -88,8 +90,10 @@ private extension AppListView {
                 dismiss()
             }) {
                 Image("Back")
+                    .renderingMode(.template)
                     .resizable()
                     .frame(width: 60, height: 60)
+                    .foregroundColor(Color("textColor"))
             }
             
             Spacer()
@@ -103,7 +107,7 @@ private extension AppListView {
             Text("Add Favorite Apps")
                 .font(.title)
                 .bold()
-                .foregroundColor(Color.white)
+                .foregroundColor(Color("textColor"))
             Spacer()
         }
     }
@@ -113,6 +117,7 @@ private extension AppListView {
             Spacer()
             Text("Pick your top 6 frequently used apps to keep on your home screen for easy access, avoiding clutter and distractions.")
                 .multilineTextAlignment(.center)
+                .foregroundColor(.gray)
             Spacer()
         }
     }
@@ -127,9 +132,9 @@ private extension AppListView {
         .padding(.all, 10)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(rgbRed: 28, green: 28, blue: 28))
+                .fill(Color("whiteColor"))
         )
-        .foregroundColor(.white)
+        .foregroundColor(Color("textColor"))
         .padding([.top, .horizontal])
     }
     
@@ -137,22 +142,24 @@ private extension AppListView {
         List(searchResults, id: \.self) { name in
             HStack {
                 Text(name)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("textColor"))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 16)
                 
                 if self.selectedIndices.contains(name) {
                     Image("right")
+                        .renderingMode(.template)
                         .resizable()
                         .frame(width: 20, height: 20)
                         .padding(.trailing, 16)
+                        .foregroundColor(Color("textColor"))
                 }
             }
             .padding()
             .listRowInsets(EdgeInsets())
             .listRowSeparator(.hidden)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .listRowBackground(Color.black)
+            .listRowBackground(Color("backgroundColor"))
             .contentShape(Rectangle())
             .onTapGesture {
                 let restrictedApps = ["Camera", "Phone", "Message"]
@@ -166,7 +173,7 @@ private extension AppListView {
             }
         }
         .listStyle(.plain)
-        .background(.black)
+        .background(Color("backgroundColor"))
         .scrollContentBackground(.hidden)
         .onAppear {
             doOnAppear(with: cardIndex)
@@ -192,10 +199,10 @@ private extension AppListView {
             Text("Done")
                 .padding(.vertical, 5)  
                 .padding(.horizontal, screenWidth / 3)
-                .background(.white)
+                .background(Color("whiteColor"))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.vertical, 3)
-                .foregroundColor(.black)
+                .foregroundColor(Color("textColor"))
                 .contentShape(Rectangle())
                 .onTapGesture {
                     viewModel.saveFavoriteApps(in: selectedIndices, for: cardIndex)

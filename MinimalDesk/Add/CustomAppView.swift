@@ -418,7 +418,7 @@ struct CustomAppView: View {
                         .foregroundColor(Color(rgbRed: 137, green: 137, blue: 137))
                 )
                 .padding()
-                .background(RoundedRectangle(cornerRadius: 9).fill(Color(rgbRed: 28, green: 28, blue: 28)))
+                .background(RoundedRectangle(cornerRadius: 9).fill(Color("whiteColor")))
                 .foregroundColor(.white)
                 .padding(.horizontal)
 
@@ -466,7 +466,7 @@ struct CustomAppView: View {
                             testCustomApp()
                         }
                 }
-                .background(Color(rgbRed: 28, green: 28, blue: 28))
+                .background(Color("whiteColor"))
                 .clipShape(RoundedRectangle(cornerRadius: 9))
                 .padding(.horizontal)
 
@@ -476,12 +476,14 @@ struct CustomAppView: View {
                         .padding(.top)
                         .padding(.horizontal)
                         .fixedSize(horizontal: false, vertical: true)
+                        //.foregroundColor(Color("textColor"))
 
                     Divider().background(Color(rgbRed: 0x2f, green: 0x32, blue: 0x3c))
 
                     Text("As an alternative to finding the URL Scheme, create an \"Open App\" Shortcut in the Shortcuts app.")
                         .padding(.horizontal)
-                        .fixedSize(horizontal: false, vertical: true)                    
+                        .fixedSize(horizontal: false, vertical: true)
+                        //.foregroundColor(Color("textColor"))
                     
 //                    HStack {
 //                        Text("Create New Shortcut")
@@ -532,7 +534,8 @@ struct CustomAppView: View {
 
 
                 }
-                .background(Color(rgbRed: 28, green: 28, blue: 28))
+                //.background(Color(rgbRed: 28, green: 28, blue: 28))
+                .background(Color("whiteColor"))
                 .clipShape(RoundedRectangle(cornerRadius: 9))
                 .padding(.horizontal)
 
@@ -562,8 +565,8 @@ struct CustomAppView: View {
             }
             .padding(.top, 10)
         }
-        .background(Color.black)
-        .foregroundColor(.white)
+        .background(Color("backgroundColor"))
+        .foregroundColor(Color("textColor"))
         .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 
