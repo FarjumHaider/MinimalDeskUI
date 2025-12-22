@@ -126,16 +126,16 @@ struct AddView: View {
                            .font(.system(size: 15))
                            .fontWeight(.semibold)
                            .padding([.top, .bottom], 10)
-                           .foregroundColor(Color(red: 160/255, green: 160/255, blue: 160/255))
+                           .foregroundColor(Color("WidgetsTitle"))
                            .frame(width: screenWidth * 0.92, alignment: .leading)
                        
                        Text("Choose Top Widgets")
                            .font(.system(size: 16))
                            .fontWeight(.semibold)
-                           .foregroundColor(Color.black)
+                           .foregroundColor(Color("textColor"))
                            //.frame(width: screenWidth * 0.92, height: screenHeight * 0.08)
                            .frame(width: geo.size.width * 0.92, height: geo.size.height * 0.09)
-                           .background(.white)
+                           .background(Color("whiteColor"))
                            .cornerRadius(18)
                            .onTapGesture {
                                isWidgetListPresented = true
@@ -149,7 +149,7 @@ struct AddView: View {
                            .font(.system(size: 15))
                            .fontWeight(.semibold)
                            .padding([.top, .bottom], 10)
-                           .foregroundColor(Color(red: 160/255, green: 160/255, blue: 160/255))
+                           .foregroundColor(Color("WidgetsTitle"))
                            .frame(width: screenWidth * 0.92, alignment: .leading)
                        
                        // Customize Widget Button (Restricted)
@@ -161,7 +161,7 @@ struct AddView: View {
                                    //.font(.headline)
                                    .font(.system(size: 16))
                                    .fontWeight(.semibold)
-                                   .foregroundColor(Color.black)
+                                   .foregroundColor(Color("textColor"))
 
                                Text("Standard layout with full details")
                                    .font(.system(size: 11))
@@ -180,10 +180,10 @@ struct AddView: View {
                            }) {
                              Text("Edit")
                                 .font(.system(size: 14))
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color("textColor"))
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 24)
-                                .background(Color("backgroundColor"))
+                                .background(Color("buttonColor"))
                                 .cornerRadius(10)
                                 
                            }
@@ -202,7 +202,7 @@ struct AddView: View {
                        .padding([.leading, .trailing], 13)
                        //.frame(width: screenWidth * 0.92, height: screenHeight * 0.08)
                        .frame(width: geo.size.width * 0.92, height: geo.size.height * 0.09)
-                       .background(.white)
+                       .background(Color("whiteColor"))
                        .cornerRadius(18)
                        //.padding([.leading, .trailing], 24)
                        
@@ -283,6 +283,7 @@ struct AddView: View {
            .toolbar {
                ToolbarItem(placement: .navigationBarLeading) {
                    Text("Less Phone")
+                       .fontWeight(.bold)
                }
                
                ToolbarItem(placement: .navigationBarTrailing) {
@@ -290,6 +291,9 @@ struct AddView: View {
                        Settings()
                    }) {
                        Image("SettingsNew")
+                           .renderingMode(.template)
+                           .foregroundColor(Color("textColor"))
+                           
                    }
                }
            }
@@ -441,9 +445,9 @@ struct AddView: View {
            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.45)
            .background(index == viewModel.cards ? Color.gray.opacity(0.3) : Color.clear)
            .clipShape(RoundedRectangle(cornerRadius: 30))
-           .overlay(
-               RoundedRectangle(cornerRadius: 30).stroke(.white, lineWidth: 1)
-           )
+//           .overlay(
+//               RoundedRectangle(cornerRadius: 30)
+//           )
            .padding()
            if index < viewModel.cards {
                // delete the card // farjum

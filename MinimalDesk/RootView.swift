@@ -70,7 +70,7 @@ struct RootView: View {
                         .renderingMode(.template)
                         .resizable()
                         .frame(width: 24, height: 24)
-                        .foregroundColor(item == 4 ? .blue : Color("tabGray"))
+                        .foregroundColor(item == 1 ? .blue : Color("tabGray"))
                         .font(.largeTitle)
                     Text("Lock")
                         .font(.system(.footnote, design: .rounded).weight(item == 1 ? .bold : .medium))
@@ -149,7 +149,7 @@ struct RootView: View {
         }
         .tabBarFill(
             .linearGradient(
-                colors: [.white, .white],
+                colors: [Color("whiteColor"), Color("whiteColor")],
                 startPoint: .top, endPoint: .bottom
             )
         )
