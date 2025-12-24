@@ -45,6 +45,10 @@ struct DateConfig: Codable {
             FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
             FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
             FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
+            FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF"),
             FavAppWidgetConfig1(fontColor: "#000000", backgroundColor: "#FFFFFF")
         ]
     )

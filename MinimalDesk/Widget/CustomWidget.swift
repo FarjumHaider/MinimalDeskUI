@@ -379,7 +379,6 @@ struct CustomWidget: View {
                         }
                     }
                     
-                    
                     VStack {
                         Text("Text Color")
                             .foregroundColor(Color(hex: "#646464"))
@@ -398,7 +397,6 @@ struct CustomWidget: View {
                                         .frame(width: 40, height: 40)
                                         .clipShape(RoundedRectangle(cornerRadius: 16))
                                         .allowsHitTesting(false)
-                                    //.background(Color.red)
                                     
                                     ColorPicker("", selection: $fontColor, supportsOpacity: false)
                                         .labelsHidden()
@@ -407,21 +405,17 @@ struct CustomWidget: View {
                                 }
                                 
                                 ForEach(fontColorList, id: \.self) { hex in
-                                    
-                                    //VStack {
                                     RoundedRectangle(cornerRadius: 16)
-                                        .fill(Color(hex: hex.toHex()!))                      // Background color of circle
-                                        .overlay(                               // Add border using overlay
+                                        .fill(Color(hex: hex.toHex()!))
+                                        .overlay(
                                             RoundedRectangle(cornerRadius: 16)
                                                 .stroke(
                                                     isSelected(value1: fontColor.toHex()!, value2: hex.toHex()! ) ,
-                                                    // No border when not selected
                                                     lineWidth: 1
                                                 )
                                         )
                                         .frame(width: 40, height: 40)
                                         .onTapGesture { fontColor = hex }
-                                    ///}
                                     
                                 }
                             }
@@ -437,7 +431,6 @@ struct CustomWidget: View {
                     }
                     
                     // gradian
-                    
                     VStack {
                         Text("Gradient Text Color")
                             .foregroundColor(Color(hex: "#646464"))
@@ -491,7 +484,7 @@ struct CustomWidget: View {
                                         .fontWeight(FontWeightConverter(weightString: option.weight).value)
                                         .padding(.vertical, 12.35)
                                         .padding(.horizontal, 19.76)
-                                        .background(fontWeight == option.weight ? Color(hex: "#E2E2E4") : Color.clear)
+                                        .background(fontWeight == option.weight ? Color("buttonColor") : Color.clear)
                                         .cornerRadius(10)
                                         .onTapGesture {
                                             fontWeight = option.weight
@@ -504,7 +497,6 @@ struct CustomWidget: View {
                                 }
                             }
                         }
-                        
                         
                         /// font design
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -519,7 +511,7 @@ struct CustomWidget: View {
                                     //.font(.system(size: 20, design: .))
                                         .padding(.vertical, 12.35)
                                         .padding(.horizontal, 19.76)
-                                        .background(fontType == fontDesing.name.lowercased() ? Color(hex: "#E2E2E4") : Color.clear)
+                                        .background(fontType == fontDesing.name.lowercased() ? Color("buttonColor") : Color.clear)
                                         .cornerRadius(10)
                                         .onTapGesture {
                                             fontType = fontDesing.name.lowercased()
@@ -532,16 +524,7 @@ struct CustomWidget: View {
                                     
                                 }
                             }
-                            //.padding(.horizontal, 16)
-                            //.padding(.leading, viewModel.cards <= 1 ? (screenWidth * 0.30) / 2.0 : 0)
                         }
-                        //                        .onChange(of: fontColor) { _, _ in
-                        //                            guard viewModel.favAppWidgetConfig.fontColor != fontColor else { return }
-                        //
-                        //                            viewModel.favAppWidgetConfig.fontColor = fontColor
-                        //                            isDoneButtonDisabled = false
-                        //                        }
-                        
                     }
                     
                     VStack {
@@ -552,12 +535,13 @@ struct CustomWidget: View {
                             .padding([.top, .bottom], 10)
                             .frame(width: screenWidth * 0.92, alignment: .leading)
                         
+                        //Color(hex: "#E2E2E4")
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 30) {
                                 Image(systemName: "align.horizontal.left")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 30)
-                                    .background(alignment == "left" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .background(alignment == "left" ? Color("buttonColor") : Color.clear)
                                     .cornerRadius(10)
                                     .onTapGesture {
                                         alignment = "left"
@@ -566,7 +550,7 @@ struct CustomWidget: View {
                                 Image(systemName: "align.horizontal.center")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 30)
-                                    .background(alignment == "hCenter" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .background(alignment == "hCenter" ? Color("buttonColor") : Color.clear)
                                     .cornerRadius(10)
                                     .onTapGesture {
                                         alignment = "hCenter"
@@ -575,7 +559,7 @@ struct CustomWidget: View {
                                 Image(systemName: "align.horizontal.right")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 30)
-                                    .background(alignment == "right" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .background(alignment == "right" ? Color("buttonColor") : Color.clear)
                                     .cornerRadius(10)
                                     .onTapGesture {
                                         alignment = "right"
@@ -584,7 +568,7 @@ struct CustomWidget: View {
                                 Image(systemName: "align.vertical.top")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 30)
-                                    .background(alignment == "top" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .background(alignment == "top" ? Color("buttonColor") : Color.clear)
                                     .cornerRadius(10)
                                     .onTapGesture {
                                         alignment = "top"
@@ -593,7 +577,7 @@ struct CustomWidget: View {
                                 Image(systemName: "align.vertical.center")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 30)
-                                    .background(alignment == "vCenter" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .background(alignment == "vCenter" ? Color("buttonColor") : Color.clear)
                                     .cornerRadius(10)
                                     .onTapGesture {
                                         alignment = "vCenter"
@@ -602,7 +586,7 @@ struct CustomWidget: View {
                                 Image(systemName: "align.vertical.bottom")
                                     .padding(.vertical, 10)
                                     .padding(.horizontal, 30)
-                                    .background(alignment == "bottom" ? Color(hex: "#E2E2E4") : Color.clear)
+                                    .background(alignment == "bottom" ? Color("buttonColor") : Color.clear)
                                     .cornerRadius(10)
                                     .onTapGesture {
                                         alignment = "bottom"
@@ -631,7 +615,7 @@ struct CustomWidget: View {
                         
                         Slider(value: $fontSize, in: 10...40, step: 1)
                             .frame(width: screenWidth * 0.92, alignment: .center)
-                            .tint(Color(hex: "#010101"))
+                            .tint(Color.blue)
                             .onChange(of: fontSize) { oldValue, newValue in
                                 guard oldValue != newValue else { return }
                                 viewModel.favAppWidgetConfig.fontSize = fontSize
@@ -639,15 +623,6 @@ struct CustomWidget: View {
                             }
                     }
                     
-                    
-                    //                Slider(
-                    //                    value: Binding(
-                    //                        get: { Double(fontSize) },
-                    //                        set: { fontSize = Int($0) }
-                    //                    ),
-                    //                    in: 10...40,
-                    //                    step: 1
-                    //                )
                     VStack {
                         Text("Spacing")
                             .foregroundColor(Color(hex: "#646464"))
@@ -658,7 +633,7 @@ struct CustomWidget: View {
                         
                         Slider(value: $space, in: 10...40, step: 1)
                             .frame(width: screenWidth * 0.92, alignment: .center)
-                            .tint(Color.black)
+                            .tint(Color.blue)
                             .onChange(of: space) { oldValue, newValue in
                                 guard oldValue != newValue else { return }
                                 viewModel.favAppWidgetConfig.spacing = space
@@ -674,16 +649,11 @@ struct CustomWidget: View {
                             .padding([.top, .bottom], 10)
                             .frame(width: screenWidth * 0.92, alignment: .leading)
                         
-                        //                    HStack(alignment: .leading) {
-                        //                        Text("AB")
-                        //                        Text("Ab")
-                        //                    }
-                        
                         HStack( spacing: 30) {
                             Text("AB")
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 30)
-                                .background(caseText == "uppercase" ? Color(hex: "#E2E2E4") : Color.clear)
+                                .background(caseText == "uppercase" ? Color("buttonColor") : Color.clear)
                                 .cornerRadius(10)
                                 .onTapGesture {
                                     caseText = "uppercase"
@@ -692,7 +662,7 @@ struct CustomWidget: View {
                             Text("Ab")
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 30)
-                                .background(caseText == "default" ? Color(hex: "#E2E2E4") : Color.clear)
+                                .background(caseText == "default" ? Color("buttonColor") : Color.clear)
                                 .cornerRadius(10)
                                 .onTapGesture {
                                     caseText = "default"
@@ -713,25 +683,16 @@ struct CustomWidget: View {
                 
                 
             }
-            .background(Color("backgroundColor"))
+            .background(Color("whiteColor"))
+            //.background(Color("backgroundColor"))
 
             if shouldShowProgressView {
-                Color.black.opacity(0.1) // Dim background
+                Color.black.opacity(0.1)
                     .ignoresSafeArea()
 
                 ProgressView()
                     .progressViewStyle(.circular)
                     .scaleEffect(1.5)
-//                ZStack {
-//                    //                    Color.black
-//                    //                        .opacity(0.8)
-//                    //                        .blur(radius: 3.0)
-//                    
-//                    ProgressView()
-//                        .progressViewStyle(.circular)
-//                        .tint(.blue)
-//                        .scaleEffect(1.5)
-//                }
             }
             
         }

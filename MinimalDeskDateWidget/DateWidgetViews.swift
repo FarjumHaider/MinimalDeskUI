@@ -24,31 +24,38 @@ struct DateWidgetView: View {
     var body: some View {
         VStack {
             switch theme {
-//            case "DateTimeViewType1": DateTimeViewType1(height: height)
-//                    .background(Color.cyan)
-//            case "DateTimeViewType2": DateTimeViewType2()
-//                    .background(Color(hex: widgetConfig.arr[0]))
-//            case "DateTimeViewType3": DateTimeViewType3()
-//                    .background(Color(hex: widgetConfig.backgroundColor))
-//            case "DateTimeViewType4": DateTimeViewType4()
-//                    .background(Color(hex: widgetConfig.backgroundColor))
-            case "DateTimeViewType5": DateTimeViewType5()
+            case "DateTimeViewType1": DateTimeViewType1(height: height)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(hex: widgetConfig.arr[0].backgroundColor))
                     .foregroundColor(Color(hex: widgetConfig.arr[0].fontColor))
-                    
-            case "DateTimeViewType6": DateTimeViewType6()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(hex: widgetConfig.arr[3].backgroundColor))
-                    .foregroundColor(Color(hex: widgetConfig.arr[3].fontColor))
-            case "DateTimeViewType7": DateTimeViewType7()
+            case "DateTimeViewType2": DateTimeViewType2()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(hex: widgetConfig.arr[1].backgroundColor))
                     .foregroundColor(Color(hex: widgetConfig.arr[1].fontColor))
-            case "DateTimeViewType8": DateTimeViewType8()
+            case "DateTimeViewType3": DateTimeViewType3()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(hex: widgetConfig.arr[2].backgroundColor))
                     .foregroundColor(Color(hex: widgetConfig.arr[2].fontColor))
+            case "DateTimeViewType4": DateTimeViewType4()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[3].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[3].fontColor))
+            case "DateTimeViewType5": DateTimeViewType5()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[4].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[4].fontColor))
+            case "DateTimeViewType6": DateTimeViewType6()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[5].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[5].fontColor))
+            case "DateTimeViewType7": DateTimeViewType7()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[6].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[6].fontColor))
+            case "DateTimeViewType8": DateTimeViewType8()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(hex: widgetConfig.arr[7].backgroundColor))
+                    .foregroundColor(Color(hex: widgetConfig.arr[7].fontColor))
             default:                  DateTimeViewType2()
             }
         }
@@ -73,25 +80,25 @@ struct DateTimeViewType1: View {
         VStack(alignment: .leading) {
             
             HStack {
-                Label(
-                    title: { Text("") },
-                    icon: {
-                        Image(systemName: "\(date.formatted(.dateTime.day())).square")
-                            .resizable()
-                            .frame(width: height, height: height)
-                            .foregroundColor(.white)
-                    }
-                )
+                ZStack {
+                    Image(systemName: "square")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: height, height: height)
+
+                    Text("\(date.formatted(.dateTime.day()))")
+                        .font(.system(size: height * 0.45, weight: .bold))
+                }
                 
                 VStack(alignment: .leading) {
                     Text(date.formatted(.dateTime.month(.wide)))
-                        .foregroundColor(.white)
+                        //.foregroundColor(.white)
                         .font(.title)
                     
                     Spacer()
                     
                     Text(date.formatted(.dateTime.weekday(.wide)))
-                        .foregroundColor(.gray)
+                        //.foregroundColor(.gray)
                         .font(.title2)
                 }
                 .frame(height: height)
@@ -112,7 +119,7 @@ struct DateTimeViewType2: View {
             Text(date.formatted(.dateTime.month(.wide).day().year()))
                 .font(.title2)
         }
-        .foregroundColor(.white)
+        //.foregroundColor(.white)
     }
 }
 
@@ -146,9 +153,9 @@ struct DateTimeViewType3: View {
                     Capsule()
                         .stroke(.white, lineWidth: 1.0)
                 }
-                .foregroundColor(.white)
+                //.foregroundColor(.white)
         }
-        .foregroundColor(.black)
+        //.foregroundColor(.black)
     }
 }
 
@@ -174,7 +181,7 @@ struct DateTimeViewType4: View {
                 
                 Text(":")
                     .font(.title2)
-                    .foregroundColor(.white)
+                    //.foregroundColor(.white)
                 
                 Text(minute)
                     .font(.title2)
@@ -184,16 +191,16 @@ struct DateTimeViewType4: View {
                 
                 Text(amPm)
                     .font(.title2)
-                    .foregroundColor(.white)
+                    //.foregroundColor(.white)
             }
             
             HStack {
                 Text("\(month) \(day), \(year)")
                     .font(.title3)
-                    .foregroundColor(.white)
+                    //.foregroundColor(.white)
             }
         }
-        .foregroundColor(.black)
+        //.foregroundColor(.black)
     }
 }
 
