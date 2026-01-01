@@ -14,15 +14,24 @@ struct OnboardingRoot: View {
     @ObservedObject private var viewModel = OnboardingViewModel.shared
     @AppStorage(UserDefaultsKeys.onboardingCompleted.rawValue) private var onboardingCompleted = false
     
+    let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    
     private let onboardingScreens: [AnyView] = [
-        AnyView(OnboardingThieves()),
-        AnyView(OnboardingMeet()),
-        AnyView(OnboardingSaveTime()),
-        AnyView(OnboardingEssentials()),
-        AnyView(OnboardingGrow())
+        AnyView(OnboardingIntro()),
+        AnyView(OnboardingEndless()),
+        AnyView(OnboardingLess()),
+        //AnyView(OnboardingEssentials()),
+        AnyView(OnboardingLock()),
+        AnyView(OnboardingFavourite()),
+        AnyView(OnboardingWallpaper()),
+        AnyView(OnboardingRating())
+        //OnboardingRating
+//        AnyView(OnboardingEssentials()),
+//        AnyView(OnboardingGrow())
     ]
     
     private var onboardingButtonText: String {
+        return "Continue"
         if currentPage == 3 {
             return "Select Apps"
         } else if currentPage == 4 && !showRatingPopUp{
@@ -43,37 +52,70 @@ struct OnboardingRoot: View {
     
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
-            
+            Color("backgroundColor")
+                .ignoresSafeArea()
             VStack {
-                ZStack {
+                TabView(selection: $currentPage) {
                     ForEach(0..<onboardingScreens.count, id: \.self) { index in
-                        if index == currentPage {
-                            onboardingScreens[index]
-                                .transition(.move(edge: .trailing))
-                                .animation(.easeInOut, value: currentPage)
-                        }
+                        
+                        onboardingScreens[index]
+                            .tag(index)
+                        
+//                        if index == currentPage {
+//                            onboardingScreens[index]
+//                                .id(currentPage)
+//                                .transition(.asymmetric(
+//                                    insertion: .move(edge: .trailing),
+//                                    removal: .move(edge: .leading)
+//                                ))
+//                        }
                     }
                 }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .ignoresSafeArea()
+                .animation(.easeInOut, value: currentPage)
                 
                 Spacer()
                 
-                OnboardingButton(text: onboardingButtonText, bgOpacity: bgOpacity)
-                    .onTapGesture {
-                        withAnimation {
-                            if currentPage == 3 && viewModel.signal == false {
-                                // do nothing
-                            } else if currentPage < onboardingScreens.count - 1 {
-                                currentPage += 1
-                            } else if !showRatingPopUp {
-                                showRatingPopUp = true
-                                showRatingPrompt()
-                            } else {
-                                UserDefaults.standard.set(viewModel.selectedAppName, forKey: UserDefaultsKeys.initallySelectedFavApps.rawValue)
-                                onboardingCompleted = true
+                if currentPage != 0 {
+                    OnboardingButton(text: onboardingButtonText, bgOpacity: bgOpacity)
+                        .onTapGesture {
+                            withAnimation {
+                                if currentPage == 3 && viewModel.signal == false {
+                                    // do nothing
+                                    currentPage += 1
+                                } else if currentPage < onboardingScreens.count - 1 {
+                                    currentPage += 1
+                                } else if !showRatingPopUp {
+                                    showRatingPopUp = true
+                                    showRatingPrompt()
+                                } else {
+                                    UserDefaults.standard.set(viewModel.selectedAppName, forKey: UserDefaultsKeys.initallySelectedFavApps.rawValue)
+                                    onboardingCompleted = true
+                                }
                             }
                         }
+                    HStack(spacing: 12) {
+                        ForEach(1..<onboardingScreens.count, id: \.self) { index in
+                            Circle()
+                                .fill(currentPage == index ? Color.blue : Color.gray.opacity(0.5))
+                                .frame(width: currentPage == index ? 12 : 8, height: currentPage == index ? 12 : 8)
+                                .animation(.spring(), value: currentPage)
+                        }
                     }
+                }
+            }
+            
+//            VStack {
+//                ZStack {
+//
+//                }
+//            }
+        }
+        .task {
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            withAnimation {
+                currentPage = 1
             }
         }
     }

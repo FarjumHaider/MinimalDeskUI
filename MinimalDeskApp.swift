@@ -18,18 +18,30 @@ struct MinimalDeskApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if onboardingCompleted {
-                RootView()
-                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-                        openFavApp()
-                    }
-            } else {
-                NavigationView {
-                    OnboardingRoot()
-                        .navigationBarBackButtonHidden(true)
-                }
+            
+            NavigationView {
+                OnboardingRoot()
+                    .navigationBarBackButtonHidden(true)
             }
         }
+        
+//        WindowGroup {
+//            if onboardingCompleted {
+//                RootView()
+//                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+//                        openFavApp()
+//                    }
+//            } else {
+//                NavigationView {
+//                    OnboardingRoot()
+//                        .navigationBarBackButtonHidden(true)
+//                }
+//            }
+//        }
+    }
+    
+    private func test() {
+        onboardingCompleted = false
     }
     
     private func openFavApp() {

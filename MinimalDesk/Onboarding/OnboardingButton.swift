@@ -13,10 +13,10 @@ struct OnboardingButton: View {
     
     var body: some View {
         Text(text)
-            .foregroundStyle(Color.black)
+            .foregroundColor(Color("textColor"))
             .font(.system(size: 20, weight: .medium))
-            .frame(width: UIScreen.main.bounds.width * 0.90, height: 50)
-            .background(Color.white.opacity(bgOpacity))
+            .frame(width: UIScreen.main.bounds.width * 0.90, height: 60)
+            .background(Color("whiteColor"))
             .cornerRadius(15)
             .padding(.bottom, 20)
     }
