@@ -331,12 +331,12 @@ struct CustomWidget: View {
                         }
                         .onChange(of: widgetBackground) { _, _ in
                             
-                            print("Farjum in 1 \(widgetBackground.toHex())")
+                            //print("Farjum in 1 \(widgetBackground.toHex())")
                             
                             guard let backgroundcolorHex = widgetBackground.toHex(),
                                   backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
                             
-                            print("Farjum out 2 \(widgetBackground.toHex())")
+                            //print("Farjum out 2 \(widgetBackground.toHex())")
                             viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
                             isDoneButtonDisabled = false
                         }
@@ -378,6 +378,82 @@ struct CustomWidget: View {
                             isDoneButtonDisabled = false
                         }
                     }
+                    
+                    // transperant
+//                    VStack {
+//                        Text("Make weiget Transparent")
+//                        
+//                        
+//
+//                        Button {
+//                            withAnimation(.spring()) {
+//                                transparentToggle.toggle()
+//                            }
+//                        } label: {
+//                            ZStack {
+//                                Capsule()
+//                                    .fill(transparentToggle ? Color.green : Color.gray.opacity(0.4))
+//                                    .frame(width: 60, height: 32)
+//
+//                                Circle()
+//                                    .fill(Color.white)
+//                                    .frame(width: 26, height: 26)
+//                                    .offset(x: transparentToggle ? 14 : -14)
+//                            }
+//                        }
+//                        
+//                        
+//                        ///
+////                        Toggle(isOn: $isOn) {
+////                            Text("Dark Mode")
+////                        }
+////                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+//                    }
+//                    .onChange(of: transparentToggle) { _, _ in
+//                        guard viewModel.favAppWidgetConfig.transparent != transparentToggle else { return }
+//                        viewModel.favAppWidgetConfig.transparent = transparentToggle
+//                        isDoneButtonDisabled = false
+//                    }
+//                    
+//                    // Background image
+//                    VStack {
+//                        Text("Background Image")
+//                            .foregroundColor(Color(hex: "#646464"))
+//                            .font(.system(size: 16))
+//                            .fontWeight(.semibold)
+//                            .padding([.top, .bottom], 10)
+//                            .frame(width: screenWidth * 0.92, alignment: .leading)
+//                        
+//                        ScrollView(.horizontal, showsIndicators: false) {
+//                            HStack(spacing: 14) {
+//                                
+//                                ForEach(weigetWallpaper, id: \.self) { imageName in
+//                                    
+//                                    Image(imageName)
+//                                        .resizable()
+//                                        .scaledToFill()
+//                                        .frame(width: 40, height: 40)
+//                                        .clipShape(RoundedRectangle(cornerRadius: 16))
+//                                        .overlay(
+//                                            RoundedRectangle(cornerRadius: 16)
+//                                                .stroke(
+//                                                    isSelected(value1: widgetBackgroundImage, value2: imageName ) ,
+//                                                    lineWidth: 1
+//                                                )
+//                                        )
+//                                        .frame(width: 40, height: 40)
+//                                        .onTapGesture { widgetBackgroundImage = imageName }
+//                                }
+//                            }
+//                            .padding(.horizontal, 14)
+//                        }
+//                        .onChange(of: widgetBackgroundImage) { _, _ in
+//                            guard viewModel.favAppWidgetConfig.backgroundImage != widgetBackgroundImage else { return }
+//                            viewModel.favAppWidgetConfig.backgroundImage = widgetBackgroundImage
+//                            isDoneButtonDisabled = false
+//                        }
+//                    }
+                    
                     
                     VStack {
                         Text("Text Color")

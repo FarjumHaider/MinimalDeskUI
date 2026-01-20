@@ -154,6 +154,13 @@ struct AppLocker: View {
     @State private var presentSubscriptionView = false
     @ObservedObject private var viewModel = AppLockerViewModel.shared
     
+    //
+    @State private var startTime = Date()
+    @State private var endTime = Date()
+    
+    @State private var showStartPicker = false
+    @State private var showEndPicker = false
+    
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
@@ -212,6 +219,43 @@ struct AppLocker: View {
                 }
                 .familyActivityPicker(isPresented: $isFamilyActivityPickerPresented, selection: $viewModel.activitySelection)
                 
+                
+                Button {
+                    showStartPicker = true
+                } label: {
+                    HStack {
+                        Text("Start Time:")
+                        Spacer()
+                        Text(startTime.formatted(date: .omitted, time: .shortened))
+                            .foregroundStyle(.blue)
+                    }
+                    .padding()
+                    .background(.gray.opacity(0.15))
+                    .cornerRadius(10)
+                }
+                
+                Button {
+                    showEndPicker = true
+                } label: {
+                    HStack {
+                        Text("End Time:")
+                        Spacer()
+                        Text(endTime.formatted(date: .omitted, time: .shortened))
+                            .foregroundStyle(.blue)
+                    }
+                    .padding()
+                    .background(.gray.opacity(0.15))
+                    .cornerRadius(10)
+                }
+                
+                Button("Save") {
+                    //showStartPicker = false
+                    //viewModel.saveStartTimeData()
+                    viewModel.startTime = startTime
+                    viewModel.endTime = endTime
+                    viewModel.saveSelection()
+                }
+                
                 Spacer()
                 
                 // MARK: - Lock Slider
@@ -268,18 +312,62 @@ struct AppLocker: View {
         }
         .foregroundStyle(.white)
         .onAppear {
+            viewModel.testDeviceActivity()
             isLocked = viewModel.appLockStatus
             if isLocked { sliderOffset = (sliderWidth - sliderHeight) }
+            
+            startTime = viewModel.startTime
+            endTime = viewModel.endTime
         }
-        .onChange(of: isLocked) {
-            viewModel.toggleAppRestriction(lock: isLocked)
-        }
-        .onChange(of: viewModel.activitySelection) { _, _ in
-            viewModel.toggleAppRestriction(lock: isLocked)
-            viewModel.saveSelection()
-        }
+//        .onChange(of: isLocked) {
+//            viewModel.toggleAppRestriction(lock: isLocked)
+//        }
+//        .onChange(of: viewModel.activitySelection) { _, _ in
+//            viewModel.toggleAppRestriction(lock: isLocked)
+//            viewModel.saveSelection()
+//        }
         .fullScreenCover(isPresented: $presentSubscriptionView) {
             SubscriptionView()
+        }
+        .sheet(isPresented: $showStartPicker) {
+            VStack {
+                Text("Select Start Time")
+                    .font(.title3)
+
+                DatePicker(
+                    "",
+                    selection: $startTime,
+                    displayedComponents: .hourAndMinute
+                )
+                .datePickerStyle(.wheel)       // 👈 scroll wheel style
+                .labelsHidden()
+
+                Button("Done") {
+                    showStartPicker = false
+                    //viewModel.saveStartTimeData()
+                }
+            }
+            .presentationDetents([.fraction(0.50)])
+        }
+        .sheet(isPresented: $showEndPicker) {
+            VStack {
+                Text("Select End Time")
+                    .font(.title3)
+
+                DatePicker(
+                    "",
+                    selection: $endTime,
+                    displayedComponents: .hourAndMinute
+                )
+                .datePickerStyle(.wheel)       // 👈 scroll wheel style
+                .labelsHidden()
+
+                Button("Done") {
+                    showEndPicker = false
+                    //viewModel.saveStartTimeData()
+                }
+            }
+            .presentationDetents([.fraction(0.50)])
         }
     }
 }

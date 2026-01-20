@@ -2,15 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>com.apple.developer.family-controls</key>
-    <true/>
-    <key>com.apple.developer.device-activity</key>
-    <true/>
-    <key>com.apple.security.application-groups</key>
+	<key>com.apple.developer.device-activity</key>
+	<true/>
+	<key>com.apple.developer.family-controls</key>
+	<true/>
+	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.AppMonitor</string>
-		<string>group.minimaldesk</string>
 		<string>group.com.sadiq.test.MinimalDesk</string>
+		<string>group.com.scannr.qrwidget</string>
 	</array>
 </dict>
 </plist>

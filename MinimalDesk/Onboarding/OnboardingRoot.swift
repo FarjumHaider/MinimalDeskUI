@@ -11,6 +11,7 @@ import StoreKit
 struct OnboardingRoot: View {
     @State private var currentPage = 0
     @State private var showRatingPopUp: Bool = false
+    @State private var presentSubscriptionView = false
     @ObservedObject private var viewModel = OnboardingViewModel.shared
     @AppStorage(UserDefaultsKeys.onboardingCompleted.rawValue) private var onboardingCompleted = false
     
@@ -91,7 +92,9 @@ struct OnboardingRoot: View {
                                     showRatingPrompt()
                                 } else {
                                     UserDefaults.standard.set(viewModel.selectedAppName, forKey: UserDefaultsKeys.initallySelectedFavApps.rawValue)
+                                    presentSubscriptionView = true
                                     onboardingCompleted = true
+                                    
                                 }
                             }
                         }
@@ -117,6 +120,9 @@ struct OnboardingRoot: View {
             withAnimation {
                 currentPage = 1
             }
+        }
+        .fullScreenCover(isPresented: $presentSubscriptionView) {
+            SubscriptionView()
         }
     }
     

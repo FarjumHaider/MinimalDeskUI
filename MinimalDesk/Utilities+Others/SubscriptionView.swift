@@ -16,22 +16,29 @@ struct SubscriptionView: View {
     @State private var safariURL: URL?
     @State private var showSafari = false
     
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    
     var body: some View {
         ScrollView {
             ZStack {
+                Image("subscription")
+                    .resizable()
+                    .scaledToFill()
+
                 VStack {
                     headerSection
                     
-                    Text("Get Premium")
-                        .font(.title)
-                        .bold()
-                        .padding(.bottom)
-                    
                     featuresList
+
+                    Spacer()
                     
                     planSelectionSection
                     
+                    Spacer()
+                    
                     purchaseButton
+                        .padding(.bottom, 20)
                     
                     if let errorMessage = errorMessage {
                         Text(errorMessage)
@@ -39,8 +46,6 @@ struct SubscriptionView: View {
                             .font(.caption)
                             .padding(.top, 8)
                     }
-                    
-                    Spacer()
                     
                     footerSection
                         .padding(.bottom, 30)
@@ -63,8 +68,8 @@ struct SubscriptionView: View {
                 Text(restoreMessage)
             }
         }
-        .foregroundStyle(.black)
-        .background(Color.white)
+        .foregroundColor(Color("textColor"))
+        .background(Color("backgroundColor"))
         .edgesIgnoringSafeArea(.all)
         .task {
             await loadInitialData()
@@ -81,12 +86,12 @@ struct SubscriptionView: View {
     
     private var headerSection: some View {
         GeometryReader { geometry in
-            ZStack {
-                Image(.subscriptionBG)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: geometry.size.width, height: 300)
-                    .clipped()
+            //ZStack {
+//                Image(.subscriptionBG)
+//                    .resizable()
+//                    .scaledToFill()
+//                    .frame(width: geometry.size.width, height: 300)
+//                    .clipped()
                 
                 VStack(spacing: 0) {
                     HStack {
@@ -102,6 +107,7 @@ struct SubscriptionView: View {
                                     .font(.system(size: 18, weight: .medium))
                                     .foregroundColor(.white)
                             }
+                            //.padding()
                         }
                         
                         Spacer()
@@ -135,14 +141,14 @@ struct SubscriptionView: View {
                     Spacer()
                     
                     VStack(spacing: 12) {
-                        Text("LessPhone Pro")
+                        Text("Unlock All Features")
                             .font(.system(size: 36, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                            //.foregroundColor(.white)
                             .multilineTextAlignment(.center)
                         
-                        Text("Break free from digital overlord.")
+                        Text("Clear out the unnecessary items")
                             .font(.system(size: 18, weight: .regular))
-                            .foregroundColor(.white.opacity(0.95))
+                            //.foregroundColor(.white.opacity(0.95))
                             .multilineTextAlignment(.center)
                     }
                     .padding(.horizontal, 20)
@@ -150,7 +156,7 @@ struct SubscriptionView: View {
                     Spacer()
                         .frame(height: 30)
                 }
-            }
+            //}
         }
         .frame(height: 300)
         .ignoresSafeArea(edges: .top)
@@ -158,25 +164,37 @@ struct SubscriptionView: View {
     
     private var featuresList: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Label("All Widget Access", systemImage: "checkmark.circle.fill")
-            Label("Multiple Widget Setup", systemImage: "checkmark.circle.fill")
-            Label("Control Digital Distractions", systemImage: "checkmark.circle.fill")
-            Label("Ability to add apps independently", systemImage: "checkmark.circle.fill")
-            Label("Lifetime Support", systemImage: "checkmark.circle.fill")
-            Label("Ad-free Experience", systemImage: "checkmark.circle.fill")
+            HStack{
+                Label("Unlimited App Selection", systemImage: "checkmark.circle.fill")
+                Spacer()
+            }
+            HStack{
+                Label("Custom widgets colors", systemImage: "checkmark.circle.fill")
+                Spacer()
+            }
+            HStack{
+                Label("Detox Mode for focus", systemImage: "checkmark.circle.fill")
+                Spacer()
+            }
+            HStack{
+                Label("Explore all Features", systemImage: "checkmark.circle.fill")
+                Spacer()
+            }
         }
         .font(.system(size: 16))
         .padding([.leading, .bottom])
+        //.border(Color.blue, width: 2)
+        .frame(width: 295)
     }
     
     private var planSelectionSection: some View {
         VStack {
-            monthlyPlanView
             yearlyPlanView
+            monthlyPlanView
             lifetimePlanView
         }
         .padding()
-        .frame(maxWidth: 320)
+        //.frame(maxWidth: 320)
     }
     
     @ViewBuilder
@@ -184,29 +202,37 @@ struct SubscriptionView: View {
         if let monthlyProduct = store.subscriptions.first(where: { $0.id == "lessphone.subscription.monthly" }) {
             planButtonWithProduct(
                 title: "\(monthlyProduct.displayPrice) / Month",
+                topSubtitle : "Renews monthly",
+                rightSubtitle: "Cancel anytime",
                 plan: .monthly,
                 product: monthlyProduct
             )
         } else {
             planButtonFallback(
-                title: "$2.99 / Month",
+                title: "$14.99 / Month",
+                topSubtitle : "Renews annually",
+                rightSubtitle: "Cancel anytime",
                 plan: .monthly
             )
         }
     }
-    
+
     @ViewBuilder
     private var yearlyPlanView: some View {
         if let yearlyProduct = store.subscriptions.first(where: { $0.id == "lessphone.subscription.yearly" }) {
             planButtonWithProduct(
-                title: "\(yearlyProduct.displayPrice) / Year",
+                title: "\(yearlyProduct.displayPrice) / year",
+                topSubtitle : "Renews annually",
+                rightSubtitle: "Save 90%",
                 plan: .yearly,
                 imageName: "yearlySubscription",
                 product: yearlyProduct
             )
         } else {
             planButtonFallback(
-                title: "$9.99 / Year",
+                title: "$29.99 / year",
+                topSubtitle : "Renews annually",
+                rightSubtitle: "Save 90%",
                 plan: .yearly,
                 imageName: "yearlySubscription"
             )
@@ -219,12 +245,16 @@ struct SubscriptionView: View {
             planButtonWithProduct(
                 title: "\(lifetimeProduct.displayPrice) / Lifetime",
                 subtitle: "One-time Payment",
+                topSubtitle : "Renews weekly",
+                rightSubtitle: "Cancel anytime",
                 plan: .lifetime,
                 product: lifetimeProduct
             )
         } else {
             planButtonFallback(
                 title: "$14.99 / Lifetime",
+                topSubtitle : "Renews annually",
+                rightSubtitle: "Cancel anytime",
                 subtitle: "One-time Payment",
                 plan: .lifetime
             )
@@ -260,17 +290,28 @@ struct SubscriptionView: View {
     
     private var footerSection: some View {
         VStack {
-            if PlanType(rawValue: selectedPlan) == .lifetime {
-                Text("One time Payment")
-                    .font(.caption)
-            } else {
-                Text("Subscription is auto renewable. Cancel anytime.")
-                    .font(.caption)
+//            if PlanType(rawValue: selectedPlan) == .lifetime {
+//                Text("One time Payment")
+//                    .font(.caption)
+//            } else {
+//                Text("Subscription is auto renewable. Cancel anytime.")
+//                    .font(.caption)
+//            }
+            
+            HStack(spacing: 10) {
+                Image(systemName: "apple.logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 15, height: 15)
+                
+                Text("Secured with Apple")
+                    .font(.system(size: 15))
             }
             
-            HStack(spacing: 20) {
+            HStack(spacing: 10) {
                 Text("Privacy Policy")
                     .underline()
+                    .font(.system(size: 15))
                     .onTapGesture {
                         safariURL = URL(string: "https://sites.google.com/view/lessphone/home")
                         showSafari = true
@@ -278,13 +319,18 @@ struct SubscriptionView: View {
                 
                 Text("Terms of Use")
                     .underline()
+                    .font(.system(size: 15))
                     .onTapGesture {
                         safariURL = URL(string: "https://sites.google.com/view/terms-lessphone/home")
                         showSafari = true
                     }
                 
-                Text("Info")
+                Text("and")
+                    .font(.system(size: 15))
+                
+                Text("Subscription Terms")
                     .underline()
+                    .font(.system(size: 15))
                     .onTapGesture {
                         safariURL = URL(string: "https://sites.google.com/view/subscription-info/home")
                         showSafari = true
@@ -321,9 +367,9 @@ struct SubscriptionView: View {
     
     private var buttonBackgroundColor: Color {
         if isSubscribed {
-            return Color.gray
+            return Color.blue
         } else if selectedProduct == nil || isLoading {
-            return Color.gray.opacity(0.6)
+            return Color.blue.opacity(0.6)
         } else {
             return Color.blue
         }
@@ -422,6 +468,8 @@ struct SubscriptionView: View {
     func planButtonWithProduct(
         title: String,
         subtitle: String? = nil,
+        topSubtitle: String? = nil,
+        rightSubtitle: String? = nil,
         plan: PlanType,
         imageName: String? = nil,
         product: Product
@@ -429,6 +477,8 @@ struct SubscriptionView: View {
         createPlanButton(
             title: title,
             subtitle: subtitle,
+            topSubtitle: topSubtitle,
+            rightSubtitle: rightSubtitle,
             plan: plan,
             imageName: imageName
         )
@@ -436,6 +486,8 @@ struct SubscriptionView: View {
     
     func planButtonFallback(
         title: String,
+        topSubtitle: String? = nil,
+        rightSubtitle: String? = nil,
         subtitle: String? = nil,
         plan: PlanType,
         imageName: String? = nil
@@ -443,6 +495,8 @@ struct SubscriptionView: View {
         createPlanButton(
             title: title,
             subtitle: subtitle,
+            topSubtitle: topSubtitle,
+            rightSubtitle: rightSubtitle,
             plan: plan,
             imageName: imageName
         )
@@ -451,6 +505,8 @@ struct SubscriptionView: View {
     private func createPlanButton(
         title: String,
         subtitle: String? = nil,
+        topSubtitle: String? = nil,
+        rightSubtitle: String? = nil,
         plan: PlanType,
         imageName: String? = nil
     ) -> some View {
@@ -472,11 +528,21 @@ struct SubscriptionView: View {
             }
             
             VStack(alignment: .leading, spacing: 0) {
-                Text(title)
-                    .font(.system(size: 20, weight: .bold))
-                if let subtitle = subtitle {
-                    Text(subtitle)
+                Text(topSubtitle!)
+                    .font(.system(size: 12))
+                    .foregroundColor(Color(hex: "#646464"))
+                
+                HStack {
+                    Text(title)
+                        .font(.system(size: 20, weight: .bold))
+                    
+                    Text(rightSubtitle!)
                         .font(.system(size: 12))
+                        .foregroundColor(Color(hex: "#646464"))
+                    //                if let subtitle = subtitle {
+                    //                    Text(subtitle)
+                    //                        .font(.system(size: 12))
+                    //                }
                 }
             }
             .padding(.vertical, 5)
@@ -484,16 +550,21 @@ struct SubscriptionView: View {
             
             Spacer()
             
-            if let imageName = imageName {
-                Image(imageName)
-                    .frame(width: 45, height: 45)
-                    .padding(.trailing)
-            }
+//            if let imageName = imageName {
+//                Image(imageName)
+//                    .frame(width: 45, height: 45)
+//                    .padding(.trailing)
+//            }
         }
-        .clipShape(Capsule())
-        .overlay {
-            Capsule().stroke(.blue, lineWidth: 3)
-        }
+        .padding([.leading, .trailing], 13)
+        //.frame(width: screenWidth * 0.92, height: screenHeight * 0.08)
+        .frame(width: screenWidth * 0.92, height: 62)
+        .background(Color("whiteColor"))
+        .cornerRadius(14)
+//        .clipShape(Capsule())
+//        .overlay {
+//            Capsule().stroke(.blue, lineWidth: 3)
+//        }
         .onTapGesture {
             selectedPlan = plan.rawValue
         }
