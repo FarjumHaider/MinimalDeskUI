@@ -48,14 +48,11 @@
 		1BF6DE4E2DF78D15004DE980 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4D2DF78D15004DE980 /* FirebaseFirestore */; };
 		1BF6DE502DF78D15004DE980 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4F2DF78D15004DE980 /* FirebaseMessaging */; };
 		1BF6DE522DF78D15004DE980 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE512DF78D15004DE980 /* FirebaseStorage */; };
-		AD3845B32F1C131B00838761 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3845B22F1C131B00838761 /* DeviceActivity.framework */; };
-		AD3845BB2F1C131B00838761 /* DeviceActivityMonitorExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AD3845B12F1C131B00838761 /* DeviceActivityMonitorExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AD6AC0DB2F09A24B00481056 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FB2C46279B008AD47C /* WidgetKit.framework */; };
-		AD6AC0DC2F09A24B00481056 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FD2C46279B008AD47C /* SwiftUI.framework */; };
-		AD6AC0ED2F09A24C00481056 /* MinimalDeskWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AD6AC0DA2F09A24B00481056 /* MinimalDeskWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AD700AF02F2BCC1D00175521 /* ChecklistInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */; };
 		AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55C2EE3A5460050762A /* ChecklistView.swift */; };
 		AD88D5602EE3A5690050762A /* CycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55F2EE3A5690050762A /* CycleView.swift */; };
 		ADA256B12EF5D55C00F68031 /* CustomDateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */; };
+		ADC23C522F27E51C00EA0804 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */; };
 		C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A32C39594600825521 /* MinimalDeskApp.swift */; };
 		C84B21A62C39594600825521 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A52C39594600825521 /* RootView.swift */; };
 		C84B21A82C39594800825521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84B21A72C39594800825521 /* Assets.xcassets */; };
@@ -100,20 +97,6 @@
 			remoteGlobalIDString = 12C249132C5F77C200074874;
 			remoteInfo = FavAppWidgetExtension;
 		};
-		AD3845B92F1C131B00838761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C84B21982C39594600825521 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD3845B02F1C131B00838761;
-			remoteInfo = DeviceActivityMonitorExtension;
-		};
-		AD6AC0EB2F09A24C00481056 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C84B21982C39594600825521 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AD6AC0D92F09A24B00481056;
-			remoteInfo = MinimalDeskWidgetExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -123,9 +106,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				AD6AC0ED2F09A24C00481056 /* MinimalDeskWidgetExtension.appex in Embed Foundation Extensions */,
 				12C249212C5F77C300074874 /* FavAppWidgetExtension.appex in Embed Foundation Extensions */,
-				AD3845BB2F1C131B00838761 /* DeviceActivityMonitorExtension.appex in Embed Foundation Extensions */,
 				124AF7372C47A3F6008AD47C /* MinimalDeskDateWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -165,12 +146,13 @@
 		12C249262C5F7D1D00074874 /* OpenAppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAppIntent.swift; sourceTree = "<group>"; };
 		1BEDD01D2DE8CB1A0020BAB0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
-		AD3845B12F1C131B00838761 /* DeviceActivityMonitorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DeviceActivityMonitorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0E6D432F20087C00D49356 /* MinimalDeskRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinimalDeskRelease.entitlements; sourceTree = "<group>"; };
 		AD3845B22F1C131B00838761 /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = SDKROOT; };
-		AD6AC0DA2F09A24B00481056 /* MinimalDeskWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MinimalDeskWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistInputView.swift; sourceTree = "<group>"; };
 		AD88D55C2EE3A5460050762A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		AD88D55F2EE3A5690050762A /* CycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleView.swift; sourceTree = "<group>"; };
 		ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateWidget.swift; sourceTree = "<group>"; };
+		ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		C84B21A02C39594600825521 /* MinimalDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84B21A32C39594600825521 /* MinimalDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalDeskApp.swift; sourceTree = "<group>"; };
 		C84B21A52C39594600825521 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -194,13 +176,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		AD3845BF2F1C131B00838761 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = AD3845B02F1C131B00838761 /* DeviceActivityMonitorExtension */;
-		};
 		ADFD201D2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -294,7 +269,6 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		12AD57982C9F5CF3009903E9 /* Font */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ADFD201D2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ADFD201E2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Font; sourceTree = "<group>"; };
-		AD3845B42F1C131B00838761 /* DeviceActivityMonitorExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (AD3845BF2F1C131B00838761 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DeviceActivityMonitorExtension; sourceTree = "<group>"; };
 		E045AC902CF10B0D0043E799 /* Videos */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (CE9861412DC24FC700C5D224 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Videos; sourceTree = "<group>"; };
 		E05DD7D02D04D2E7001A0266 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -315,23 +289,6 @@
 			files = (
 				12C249162C5F77C200074874 /* SwiftUI.framework in Frameworks */,
 				12C249152C5F77C200074874 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD3845AE2F1C131B00838761 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD3845B32F1C131B00838761 /* DeviceActivity.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD6AC0D72F09A24B00481056 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD6AC0DC2F09A24B00481056 /* SwiftUI.framework in Frameworks */,
-				AD6AC0DB2F09A24B00481056 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +425,8 @@
 			isa = PBXGroup;
 			children = (
 				AD88D55C2EE3A5460050762A /* ChecklistView.swift */,
+				AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */,
+				ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */,
 			);
 			path = Checklist;
 			sourceTree = "<group>";
@@ -495,7 +454,6 @@
 				C84B21A22C39594600825521 /* MinimalDesk */,
 				124AF72D2C47A3F5008AD47C /* MinimalDeskDateWidget */,
 				12C249172C5F77C200074874 /* FavAppWidget */,
-				AD3845B42F1C131B00838761 /* DeviceActivityMonitorExtension */,
 				124AF6FA2C46279B008AD47C /* Frameworks */,
 				C84B21A12C39594600825521 /* Products */,
 			);
@@ -507,8 +465,6 @@
 				C84B21A02C39594600825521 /* MinimalDesk.app */,
 				124AF72A2C47A3F5008AD47C /* MinimalDeskDateWidgetExtension.appex */,
 				12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */,
-				AD6AC0DA2F09A24B00481056 /* MinimalDeskWidgetExtension.appex */,
-				AD3845B12F1C131B00838761 /* DeviceActivityMonitorExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -516,6 +472,7 @@
 		C84B21A22C39594600825521 /* MinimalDesk */ = {
 			isa = PBXGroup;
 			children = (
+				AD0E6D432F20087C00D49356 /* MinimalDeskRelease.entitlements */,
 				AD88D55E2EE3A5550050762A /* Cycle */,
 				AD88D55B2EE3A5160050762A /* Checklist */,
 				E05DD7D02D04D2E7001A0266 /* Onboarding */,
@@ -580,47 +537,6 @@
 			productReference = 12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		AD3845B02F1C131B00838761 /* DeviceActivityMonitorExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AD3845BC2F1C131B00838761 /* Build configuration list for PBXNativeTarget "DeviceActivityMonitorExtension" */;
-			buildPhases = (
-				AD3845AD2F1C131B00838761 /* Sources */,
-				AD3845AE2F1C131B00838761 /* Frameworks */,
-				AD3845AF2F1C131B00838761 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				AD3845B42F1C131B00838761 /* DeviceActivityMonitorExtension */,
-			);
-			name = DeviceActivityMonitorExtension;
-			packageProductDependencies = (
-			);
-			productName = DeviceActivityMonitorExtension;
-			productReference = AD3845B12F1C131B00838761 /* DeviceActivityMonitorExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
-		AD6AC0D92F09A24B00481056 /* MinimalDeskWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AD6AC0F02F09A24C00481056 /* Build configuration list for PBXNativeTarget "MinimalDeskWidgetExtension" */;
-			buildPhases = (
-				AD6AC0D62F09A24B00481056 /* Sources */,
-				AD6AC0D72F09A24B00481056 /* Frameworks */,
-				AD6AC0D82F09A24B00481056 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MinimalDeskWidgetExtension;
-			packageProductDependencies = (
-			);
-			productName = MinimalDeskWidgetExtension;
-			productReference = AD6AC0DA2F09A24B00481056 /* MinimalDeskWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		C84B219F2C39594600825521 /* MinimalDesk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C84B21C42C39594800825521 /* Build configuration list for PBXNativeTarget "MinimalDesk" */;
@@ -635,8 +551,6 @@
 			dependencies = (
 				124AF7362C47A3F6008AD47C /* PBXTargetDependency */,
 				12C249202C5F77C300074874 /* PBXTargetDependency */,
-				AD6AC0EC2F09A24C00481056 /* PBXTargetDependency */,
-				AD3845BA2F1C131B00838761 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				12AD57982C9F5CF3009903E9 /* Font */,
@@ -681,12 +595,6 @@
 					12C249132C5F77C200074874 = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					AD3845B02F1C131B00838761 = {
-						CreatedOnToolsVersion = 16.3;
-					};
-					AD6AC0D92F09A24B00481056 = {
-						CreatedOnToolsVersion = 16.3;
-					};
 					C84B219F2C39594600825521 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -716,8 +624,6 @@
 				C84B219F2C39594600825521 /* MinimalDesk */,
 				124AF7292C47A3F5008AD47C /* MinimalDeskDateWidgetExtension */,
 				12C249132C5F77C200074874 /* FavAppWidgetExtension */,
-				AD6AC0D92F09A24B00481056 /* MinimalDeskWidgetExtension */,
-				AD3845B02F1C131B00838761 /* DeviceActivityMonitorExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -738,20 +644,6 @@
 			files = (
 				E07AC1822CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */,
 				12C2491D2C5F77C300074874 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD3845AF2F1C131B00838761 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD6AC0D82F09A24B00481056 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,20 +690,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD3845AD2F1C131B00838761 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AD6AC0D62F09A24B00481056 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C84B219C2C39594600825521 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -824,6 +702,7 @@
 				C84B21D52C396FBB00825521 /* Tutorials.swift in Sources */,
 				E07AC1862CF79B35001B9814 /* Store.swift in Sources */,
 				C84B21CE2C39689C00825521 /* AddView.swift in Sources */,
+				AD700AF02F2BCC1D00175521 /* ChecklistInputView.swift in Sources */,
 				AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */,
 				AD88D5602EE3A5690050762A /* CycleView.swift in Sources */,
 				1286B0792C8DA146002C44EA /* SubscriptionView.swift in Sources */,
@@ -838,6 +717,7 @@
 				1232B2CF2C4187E500DD2FEE /* FirebaseDataViewModel.swift in Sources */,
 				1223266B2CA462C00081A282 /* WidgetViewModel.swift in Sources */,
 				C84B21D32C396F3200825521 /* Widget.swift in Sources */,
+				ADC23C522F27E51C00EA0804 /* ChecklistViewModel.swift in Sources */,
 				C896779C2C688B7400BDF603 /* CustomWallpaper.swift in Sources */,
 				C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */,
 				12AD58562C9F5F0F009903E9 /* FontListView.swift in Sources */,
@@ -862,16 +742,6 @@
 			isa = PBXTargetDependency;
 			target = 12C249132C5F77C200074874 /* FavAppWidgetExtension */;
 			targetProxy = 12C2491F2C5F77C300074874 /* PBXContainerItemProxy */;
-		};
-		AD3845BA2F1C131B00838761 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD3845B02F1C131B00838761 /* DeviceActivityMonitorExtension */;
-			targetProxy = AD3845B92F1C131B00838761 /* PBXContainerItemProxy */;
-		};
-		AD6AC0EC2F09A24C00481056 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AD6AC0D92F09A24B00481056 /* MinimalDeskWidgetExtension */;
-			targetProxy = AD6AC0EB2F09A24C00481056 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -988,116 +858,6 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.FavAppWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		AD3845BD2F1C131B00838761 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = DeviceActivityMonitorExtension/DeviceActivityMonitorExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 68W2966MBV;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DeviceActivityMonitorExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DeviceActivityMonitorExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.DeviceActivityMonitorExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		AD3845BE2F1C131B00838761 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = DeviceActivityMonitorExtension/DeviceActivityMonitorExtensionRelease.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 68W2966MBV;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DeviceActivityMonitorExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DeviceActivityMonitorExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.DeviceActivityMonitorExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		AD6AC0EE2F09A24C00481056 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 68W2966MBV;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MinimalDeskWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MinimalDeskWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.MinimalDeskWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		AD6AC0EF2F09A24C00481056 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 68W2966MBV;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MinimalDeskWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MinimalDeskWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.MinimalDeskWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1273,7 +1033,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = MinimalDesk/MinimalDesk.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MinimalDesk/MinimalDeskRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"MinimalDesk/Preview Content\"";
@@ -1324,24 +1084,6 @@
 			buildConfigurations = (
 				12C249232C5F77C300074874 /* Debug */,
 				12C249242C5F77C300074874 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD3845BC2F1C131B00838761 /* Build configuration list for PBXNativeTarget "DeviceActivityMonitorExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD3845BD2F1C131B00838761 /* Debug */,
-				AD3845BE2F1C131B00838761 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AD6AC0F02F09A24C00481056 /* Build configuration list for PBXNativeTarget "MinimalDeskWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD6AC0EE2F09A24C00481056 /* Debug */,
-				AD6AC0EF2F09A24C00481056 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

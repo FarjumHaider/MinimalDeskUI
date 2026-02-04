@@ -17,27 +17,27 @@ struct MinimalDeskApp: App {
     @AppStorage(UserDefaultsKeys.onboardingCompleted.rawValue) private var onboardingCompleted = false
 
     var body: some Scene {
-        WindowGroup {
-            
-            NavigationView {
-                OnboardingRoot()
-                    .navigationBarBackButtonHidden(true)
-            }
-        }
-        
 //        WindowGroup {
-//            if onboardingCompleted {
-//                RootView()
-//                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-//                        openFavApp()
-//                    }
-//            } else {
-//                NavigationView {
-//                    OnboardingRoot()
-//                        .navigationBarBackButtonHidden(true)
-//                }
+//            
+//            NavigationView {
+//                OnboardingRoot()
+//                    .navigationBarBackButtonHidden(true)
 //            }
 //        }
+        
+        WindowGroup {
+            if onboardingCompleted {
+                RootView()
+                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+                        openFavApp()
+                    }
+            } else {
+                NavigationView {
+                    OnboardingRoot()
+                        .navigationBarBackButtonHidden(true)
+                }
+            }
+        }
     }
     
     private func test() {

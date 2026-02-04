@@ -379,73 +379,65 @@ struct AddView: View {
                        .frame(width: 30, height: 30)
                        .foregroundColor(.white)
                } else {
-                   ZStack {
-                       if widgetVM.favAppWidgetConfig.transparent {
-                           Image(widgetVM.favAppWidgetConfig.backgroundImage)
-                               .resizable()
-                               .scaledToFill()
-                       }
+                   VStack(spacing: widgetVM.favAppWidgetConfig.spacing) {
+                       // show the app list in every card // farjum
+                       
+                       // left -> leading, center
+                       // right -> trailing, center
+                       // center -> center, center
+                       // top -> center, top
+                       // bottom  -> center, bottom
+
 
                        
-                       VStack(spacing: widgetVM.favAppWidgetConfig.spacing) {
-                           // show the app list in every card // farjum
-                           
-                           // left -> leading, center
-                           // right -> trailing, center
-                           // center -> center, center
-                           // top -> center, top
-                           // bottom  -> center, bottom
-                           
-                           
-                           
-                           ForEach(viewModel.appsOnAddView[index], id: \.self) { app in
-                               Text(app)
+                       ForEach(viewModel.appsOnAddView[index], id: \.self) { app in
+                           Text(app)
                                //.font(.title3)
                                //.font(.system(weight: CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value))
-                               //                               .font(.system(size: widgetVM.favAppWidgetConfig.fontSize))
-                               //                               .fontWeight(CustomWidget.FontWeightConverter(
-                               //                                   weightString: widgetVM.favAppWidgetConfig.fontWeight
-                               //                               ).value)
-                               //                               .font(.system(
-                               //                                   size: widgetVM.favAppWidgetConfig.fontSize,
-                               //                                   weight: CustomWidget.FontWeightConverter(
-                               //                                       weightString: widgetVM.favAppWidgetConfig.fontWeight
-                               //                                   ).value
-                               //                               ))
-                                   .textCase(widgetVM.favAppWidgetConfig.caseText == "default" ? nil : .uppercase)
-                               
-                                   .font(.system(
-                                    
+//                               .font(.system(size: widgetVM.favAppWidgetConfig.fontSize))
+//                               .fontWeight(CustomWidget.FontWeightConverter(
+//                                   weightString: widgetVM.favAppWidgetConfig.fontWeight
+//                               ).value)
+//                               .font(.system(
+//                                   size: widgetVM.favAppWidgetConfig.fontSize,
+//                                   weight: CustomWidget.FontWeightConverter(
+//                                       weightString: widgetVM.favAppWidgetConfig.fontWeight
+//                                   ).value
+//                               ))
+                               .textCase(widgetVM.favAppWidgetConfig.caseText == "default" ? nil : .uppercase)
+
+                               .font(.system(
+                                
                                     size: widgetVM.favAppWidgetConfig.fontSize,
                                     weight: CustomWidget.FontWeightConverter(weightString:widgetVM.favAppWidgetConfig.fontWeight).value,
                                     design: CustomWidget.FontTypeConverter(FontString: widgetVM.favAppWidgetConfig.fontType).value
-                                    
-                                   ))
                                
-                                   .frame(maxWidth: .infinity, alignment: frameAlignment)
-                                   .listRowBackground(Color.clear)
-                                   .listRowInsets(EdgeInsets())
-                                   .listRowSeparator(.hidden)
-                                   .background(widgetVM.favAppWidgetConfig.transparent ? .clear : Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
+                               ))
+
+                               .frame(maxWidth: .infinity, alignment: frameAlignment)
+                               .listRowBackground(Color.clear)
+                               .listRowInsets(EdgeInsets())
+                               .listRowSeparator(.hidden)
+                               .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
                                //.fontDesign(CustomWidget.FontTypeConverter(FontString: widgetVM.favAppWidgetConfig.fontType).value)
                                //.font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 30))
-                               //favAppWidgetConfig
-                           }
-                           .onMove { indices, newOffset in
-                               moveItems(at: indices, to: newOffset, in: index)
-                           }
+                           //favAppWidgetConfig
                        }
-                       .listStyle(.plain)
-                       .padding(15)
-                       .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
-                       .scrollContentBackground(.hidden)
-                       //.fontWeight(CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value)
-                       .frame(
-                        maxWidth: .infinity,
-                        maxHeight: .infinity,
-                        alignment: frameAlignment
-                       )
+                       .onMove { indices, newOffset in
+                           moveItems(at: indices, to: newOffset, in: index)
+                       }
                    }
+                   .listStyle(.plain)
+                   .padding(15)
+                   .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
+                   .scrollContentBackground(.hidden)
+                   //.fontWeight(CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value)
+                   .frame(
+                       maxWidth: .infinity,
+                       maxHeight: .infinity,
+                       alignment: frameAlignment
+                   )
+                   
                }
            }
            .background(index == viewModel.cards ? Color.clear : Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))

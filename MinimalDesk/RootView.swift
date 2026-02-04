@@ -78,33 +78,37 @@ struct RootView: View {
                         .padding(.top ,4)
                 }
             
-            CycleView()
-                .tabItem(2) {
-                    Image("CycleNew")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(item == 2 ? .blue : Color("tabGray"))
-                        .font(.title3)
-                    Text("Cycle")
-                        .font(.system(.footnote, design: .rounded).weight(item == 2 ? .bold : .medium))
-                        .foregroundColor(item == 2 ? .blue : Color("tabGray"))
-                        .padding(.top ,4)
-                }
+            NavigationView {
+                CycleView()
+            }
+            .tabItem(2) {
+                Image("CycleNew")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(item == 2 ? .blue : Color("tabGray"))
+                    .font(.title3)
+                Text("Cycle")
+                    .font(.system(.footnote, design: .rounded).weight(item == 2 ? .bold : .medium))
+                    .foregroundColor(item == 2 ? .blue : Color("tabGray"))
+                    .padding(.top ,4)
+            }
             
-            ChecklistView()
-                .tabItem(3) {
-                    Image("ChecklistNew")
-                        .renderingMode(.template)
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(item == 3 ? .blue : Color("tabGray"))
-                        .font(.largeTitle)
-                    Text("Lock")
-                        .font(.system(.footnote, design: .rounded).weight(item == 3 ? .bold : .medium))
-                        .foregroundColor(item == 3 ? .blue : Color("tabGray"))
-                        .padding(.top ,4)
-                }
+            NavigationView {
+                ChecklistView()
+            }
+            .tabItem(3) {
+                Image("ChecklistNew")
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(item == 3 ? .blue : Color("tabGray"))
+                    .font(.largeTitle)
+                Text("Lock")
+                    .font(.system(.footnote, design: .rounded).weight(item == 3 ? .bold : .medium))
+                    .foregroundColor(item == 3 ? .blue : Color("tabGray"))
+                    .padding(.top ,4)
+            }
             
 //            Settings()
 //                .tabItem(4) {
