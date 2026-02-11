@@ -11,6 +11,14 @@ import Firebase
 struct CustomWidget: View {
     @Environment(\.dismiss) var dismiss
     
+    enum WidgetType {
+        case favApp
+        case todolist
+    }
+    
+    private let viewModel = WidgetViewModel.shared
+    let widgetType: WidgetType
+    
     @State var heightToSet:CGFloat =  0
     @State var widthToSet:CGFloat =  0
     @State var gap:CGFloat = 0
@@ -116,9 +124,6 @@ struct CustomWidget: View {
         "#F094FA", "#F5576E",
         "#FF144E", "#F17550",
         "#FF0845", "#97E3EF",
-
-        // ⚠️ skipped invalid RGB with emoji
-
         "#FA4545", "#FAC74D",
         "#FF8C21", "#FFE040",
         "#FF8C21", "#F5576E",
@@ -161,7 +166,6 @@ struct CustomWidget: View {
         gradientColorsHex.compactMap { Color(hex: $0) }
     }
 
-    
     let backgroundColorHexList = [
         "#F4EADE",
         "#FFDFE0",
@@ -232,19 +236,34 @@ struct CustomWidget: View {
         FontDesignOption(design: .monospaced, name: "Monospaced", customFont: "SpaceMono-Regular", weight: .regular)
     ]
     
-    private let viewModel = WidgetViewModel.shared
     
-    init() {
-        widgetBackground = Color(hex: viewModel.favAppWidgetConfig.backgroundColor)
-        fontColor = Color(hex: viewModel.favAppWidgetConfig.fontColor)
-        //fontColor = viewModel.favAppWidgetConfig.fontColor
-        fontType = viewModel.favAppWidgetConfig.fontType
-        fontWeight = viewModel.favAppWidgetConfig.fontWeight
-        alignment = viewModel.favAppWidgetConfig.alignment
-        space = viewModel.favAppWidgetConfig.spacing
-        fontSize = viewModel.favAppWidgetConfig.fontSize
-        widget = viewModel.favAppWidgetConfig.maxNumberOfApps
-        caseText = viewModel.favAppWidgetConfig.caseText
+    
+    init(widgetType: WidgetType) {
+        self.widgetType = widgetType
+
+        switch widgetType {
+        case .favApp:
+            widgetBackground = Color(hex: viewModel.favAppWidgetConfig.backgroundColor)
+            fontColor = Color(hex: viewModel.favAppWidgetConfig.fontColor)
+            fontType = viewModel.favAppWidgetConfig.fontType
+            fontWeight = viewModel.favAppWidgetConfig.fontWeight
+            alignment = viewModel.favAppWidgetConfig.alignment
+            space = viewModel.favAppWidgetConfig.spacing
+            fontSize = viewModel.favAppWidgetConfig.fontSize
+            widget = viewModel.favAppWidgetConfig.maxNumberOfApps
+            caseText = viewModel.favAppWidgetConfig.caseText
+            
+        case .todolist:
+            widgetBackground = Color(hex: viewModel.checkListWidgetConfig.backgroundColor)
+            fontColor = Color(hex: viewModel.checkListWidgetConfig.fontColor)
+            fontType = viewModel.checkListWidgetConfig.fontType
+            fontWeight = viewModel.checkListWidgetConfig.fontWeight
+            alignment = viewModel.checkListWidgetConfig.alignment
+            space = viewModel.checkListWidgetConfig.spacing
+            fontSize = viewModel.checkListWidgetConfig.fontSize
+            widget = viewModel.checkListWidgetConfig.maxNumberOfApps
+            caseText = viewModel.checkListWidgetConfig.caseText
+        }
     }
     
     var body: some View {
@@ -272,7 +291,14 @@ struct CustomWidget: View {
                         .onTapGesture {
                             guard isDoneButtonDisabled == false else { return }
                             
-                            viewModel.setNewFavWidgetConfig()
+                            switch widgetType {
+                            case .favApp:
+                                viewModel.setNewFavWidgetConfig()
+                            case .todolist:
+                                viewModel.setTodoWidgetConfig()
+                            }
+                            
+                            //viewModel.setNewFavWidgetConfig()
                             showProgressView()
                             
                             //dismiss()
@@ -330,14 +356,15 @@ struct CustomWidget: View {
                             .padding(.horizontal, 14)
                         }
                         .onChange(of: widgetBackground) { _, _ in
-                            
-                            //print("Farjum in 1 \(widgetBackground.toHex())")
-                            
-                            guard let backgroundcolorHex = widgetBackground.toHex(),
-                                  backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
-                            
-                            //print("Farjum out 2 \(widgetBackground.toHex())")
-                            viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
+                            guard let backgroundcolorHex = widgetBackground.toHex() else { return }
+                            switch widgetType {
+                            case .favApp:
+                                guard backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
+                                viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
+                            case .todolist:
+                                guard backgroundcolorHex != viewModel.checkListWidgetConfig.backgroundColor else { return }
+                                viewModel.checkListWidgetConfig.backgroundColor = backgroundcolorHex
+                            }
                             isDoneButtonDisabled = false
                         }
                     }
@@ -371,89 +398,24 @@ struct CustomWidget: View {
                             .padding(.horizontal, 14)
                         }
                         .onChange(of: widgetBackground) { _, _ in
-                            guard let backgroundcolorHex = widgetBackground.toHex(),
-                                  backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
+//                            guard let backgroundcolorHex = widgetBackground.toHex(),
+//                                  backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
+//                            
+//                            viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
+//                            isDoneButtonDisabled = false
                             
-                            viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
+                            guard let backgroundcolorHex = widgetBackground.toHex() else { return }
+                            switch widgetType {
+                            case .favApp:
+                                guard backgroundcolorHex != viewModel.favAppWidgetConfig.backgroundColor else { return }
+                                viewModel.favAppWidgetConfig.backgroundColor = backgroundcolorHex
+                            case .todolist:
+                                guard backgroundcolorHex != viewModel.checkListWidgetConfig.backgroundColor else { return }
+                                viewModel.checkListWidgetConfig.backgroundColor = backgroundcolorHex
+                            }
                             isDoneButtonDisabled = false
                         }
                     }
-                    
-                    // transperant
-//                    VStack {
-//                        Text("Make weiget Transparent")
-//                        
-//                        
-//
-//                        Button {
-//                            withAnimation(.spring()) {
-//                                transparentToggle.toggle()
-//                            }
-//                        } label: {
-//                            ZStack {
-//                                Capsule()
-//                                    .fill(transparentToggle ? Color.green : Color.gray.opacity(0.4))
-//                                    .frame(width: 60, height: 32)
-//
-//                                Circle()
-//                                    .fill(Color.white)
-//                                    .frame(width: 26, height: 26)
-//                                    .offset(x: transparentToggle ? 14 : -14)
-//                            }
-//                        }
-//                        
-//                        
-//                        ///
-////                        Toggle(isOn: $isOn) {
-////                            Text("Dark Mode")
-////                        }
-////                        .toggleStyle(SwitchToggleStyle(tint: .blue))
-//                    }
-//                    .onChange(of: transparentToggle) { _, _ in
-//                        guard viewModel.favAppWidgetConfig.transparent != transparentToggle else { return }
-//                        viewModel.favAppWidgetConfig.transparent = transparentToggle
-//                        isDoneButtonDisabled = false
-//                    }
-//                    
-//                    // Background image
-//                    VStack {
-//                        Text("Background Image")
-//                            .foregroundColor(Color(hex: "#646464"))
-//                            .font(.system(size: 16))
-//                            .fontWeight(.semibold)
-//                            .padding([.top, .bottom], 10)
-//                            .frame(width: screenWidth * 0.92, alignment: .leading)
-//                        
-//                        ScrollView(.horizontal, showsIndicators: false) {
-//                            HStack(spacing: 14) {
-//                                
-//                                ForEach(weigetWallpaper, id: \.self) { imageName in
-//                                    
-//                                    Image(imageName)
-//                                        .resizable()
-//                                        .scaledToFill()
-//                                        .frame(width: 40, height: 40)
-//                                        .clipShape(RoundedRectangle(cornerRadius: 16))
-//                                        .overlay(
-//                                            RoundedRectangle(cornerRadius: 16)
-//                                                .stroke(
-//                                                    isSelected(value1: widgetBackgroundImage, value2: imageName ) ,
-//                                                    lineWidth: 1
-//                                                )
-//                                        )
-//                                        .frame(width: 40, height: 40)
-//                                        .onTapGesture { widgetBackgroundImage = imageName }
-//                                }
-//                            }
-//                            .padding(.horizontal, 14)
-//                        }
-//                        .onChange(of: widgetBackgroundImage) { _, _ in
-//                            guard viewModel.favAppWidgetConfig.backgroundImage != widgetBackgroundImage else { return }
-//                            viewModel.favAppWidgetConfig.backgroundImage = widgetBackgroundImage
-//                            isDoneButtonDisabled = false
-//                        }
-//                    }
-                    
                     
                     VStack {
                         Text("Text Color")
@@ -498,10 +460,21 @@ struct CustomWidget: View {
                             .padding(.horizontal, 14)
                         }
                         .onChange(of: fontColor) { _, _ in
-                            guard let fontColorHex = fontColor.toHex(),
-                                  fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
+//                            guard let fontColorHex = fontColor.toHex(),
+//                                  fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
+//                            
+//                            viewModel.favAppWidgetConfig.fontColor = fontColorHex
+//                            isDoneButtonDisabled = false
                             
-                            viewModel.favAppWidgetConfig.fontColor = fontColorHex
+                            guard let fontColorHex = fontColor.toHex()else { return }
+                            switch widgetType {
+                            case .favApp:
+                                guard fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
+                                viewModel.favAppWidgetConfig.fontColor = fontColorHex
+                            case .todolist:
+                                guard fontColorHex != viewModel.checkListWidgetConfig.fontColor else { return }
+                                viewModel.checkListWidgetConfig.fontColor = fontColorHex
+                            }
                             isDoneButtonDisabled = false
                         }
                     }
@@ -535,15 +508,20 @@ struct CustomWidget: View {
                             .padding(.horizontal, 14)
                         }
                         .onChange(of: fontColor) { _, _ in
-                            guard let fontColorHex = fontColor.toHex(),
-                                  fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
-                            
-                            viewModel.favAppWidgetConfig.fontColor = fontColorHex
+                            guard let fontColorHex = fontColor.toHex()else { return }
+                            switch widgetType {
+                            case .favApp:
+                                guard fontColorHex != viewModel.favAppWidgetConfig.fontColor else { return }
+                                viewModel.favAppWidgetConfig.fontColor = fontColorHex
+                            case .todolist:
+                                guard fontColorHex != viewModel.checkListWidgetConfig.fontColor else { return }
+                                viewModel.checkListWidgetConfig.fontColor = fontColorHex
+                            }
                             isDoneButtonDisabled = false
                         }
                     }
-                    
-                    
+                
+                    // Mark: Front style
                     VStack {
                         Text("Font Style")
                             .foregroundColor(Color(hex: "#646464"))
@@ -564,10 +542,14 @@ struct CustomWidget: View {
                                         .cornerRadius(10)
                                         .onTapGesture {
                                             fontWeight = option.weight
-                                            
-                                            guard viewModel.favAppWidgetConfig.fontWeight != fontWeight else { return }
-                                            
-                                            viewModel.favAppWidgetConfig.fontWeight = fontWeight
+                                            switch widgetType {
+                                            case .favApp:
+                                                guard viewModel.favAppWidgetConfig.fontWeight != fontWeight else { return }
+                                                viewModel.favAppWidgetConfig.fontWeight = fontWeight
+                                            case .todolist:
+                                                guard viewModel.checkListWidgetConfig.fontWeight != fontWeight else { return }
+                                                viewModel.checkListWidgetConfig.fontWeight = fontWeight
+                                            }
                                             isDoneButtonDisabled = false
                                         }
                                 }
@@ -591,10 +573,14 @@ struct CustomWidget: View {
                                         .cornerRadius(10)
                                         .onTapGesture {
                                             fontType = fontDesing.name.lowercased()
-                                            
-                                            guard viewModel.favAppWidgetConfig.fontType != fontType else { return }
-                                            
-                                            viewModel.favAppWidgetConfig.fontType = fontType
+                                            switch widgetType {
+                                            case .favApp:
+                                                guard viewModel.favAppWidgetConfig.fontType != fontType else { return }
+                                                viewModel.favAppWidgetConfig.fontType = fontType
+                                            case .todolist:
+                                                guard viewModel.checkListWidgetConfig.fontType != fontType else { return }
+                                                viewModel.checkListWidgetConfig.fontType = fontType
+                                            }
                                             isDoneButtonDisabled = false
                                         }
                                     
@@ -673,13 +659,15 @@ struct CustomWidget: View {
                         .frame(width: screenWidth * 0.92, alignment: .leading)
                         .onChange(of: alignment) { oldValue, newValue in
                             guard oldValue != newValue else { return }
-                            viewModel.favAppWidgetConfig.alignment = alignment
+                            switch widgetType {
+                            case .favApp:
+                                viewModel.favAppWidgetConfig.alignment = alignment
+                            case .todolist:
+                                viewModel.checkListWidgetConfig.alignment = alignment
+                            }
                             isDoneButtonDisabled = false
                         }
-                        //.padding(.horizontal, 16)
-                        
                     }
-                    
                     
                     VStack {
                         Text("Font Size")
@@ -694,7 +682,12 @@ struct CustomWidget: View {
                             .tint(Color.blue)
                             .onChange(of: fontSize) { oldValue, newValue in
                                 guard oldValue != newValue else { return }
-                                viewModel.favAppWidgetConfig.fontSize = fontSize
+                                switch widgetType {
+                                case .favApp:
+                                    viewModel.favAppWidgetConfig.fontSize = fontSize
+                                case .todolist:
+                                    viewModel.checkListWidgetConfig.fontSize = fontSize
+                                }
                                 isDoneButtonDisabled = false
                             }
                     }
@@ -712,7 +705,12 @@ struct CustomWidget: View {
                             .tint(Color.blue)
                             .onChange(of: space) { oldValue, newValue in
                                 guard oldValue != newValue else { return }
-                                viewModel.favAppWidgetConfig.spacing = space
+                                switch widgetType {
+                                case .favApp:
+                                    viewModel.favAppWidgetConfig.spacing = space
+                                case .todolist:
+                                    viewModel.checkListWidgetConfig.spacing = space
+                                }
                                 isDoneButtonDisabled = false
                             }
                     }
@@ -747,21 +745,21 @@ struct CustomWidget: View {
                         }
                         .onChange(of: caseText, { oldValue, newValue in
                             guard oldValue != newValue else { return }
-                            viewModel.favAppWidgetConfig.caseText = caseText
+                            switch widgetType {
+                            case .favApp:
+                                viewModel.favAppWidgetConfig.caseText = caseText
+                            case .todolist:
+                                viewModel.checkListWidgetConfig.caseText = caseText
+                            }
                             isDoneButtonDisabled = false
                         })
                         .frame(width: screenWidth * 0.92, alignment: .leading)
                     }
                     
                 }
-                
-
-                
-                
             }
             .background(Color("whiteColor"))
-            //.background(Color("backgroundColor"))
-
+            
             if shouldShowProgressView {
                 Color.black.opacity(0.1)
                     .ignoresSafeArea()
@@ -796,21 +794,7 @@ private extension CustomWidget {
     
 }
 
-#Preview {
-    CustomWidget()
-}
-
-
-//extension Color {
-//    init(hex: String) {
-//        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-//        var int: UInt64 = 0
-//        Scanner(string: hex).scanHexInt64(&int)
-//
-//        let r = Double((int >> 16) & 0xFF) / 255
-//        let g = Double((int >> 8) & 0xFF) / 255
-//        let b = Double(int & 0xFF) / 255
-//
-//        self.init(red: r, green: g, blue: b)
-//    }
+//#Preview {
+//    CustomWidget()
 //}
+

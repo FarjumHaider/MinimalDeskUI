@@ -51,6 +51,7 @@
 		AD700AF02F2BCC1D00175521 /* ChecklistInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */; };
 		AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55C2EE3A5460050762A /* ChecklistView.swift */; };
 		AD88D5602EE3A5690050762A /* CycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55F2EE3A5690050762A /* CycleView.swift */; };
+		AD8BC0682F38CC8100202181 /* ChecklistWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8BC0672F38CC6E00202181 /* ChecklistWidgetConfig.swift */; };
 		ADA256B12EF5D55C00F68031 /* CustomDateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */; };
 		ADC23C522F27E51C00EA0804 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */; };
 		C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A32C39594600825521 /* MinimalDeskApp.swift */; };
@@ -151,6 +152,7 @@
 		AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistInputView.swift; sourceTree = "<group>"; };
 		AD88D55C2EE3A5460050762A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		AD88D55F2EE3A5690050762A /* CycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleView.swift; sourceTree = "<group>"; };
+		AD8BC0672F38CC6E00202181 /* ChecklistWidgetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistWidgetConfig.swift; sourceTree = "<group>"; };
 		ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateWidget.swift; sourceTree = "<group>"; };
 		ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		C84B21A02C39594600825521 /* MinimalDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,6 +426,7 @@
 		AD88D55B2EE3A5160050762A /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
+				AD8BC0672F38CC6E00202181 /* ChecklistWidgetConfig.swift */,
 				AD88D55C2EE3A5460050762A /* ChecklistView.swift */,
 				AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */,
 				ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */,
@@ -714,6 +717,7 @@
 				E045B3902CF4DB0B0043E799 /* PublicModels.swift in Sources */,
 				1223266E2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */,
 				124AF7432C480161008AD47C /* WidgetList.swift in Sources */,
+				AD8BC0682F38CC8100202181 /* ChecklistWidgetConfig.swift in Sources */,
 				1232B2CF2C4187E500DD2FEE /* FirebaseDataViewModel.swift in Sources */,
 				1223266B2CA462C00081A282 /* WidgetViewModel.swift in Sources */,
 				C84B21D32C396F3200825521 /* Widget.swift in Sources */,

@@ -182,8 +182,8 @@ struct CycleView: View {
                                 
                            }
                            .sheet(isPresented: $isPresented) {
-                               CustomWidget()
-                                   .presentationDetents([.fraction(0.45)])
+                               //CustomWidget(widgetType: .todolist)
+                                   //.presentationDetents([.fraction(0.45)])
                                    //.presentationDetents([.medium])
                                    //.presentationDragIndicator(.visible)
 //                                   .presentationDetents(
@@ -246,8 +246,8 @@ struct CycleView: View {
                                 
                            }
                            .sheet(isPresented: $isPresented) {
-                               CustomWidget()
-                                   .presentationDetents([.fraction(0.45)])
+                               //CustomWidget()
+                                   //.presentationDetents([.fraction(0.45)])
                                    //.presentationDetents([.medium])
                                    //.presentationDragIndicator(.visible)
 //                                   .presentationDetents(
@@ -422,10 +422,10 @@ struct CycleView: View {
    @ViewBuilder
    private func CardView(for index: Int, geo: GeometryProxy) -> some View {
        
-       let frameAlignment = Alignment(
-           horizontal: widgetVM.alignmentPair.0,
-           vertical: widgetVM.alignmentPair.1
-       )
+//       let frameAlignment = Alignment(
+//           horizontal: widgetVM.alignmentPair.0,
+//           vertical: widgetVM.alignmentPair.1
+//       )
        
        ZStack(alignment: .bottomTrailing) {
            //VStack(alignment: .leading, spacing: 0) {
@@ -472,7 +472,7 @@ struct CycleView: View {
                                
                                ))
 
-                               .frame(maxWidth: .infinity, alignment: frameAlignment)
+                               //.frame(maxWidth: .infinity, alignment: frameAlignment)
                                .listRowBackground(Color.clear)
                                .listRowInsets(EdgeInsets())
                                .listRowSeparator(.hidden)
@@ -490,11 +490,11 @@ struct CycleView: View {
                    .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
                    .scrollContentBackground(.hidden)
                    //.fontWeight(CustomWidget.FontWeightConverter(weightString: widgetVM.favAppWidgetConfig.fontWeight).value)
-                   .frame(
-                       maxWidth: .infinity,
-                       maxHeight: .infinity,
-                       alignment: frameAlignment
-                   )
+//                   .frame(
+//                       maxWidth: .infinity,
+//                       maxHeight: .infinity,
+//                       alignment: frameAlignment
+//                   )
                    
                }
            }

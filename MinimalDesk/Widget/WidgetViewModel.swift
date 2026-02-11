@@ -22,8 +22,30 @@ class WidgetViewModel: ObservableObject {
         caseText: "default"
     )
     
-    var alignmentPair: (HorizontalAlignment, VerticalAlignment) {
+    var alignmentPairfavApp: (HorizontalAlignment, VerticalAlignment) {
         switch favAppWidgetConfig.alignment {
+        case "left":
+            return (.leading, .center)
+
+        case "right":
+            return (.trailing, .center)
+
+        case "hCenter", "vCenter":
+            return (.center, .center)
+
+        case "top":
+            return (.center, .top)
+
+        case "bottom":
+            return (.center, .bottom)
+            
+        default:
+            return (.center, .bottom)
+        }
+    }
+    
+    var alignmentPairCheckList: (HorizontalAlignment, VerticalAlignment) {
+        switch checkListWidgetConfig.alignment {
         case "left":
             return (.leading, .center)
 
@@ -49,12 +71,14 @@ class WidgetViewModel: ObservableObject {
     private let userdefault = UserDefaults(suiteName: "group.minimaldesk")
     @Published var favAppWidgetConfig: FavAppWidgetConfig
     
+    @Published var checkListWidgetConfig: ChecklistWidgetConfig
+    
     @Published var dateConfig: DateConfig
     
     private init() {
         favAppWidgetConfig = FavAppWidgetConfig.defaultConfig
-        
         dateConfig = DateConfig.defaultConfig
+        checkListWidgetConfig = ChecklistWidgetConfig.defaultConfig
         
         let config = userdefault?.value(forKey: "favorite-apps-config") as? Data ?? Data()
         if let widgetConfig = try? JSONDecoder().decode(FavAppWidgetConfig.self, from: config) {
@@ -64,6 +88,11 @@ class WidgetViewModel: ObservableObject {
         let config1 = userdefault?.value(forKey: "favorite-date-config") as? Data ?? Data()
         if let widgetConfig1 = try? JSONDecoder().decode(DateConfig.self, from: config1) {
             dateConfig = widgetConfig1
+        }
+        
+        let configChecklist = userdefault?.value(forKey: "todo-list-config") as? Data ?? Data()
+        if let configWidgetChecklist = try? JSONDecoder().decode(ChecklistWidgetConfig.self, from: configChecklist) {
+            checkListWidgetConfig = configWidgetChecklist
         }
     }
 }
@@ -90,6 +119,17 @@ extension WidgetViewModel {
         WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget3")
         WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget4")
         WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget5")
+    }
+    
+    func setTodoWidgetConfig() {
+        userdefault?.setValue(try? JSONEncoder().encode(checkListWidgetConfig), forKey: "todo-list-config")
+        // TODO
+//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget0")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget1")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget2")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget3")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget4")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget5")
     }
     
     func setDateWidgetConfig() {

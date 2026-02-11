@@ -188,7 +188,7 @@ struct ChecklistView: View {
                                 
                            }
                            .sheet(isPresented: $isPresented) {
-                               CustomWidget()
+                               CustomWidget(widgetType: .todolist)
                                    .presentationDetents([.fraction(0.45)])
                            }
 
@@ -298,8 +298,8 @@ struct ChecklistView: View {
    private func CardView(for index: Int, geo: GeometryProxy) -> some View {
        
        let frameAlignment = Alignment(
-           horizontal: widgetVM.alignmentPair.0,
-           vertical: widgetVM.alignmentPair.1
+           horizontal: widgetVM.alignmentPairCheckList.0,
+           vertical: widgetVM.alignmentPairCheckList.1
        )
        
        ZStack(alignment: .bottomTrailing) {
@@ -312,27 +312,27 @@ struct ChecklistView: View {
                        .frame(width: 30, height: 30)
                        .foregroundColor(.white)
                } else {
-                   VStack(spacing: widgetVM.favAppWidgetConfig.spacing) {
+                   VStack(spacing: widgetVM.checkListWidgetConfig.spacing) {
                        //ForEach($selectedItems.indices, id: \.self) { index in
                        ForEach(viewModel.todoListView[index].indices, id: \.self) { itemIndex in
                            let todo = viewModel.todoListView[index][itemIndex]
                            
                            Text(todo.title)
                                .strikethrough(todo.isCompleted)
-                               .foregroundColor(Color(hex: widgetVM.favAppWidgetConfig.fontColor))
+                               .foregroundColor(Color(hex: widgetVM.checkListWidgetConfig.fontColor))
                                .opacity(todo.isCompleted ? 0.4 : 1)
-                               .textCase(widgetVM.favAppWidgetConfig.caseText == "default" ? nil : .uppercase)
+                               .textCase(widgetVM.checkListWidgetConfig.caseText == "default" ? nil : .uppercase)
                                .font(.system(
                                 
-                                    size: widgetVM.favAppWidgetConfig.fontSize,
-                                    weight: CustomWidget.FontWeightConverter(weightString:widgetVM.favAppWidgetConfig.fontWeight).value,
-                                    design: CustomWidget.FontTypeConverter(FontString: widgetVM.favAppWidgetConfig.fontType).value
+                                    size: widgetVM.checkListWidgetConfig.fontSize,
+                                    weight: CustomWidget.FontWeightConverter(weightString:widgetVM.checkListWidgetConfig.fontWeight).value,
+                                    design: CustomWidget.FontTypeConverter(FontString: widgetVM.checkListWidgetConfig.fontType).value
                                
                                ))
 
                                .frame(maxWidth: .infinity, alignment: frameAlignment)
                                .listRowBackground(Color.clear)
-                               .background(Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
+                               .background(Color(hex: widgetVM.checkListWidgetConfig.backgroundColor))
                                .onTapGesture {
                                    viewModel.toggleCompletion(index: index, itemIndex: itemIndex)
                                }
@@ -352,7 +352,7 @@ struct ChecklistView: View {
                    
                }
            }
-           .background(index == viewModel.cards ? Color.clear : Color(hex: widgetVM.favAppWidgetConfig.backgroundColor))
+           .background(index == viewModel.cards ? Color.clear : Color(hex: widgetVM.checkListWidgetConfig.backgroundColor))
            //.font(Font.custom( widgetVM.favAppWidgetConfig.fontType, size: 50))
            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.45)
            .background(index == viewModel.cards ? Color.gray.opacity(0.3) : Color.clear)

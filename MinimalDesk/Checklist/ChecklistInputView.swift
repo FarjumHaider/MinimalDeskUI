@@ -31,6 +31,8 @@ struct ChecklistInputView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
+                Color("backgroundColor")
+                    .ignoresSafeArea()
                 VStack{
                     VStack {
                         
@@ -42,17 +44,18 @@ struct ChecklistInputView: View {
                                         text: $viewModel.todoListView[cardIndex][index].title
                                     )
                                     .strikethrough(viewModel.todoListView[cardIndex][index].isCompleted)
-                                    
+                                    .foregroundColor(Color("textColor"))
+                                    .opacity(viewModel.todoListView[cardIndex][index].isCompleted ? 0.4 : 1)
                                     
                                     Button {
                                         selectedIndex = index
                                         showActions = true
                                     } label: {
                                         Image(systemName: "ellipsis")
-                                            .foregroundColor(.black)
+                                            .foregroundColor(Color("textColor"))
                                     }
                                 }
-                                .listRowBackground(Color.gray)
+                                .listRowBackground(Color("whiteColor"))
                                 //.padding(.vertical, 4)
                             }
                             
@@ -60,7 +63,7 @@ struct ChecklistInputView: View {
                                 TextField("Add new item", text: $todoName, onCommit: {
                                     addNewItem()
                                 })
-                                .listRowBackground(Color.gray)
+                                .listRowBackground(Color("whiteColor"))
                                 //.padding()
                             }
                             
@@ -72,7 +75,7 @@ struct ChecklistInputView: View {
                                     Text("Add new item")
                                 }
                             }
-                            .listRowBackground(Color.gray)
+                            .listRowBackground(Color("whiteColor"))
                         }
                         .listRowInsets(EdgeInsets())
                         .listStyle(.insetGrouped)
@@ -91,17 +94,24 @@ struct ChecklistInputView: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    Text("Checklist #2")
-                        .font(.headline)
-                    Image(systemName: "chevron.down")
-                        .font(.caption)
+            ToolbarItem(placement: .navigationBarLeading) {
+//                HStack {
+//                    Text("Checklist #2")
+//                        .font(.headline)
+//                    Image(systemName: "chevron.down")
+//                        .font(.caption)
+//                }
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.blue)
                 }
+                
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Done") {
+                Button("Save") {
                     viewModel.saveTodoList(for: cardIndex)
                     if cardIndex == viewModel.cards {
                         viewModel.cards += 1
@@ -110,6 +120,7 @@ struct ChecklistInputView: View {
                     dismiss()
                     
                 }
+                .foregroundColor(.blue)
             }
         }
         .confirmationDialog("", isPresented: $showActions, titleVisibility: .hidden) {
@@ -128,25 +139,13 @@ struct ChecklistInputView: View {
         .onAppear {
             //initialFetch()
         }
-//        .sheet(isPresented: $isPresented) {
-//            CustomWidget()
-//        }
     }
     
 
 }
 
-//extension ChecklistInputView {
-//    func initialFetch() {
-//        viewModel.todoListView[cardIndex].forEach { todoItem in
-//            selectedItems.insert(todoItem)
-//        }
-//    }
-//}
-//
-//
 extension ChecklistInputView {
-    // MARK: - Add new item
+    // Add new item
     private func addNewItem() {
         let trimmed = todoName.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
@@ -159,16 +158,14 @@ extension ChecklistInputView {
         viewModel.todoListView[cardIndex].append(TodoItem(title: trimmed, isCompleted: false))
         showNewItemField = false
     }
-//    
-//    
-//    // MARK: - unmark / mark item
+
+    // unmark / mark item
     private func toggleCompletion() {
        // guard let selectedIndex else { return }
         viewModel.todoListView[cardIndex][selectedIndex].isCompleted.toggle()
     }
-//    
-//    
-//    // MARK: - Delete item
+
+    // Delete item
     private func removeItem() {
         //guard let selectedIndex else { return }
         viewModel.todoListView[cardIndex].remove(at: selectedIndex)

@@ -188,7 +188,7 @@ struct AddView: View {
                                 
                            }
                            .sheet(isPresented: $isPresented) {
-                               CustomWidget()
+                               CustomWidget(widgetType: .favApp)
                                    .presentationDetents([.fraction(0.45)])
                                    //.presentationDetents([.medium])
                                    //.presentationDragIndicator(.visible)
@@ -365,8 +365,8 @@ struct AddView: View {
    private func CardView(for index: Int, geo: GeometryProxy) -> some View {
        
        let frameAlignment = Alignment(
-           horizontal: widgetVM.alignmentPair.0,
-           vertical: widgetVM.alignmentPair.1
+            horizontal: widgetVM.alignmentPairfavApp.0,
+            vertical: widgetVM.alignmentPairfavApp.1
        )
        
        ZStack(alignment: .bottomTrailing) {
