@@ -51,9 +51,16 @@
 		AD700AF02F2BCC1D00175521 /* ChecklistInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */; };
 		AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55C2EE3A5460050762A /* ChecklistView.swift */; };
 		AD88D5602EE3A5690050762A /* CycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55F2EE3A5690050762A /* CycleView.swift */; };
-		AD8BC0682F38CC8100202181 /* ChecklistWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8BC0672F38CC6E00202181 /* ChecklistWidgetConfig.swift */; };
+		ADA0C5622F3F7DF100E80C49 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
+		ADA0C5672F3F800B00E80C49 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
+		ADA0C5692F3F802200E80C49 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
 		ADA256B12EF5D55C00F68031 /* CustomDateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */; };
 		ADC23C522F27E51C00EA0804 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */; };
+		ADCAD22A2F42631F0088C57D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07AC1852CF79B2F001B9814 /* Store.swift */; };
+		ADCAD22B2F4263440088C57D /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
+		ADD621E42F426163002F5900 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FB2C46279B008AD47C /* WidgetKit.framework */; };
+		ADD621E52F426163002F5900 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FD2C46279B008AD47C /* SwiftUI.framework */; };
+		ADD621F22F426164002F5900 /* ChecklistWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ADD621E32F426163002F5900 /* ChecklistWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A32C39594600825521 /* MinimalDeskApp.swift */; };
 		C84B21A62C39594600825521 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A52C39594600825521 /* RootView.swift */; };
 		C84B21A82C39594800825521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C84B21A72C39594800825521 /* Assets.xcassets */; };
@@ -98,6 +105,13 @@
 			remoteGlobalIDString = 12C249132C5F77C200074874;
 			remoteInfo = FavAppWidgetExtension;
 		};
+		ADD621F02F426164002F5900 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C84B21982C39594600825521 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADD621E22F426163002F5900;
+			remoteInfo = ChecklistWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -109,6 +123,7 @@
 			files = (
 				12C249212C5F77C300074874 /* FavAppWidgetExtension.appex in Embed Foundation Extensions */,
 				124AF7372C47A3F6008AD47C /* MinimalDeskDateWidgetExtension.appex in Embed Foundation Extensions */,
+				ADD621F22F426164002F5900 /* ChecklistWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,9 +167,12 @@
 		AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistInputView.swift; sourceTree = "<group>"; };
 		AD88D55C2EE3A5460050762A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		AD88D55F2EE3A5690050762A /* CycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleView.swift; sourceTree = "<group>"; };
-		AD8BC0672F38CC6E00202181 /* ChecklistWidgetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistWidgetConfig.swift; sourceTree = "<group>"; };
+		ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateWidget.swift; sourceTree = "<group>"; };
+		ADACD8A12F4326CC002C4B8E /* ChecklistWidgetExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChecklistWidgetExtensionDebug.entitlements; sourceTree = "<group>"; };
 		ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
+		ADD621E32F426163002F5900 /* ChecklistWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChecklistWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADD621FB2F4261EB002F5900 /* ChecklistWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChecklistWidgetExtension.entitlements; sourceTree = "<group>"; };
 		C84B21A02C39594600825521 /* MinimalDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MinimalDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C84B21A32C39594600825521 /* MinimalDeskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalDeskApp.swift; sourceTree = "<group>"; };
 		C84B21A52C39594600825521 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -178,6 +196,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		ADD621F62F426164002F5900 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = ADD621E22F426163002F5900 /* ChecklistWidgetExtension */;
+		};
+		ADD621FA2F4261AF002F5900 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ChecklistWidgetConfig.swift,
+			);
+			target = C84B219F2C39594600825521 /* MinimalDesk */;
+		};
 		ADFD201D2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -271,6 +303,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		12AD57982C9F5CF3009903E9 /* Font */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ADFD201D2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ADFD201E2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Font; sourceTree = "<group>"; };
+		ADD621E62F426163002F5900 /* ChecklistWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ADD621FA2F4261AF002F5900 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ADD621F62F426164002F5900 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ChecklistWidget; sourceTree = "<group>"; };
 		E045AC902CF10B0D0043E799 /* Videos */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (CE9861412DC24FC700C5D224 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Videos; sourceTree = "<group>"; };
 		E05DD7D02D04D2E7001A0266 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -291,6 +324,15 @@
 			files = (
 				12C249162C5F77C200074874 /* SwiftUI.framework in Frameworks */,
 				12C249152C5F77C200074874 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADD621E02F426163002F5900 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADD621E52F426163002F5900 /* SwiftUI.framework in Frameworks */,
+				ADD621E42F426163002F5900 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +468,6 @@
 		AD88D55B2EE3A5160050762A /* Checklist */ = {
 			isa = PBXGroup;
 			children = (
-				AD8BC0672F38CC6E00202181 /* ChecklistWidgetConfig.swift */,
 				AD88D55C2EE3A5460050762A /* ChecklistView.swift */,
 				AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */,
 				ADC23C512F27E50B00EA0804 /* ChecklistViewModel.swift */,
@@ -442,9 +483,18 @@
 			path = Cycle;
 			sourceTree = "<group>";
 		};
+		ADA0C5602F3F7DE300E80C49 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C84B21972C39594600825521 = {
 			isa = PBXGroup;
 			children = (
+				ADACD8A12F4326CC002C4B8E /* ChecklistWidgetExtensionDebug.entitlements */,
 				E07854552CF7B64C00E654DC /* PropertyList.plist */,
 				E07AC1852CF79B2F001B9814 /* Store.swift */,
 				E07AC17F2CF77091001B9814 /* MinimalDeskStoreKit.storekit */,
@@ -452,11 +502,13 @@
 				E045AC902CF10B0D0043E799 /* Videos */,
 				12C249252C5F792900074874 /* FavAppWidgetExtension.entitlements */,
 				124AF73B2C47D613008AD47C /* MinimalDeskDateWidgetExtension.entitlements */,
+				ADD621FB2F4261EB002F5900 /* ChecklistWidgetExtension.entitlements */,
 				C84B21A32C39594600825521 /* MinimalDeskApp.swift */,
 				12AD57982C9F5CF3009903E9 /* Font */,
 				C84B21A22C39594600825521 /* MinimalDesk */,
 				124AF72D2C47A3F5008AD47C /* MinimalDeskDateWidget */,
 				12C249172C5F77C200074874 /* FavAppWidget */,
+				ADD621E62F426163002F5900 /* ChecklistWidget */,
 				124AF6FA2C46279B008AD47C /* Frameworks */,
 				C84B21A12C39594600825521 /* Products */,
 			);
@@ -468,6 +520,7 @@
 				C84B21A02C39594600825521 /* MinimalDesk.app */,
 				124AF72A2C47A3F5008AD47C /* MinimalDeskDateWidgetExtension.appex */,
 				12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */,
+				ADD621E32F426163002F5900 /* ChecklistWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -475,6 +528,7 @@
 		C84B21A22C39594600825521 /* MinimalDesk */ = {
 			isa = PBXGroup;
 			children = (
+				ADA0C5602F3F7DE300E80C49 /* Extensions */,
 				AD0E6D432F20087C00D49356 /* MinimalDeskRelease.entitlements */,
 				AD88D55E2EE3A5550050762A /* Cycle */,
 				AD88D55B2EE3A5160050762A /* Checklist */,
@@ -540,6 +594,28 @@
 			productReference = 12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		ADD621E22F426163002F5900 /* ChecklistWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADD621F32F426164002F5900 /* Build configuration list for PBXNativeTarget "ChecklistWidgetExtension" */;
+			buildPhases = (
+				ADD621DF2F426163002F5900 /* Sources */,
+				ADD621E02F426163002F5900 /* Frameworks */,
+				ADD621E12F426163002F5900 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				ADD621E62F426163002F5900 /* ChecklistWidget */,
+			);
+			name = ChecklistWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = ChecklistWidgetExtension;
+			productReference = ADD621E32F426163002F5900 /* ChecklistWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C84B219F2C39594600825521 /* MinimalDesk */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C84B21C42C39594800825521 /* Build configuration list for PBXNativeTarget "MinimalDesk" */;
@@ -554,6 +630,7 @@
 			dependencies = (
 				124AF7362C47A3F6008AD47C /* PBXTargetDependency */,
 				12C249202C5F77C300074874 /* PBXTargetDependency */,
+				ADD621F12F426164002F5900 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				12AD57982C9F5CF3009903E9 /* Font */,
@@ -598,6 +675,9 @@
 					12C249132C5F77C200074874 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					ADD621E22F426163002F5900 = {
+						CreatedOnToolsVersion = 16.3;
+					};
 					C84B219F2C39594600825521 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -627,6 +707,7 @@
 				C84B219F2C39594600825521 /* MinimalDesk */,
 				124AF7292C47A3F5008AD47C /* MinimalDeskDateWidgetExtension */,
 				12C249132C5F77C200074874 /* FavAppWidgetExtension */,
+				ADD621E22F426163002F5900 /* ChecklistWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -647,6 +728,13 @@
 			files = (
 				E07AC1822CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */,
 				12C2491D2C5F77C300074874 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADD621E12F426163002F5900 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				124AF7312C47A3F5008AD47C /* MinimalDeskDateWidget.swift in Sources */,
+				ADA0C5692F3F802200E80C49 /* ColorExtensions.swift in Sources */,
 				124AF7412C47F88E008AD47C /* DateWidgetViews.swift in Sources */,
 				124AF72F2C47A3F5008AD47C /* MinimalDeskDateWidgetBundle.swift in Sources */,
 				1223266F2CA4DADE0081A282 /* FavAppWidgetConfig.swift in Sources */,
@@ -682,6 +771,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1223266D2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */,
+				ADA0C5672F3F800B00E80C49 /* ColorExtensions.swift in Sources */,
 				127EC5AF2CA09E650083616A /* ToastView.swift in Sources */,
 				12C249192C5F77C200074874 /* FavAppWidgetBundle.swift in Sources */,
 				CE4C5CAD2DFAA9ED0010F6BD /* Store.swift in Sources */,
@@ -693,11 +783,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADD621DF2F426163002F5900 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADCAD22A2F42631F0088C57D /* Store.swift in Sources */,
+				ADCAD22B2F4263440088C57D /* ColorExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C84B219C2C39594600825521 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				127EC5B02CA09E650083616A /* ToastView.swift in Sources */,
+				ADA0C5622F3F7DF100E80C49 /* ColorExtensions.swift in Sources */,
 				CEC2730D2DE253EF00B8EA1F /* SafariView.swift in Sources */,
 				C84B21D72C39702800825521 /* Settings.swift in Sources */,
 				C84B21A62C39594600825521 /* RootView.swift in Sources */,
@@ -717,7 +817,6 @@
 				E045B3902CF4DB0B0043E799 /* PublicModels.swift in Sources */,
 				1223266E2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */,
 				124AF7432C480161008AD47C /* WidgetList.swift in Sources */,
-				AD8BC0682F38CC8100202181 /* ChecklistWidgetConfig.swift in Sources */,
 				1232B2CF2C4187E500DD2FEE /* FirebaseDataViewModel.swift in Sources */,
 				1223266B2CA462C00081A282 /* WidgetViewModel.swift in Sources */,
 				C84B21D32C396F3200825521 /* Widget.swift in Sources */,
@@ -746,6 +845,11 @@
 			isa = PBXTargetDependency;
 			target = 12C249132C5F77C200074874 /* FavAppWidgetExtension */;
 			targetProxy = 12C2491F2C5F77C300074874 /* PBXContainerItemProxy */;
+		};
+		ADD621F12F426164002F5900 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADD621E22F426163002F5900 /* ChecklistWidgetExtension */;
+			targetProxy = ADD621F02F426164002F5900 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -862,6 +966,66 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.FavAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ADD621F42F426164002F5900 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ChecklistWidgetExtensionDebug.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChecklistWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ChecklistWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.ChecklistWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ADD621F52F426164002F5900 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ChecklistWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChecklistWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ChecklistWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.ChecklistWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1088,6 +1252,15 @@
 			buildConfigurations = (
 				12C249232C5F77C300074874 /* Debug */,
 				12C249242C5F77C300074874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADD621F32F426164002F5900 /* Build configuration list for PBXNativeTarget "ChecklistWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADD621F42F426164002F5900 /* Debug */,
+				ADD621F52F426164002F5900 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

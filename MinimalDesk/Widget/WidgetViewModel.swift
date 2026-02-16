@@ -123,13 +123,12 @@ extension WidgetViewModel {
     
     func setTodoWidgetConfig() {
         userdefault?.setValue(try? JSONEncoder().encode(checkListWidgetConfig), forKey: "todo-list-config")
-        // TODO
-//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget0")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget1")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget2")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget3")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget4")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "FavAppWidget5")
+
+        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget0")
+        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget1")
+        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget2")
+        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget3")
+        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget4")
     }
     
     func setDateWidgetConfig() {

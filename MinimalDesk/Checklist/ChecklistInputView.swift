@@ -15,6 +15,7 @@ struct ChecklistInputView: View {
     @State private var showActions = false
     @State private var todoName = ""
     @State var showToast =  false
+    @State var showDeleteCard =  false
     
     @ObservedObject private var viewModel: ChecklistViewModel
     private var cardIndex: Int = 0
@@ -37,45 +38,60 @@ struct ChecklistInputView: View {
                     VStack {
                         
                         List {
-                            ForEach(viewModel.todoListView[cardIndex].indices, id: \.self) { index in
-                                HStack {
-                                    TextField(
-                                        "Todo",
-                                        text: $viewModel.todoListView[cardIndex][index].title
-                                    )
-                                    .strikethrough(viewModel.todoListView[cardIndex][index].isCompleted)
-                                    .foregroundColor(Color("textColor"))
-                                    .opacity(viewModel.todoListView[cardIndex][index].isCompleted ? 0.4 : 1)
-                                    
-                                    Button {
-                                        selectedIndex = index
-                                        showActions = true
-                                    } label: {
-                                        Image(systemName: "ellipsis")
-                                            .foregroundColor(Color("textColor"))
+                            Section{
+                                ForEach(viewModel.todoListView[cardIndex].indices, id: \.self) { index in
+                                    HStack {
+                                        TextField (
+                                            "Todo",
+                                            text: $viewModel.todoListView[cardIndex][index].title
+                                        )
+                                        .strikethrough(viewModel.todoListView[cardIndex][index].isCompleted)
+                                        .foregroundColor(Color("textColor"))
+                                        .opacity(viewModel.todoListView[cardIndex][index].isCompleted ? 0.4 : 1)
+                                        
+                                        Button {
+                                            selectedIndex = index
+                                            showActions = true
+                                        } label: {
+                                            Image(systemName: "ellipsis")
+                                                .foregroundColor(Color("textColor"))
+                                        }
+                                    }
+                                    .listRowBackground(Color("whiteColor"))
+                                    //.padding(.vertical, 4)
+                                }
+                                
+                                if showNewItemField {
+                                    TextField("Add new item", text: $todoName, onCommit: {
+                                        addNewItem()
+                                    })
+                                    .listRowBackground(Color("whiteColor"))
+                                    //.padding()
+                                }
+                                
+                                Button {
+                                    checkCount()
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "plus.circle.fill")
+                                        Text("Add new item")
                                     }
                                 }
                                 .listRowBackground(Color("whiteColor"))
-                                //.padding(.vertical, 4)
                             }
                             
-                            if showNewItemField {
-                                TextField("Add new item", text: $todoName, onCommit: {
-                                    addNewItem()
-                                })
-                                .listRowBackground(Color("whiteColor"))
-                                //.padding()
-                            }
-                            
-                            Button {
-                                checkCount()
-                            } label: {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                    Text("Add new item")
+                            Section {
+                                Button {
+                                    showDeleteCard = true
+                                } label: {
+                                    HStack {
+                                        //Image(systemName: "plus.circle.fill")
+                                        Text("Delete Completed Items")
+                                            .foregroundColor(Color.red)
+                                    }
                                 }
+                                .listRowBackground(Color("whiteColor"))
                             }
-                            .listRowBackground(Color("whiteColor"))
                         }
                         .listRowInsets(EdgeInsets())
                         .listStyle(.insetGrouped)
@@ -83,6 +99,8 @@ struct ChecklistInputView: View {
                         .background(Color.clear)
                         .listRowSeparator(.visible)
                         //.frame(width: geo.size.width * 0.9)
+                        
+  
                     }
                     
                     Spacer()
@@ -93,6 +111,24 @@ struct ChecklistInputView: View {
                 }
             }
         }
+        .overlay(
+            Group {
+                if showDeleteCard {
+                    ActionCardToast(
+                        title: "Delete Comppleted Items",
+                        subTitle: "Are you sure you want to delete all completed items? this action can't be undone",
+                        onCancel: {
+                            showDeleteCard = false
+                        },
+                        onDelete: {
+                            //removeAllItem()
+                            showDeleteCard = false
+                        }
+                    )
+                }
+            }
+        )
+        .animation(.spring(), value: showDeleteCard)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
 //                HStack {
@@ -124,20 +160,14 @@ struct ChecklistInputView: View {
             }
         }
         .confirmationDialog("", isPresented: $showActions, titleVisibility: .hidden) {
-            //guard let selectedIndex else { return }
-            
-            //viewModel.todoListView[cardIndex][selectedIndex].isCompleted ? "Mark as Undone" :
-            
-            Button("Mark as Done") {
+            //if
+            Button(viewModel.todoListView[cardIndex][selectedIndex].isCompleted ? "Mark as Undone" : "Mark as Done") {
                 toggleCompletion()
             }
 
             Button("Remove", role: .destructive) {
                 removeItem()
             }
-        }
-        .onAppear {
-            //initialFetch()
         }
     }
     
@@ -169,6 +199,11 @@ extension ChecklistInputView {
     private func removeItem() {
         //guard let selectedIndex else { return }
         viewModel.todoListView[cardIndex].remove(at: selectedIndex)
+    }
+    
+    private func removeAllItem() {
+        //guard let selectedIndex else { return }
+        viewModel.todoListView[cardIndex] = []
     }
     
     private func checkCount() {
