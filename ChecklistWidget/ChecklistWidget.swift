@@ -171,7 +171,6 @@ struct ChecklistWidgetEntryView : View {
             }
         }
         .onAppear {
-            print("Farjum: \(widgetConfig.fontColor)")
             self.isSubscribed = Store.shared.userHasActivePurchase()
             
             let userDefault = UserDefaults(suiteName: "group.minimaldesk") ?? UserDefaults()

@@ -20,10 +20,10 @@ struct ChecklistInputView: View {
     @ObservedObject private var viewModel: ChecklistViewModel
     private var cardIndex: Int = 0
     
-    @State private var selectedItems: Set<TodoItem> = []
+    //@State private var selectedItems: Set<TodoItem> = []
     @State private var selectedIndex: Int = 0
     
-    init(viewModel: ChecklistViewModel, cardIndex: Int = 0) {
+    init(viewModel: ChecklistViewModel, cardIndex: Int) {
         self.viewModel = viewModel
         self.cardIndex = cardIndex
         //initialFetch()
@@ -121,7 +121,7 @@ struct ChecklistInputView: View {
                             showDeleteCard = false
                         },
                         onDelete: {
-                            //removeAllItem()
+                            removeAllItem()
                             showDeleteCard = false
                         }
                     )
@@ -160,14 +160,16 @@ struct ChecklistInputView: View {
             }
         }
         .confirmationDialog("", isPresented: $showActions, titleVisibility: .hidden) {
-            //if
-            Button(viewModel.todoListView[cardIndex][selectedIndex].isCompleted ? "Mark as Undone" : "Mark as Done") {
-                toggleCompletion()
+            if !viewModel.todoListView[cardIndex].isEmpty {
+                Button(viewModel.todoListView[cardIndex][selectedIndex].isCompleted ? "Mark as Undone" : "Mark as Done") {
+                    toggleCompletion()
+                }
+
+                Button("Remove", role: .destructive) {
+                    removeItem()
+                }
             }
 
-            Button("Remove", role: .destructive) {
-                removeItem()
-            }
         }
     }
     
@@ -203,7 +205,8 @@ extension ChecklistInputView {
     
     private func removeAllItem() {
         //guard let selectedIndex else { return }
-        viewModel.todoListView[cardIndex] = []
+        //viewModel.todoListView[cardIndex] = []
+        viewModel.todoListView[cardIndex].removeAll()
     }
     
     private func checkCount() {

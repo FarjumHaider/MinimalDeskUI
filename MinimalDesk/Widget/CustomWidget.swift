@@ -14,6 +14,7 @@ struct CustomWidget: View {
     enum WidgetType {
         case favApp
         case todolist
+        case cycleList
     }
     
     private let viewModel = WidgetViewModel.shared
@@ -263,6 +264,16 @@ struct CustomWidget: View {
             fontSize = viewModel.checkListWidgetConfig.fontSize
             widget = viewModel.checkListWidgetConfig.maxNumberOfApps
             caseText = viewModel.checkListWidgetConfig.caseText
+        case .cycleList:
+            widgetBackground = Color(hex: viewModel.cycleWidgetConfig.backgroundColor)
+            fontColor = Color(hex: viewModel.cycleWidgetConfig.fontColor)
+            fontType = viewModel.cycleWidgetConfig.fontType
+            fontWeight = viewModel.cycleWidgetConfig.fontWeight
+            alignment = viewModel.cycleWidgetConfig.alignment
+            space = viewModel.cycleWidgetConfig.spacing
+            fontSize = viewModel.cycleWidgetConfig.fontSize
+            widget = viewModel.cycleWidgetConfig.maxNumberOfApps
+            caseText = viewModel.cycleWidgetConfig.caseText
         }
     }
     
@@ -296,6 +307,8 @@ struct CustomWidget: View {
                                 viewModel.setNewFavWidgetConfig()
                             case .todolist:
                                 viewModel.setTodoWidgetConfig()
+                            case .cycleList:
+                                viewModel.setCycleWidgetConfig()
                             }
                             
                             //viewModel.setNewFavWidgetConfig()
@@ -364,6 +377,9 @@ struct CustomWidget: View {
                             case .todolist:
                                 guard backgroundcolorHex != viewModel.checkListWidgetConfig.backgroundColor else { return }
                                 viewModel.checkListWidgetConfig.backgroundColor = backgroundcolorHex
+                            case .cycleList:
+                                guard backgroundcolorHex != viewModel.cycleWidgetConfig.backgroundColor else { return }
+                                viewModel.cycleWidgetConfig.backgroundColor = backgroundcolorHex
                             }
                             isDoneButtonDisabled = false
                         }
@@ -412,6 +428,9 @@ struct CustomWidget: View {
                             case .todolist:
                                 guard backgroundcolorHex != viewModel.checkListWidgetConfig.backgroundColor else { return }
                                 viewModel.checkListWidgetConfig.backgroundColor = backgroundcolorHex
+                            case .cycleList:
+                                guard backgroundcolorHex != viewModel.cycleWidgetConfig.backgroundColor else { return }
+                                viewModel.cycleWidgetConfig.backgroundColor = backgroundcolorHex
                             }
                             isDoneButtonDisabled = false
                         }
@@ -474,6 +493,9 @@ struct CustomWidget: View {
                             case .todolist:
                                 guard fontColorHex != viewModel.checkListWidgetConfig.fontColor else { return }
                                 viewModel.checkListWidgetConfig.fontColor = fontColorHex
+                            case .cycleList:
+                                guard fontColorHex != viewModel.cycleWidgetConfig.fontColor else { return }
+                                viewModel.cycleWidgetConfig.fontColor = fontColorHex
                             }
                             isDoneButtonDisabled = false
                         }
@@ -516,6 +538,9 @@ struct CustomWidget: View {
                             case .todolist:
                                 guard fontColorHex != viewModel.checkListWidgetConfig.fontColor else { return }
                                 viewModel.checkListWidgetConfig.fontColor = fontColorHex
+                            case .cycleList:
+                                guard fontColorHex != viewModel.cycleWidgetConfig.fontColor else { return }
+                                viewModel.cycleWidgetConfig.fontColor = fontColorHex
                             }
                             isDoneButtonDisabled = false
                         }
@@ -549,6 +574,9 @@ struct CustomWidget: View {
                                             case .todolist:
                                                 guard viewModel.checkListWidgetConfig.fontWeight != fontWeight else { return }
                                                 viewModel.checkListWidgetConfig.fontWeight = fontWeight
+                                            case .cycleList:
+                                                guard viewModel.cycleWidgetConfig.fontWeight != fontWeight else { return }
+                                                viewModel.cycleWidgetConfig.fontWeight = fontWeight
                                             }
                                             isDoneButtonDisabled = false
                                         }
@@ -580,6 +608,9 @@ struct CustomWidget: View {
                                             case .todolist:
                                                 guard viewModel.checkListWidgetConfig.fontType != fontType else { return }
                                                 viewModel.checkListWidgetConfig.fontType = fontType
+                                            case .cycleList:
+                                                guard viewModel.cycleWidgetConfig.fontType != fontType else { return }
+                                                viewModel.cycleWidgetConfig.fontType = fontType
                                             }
                                             isDoneButtonDisabled = false
                                         }
@@ -664,6 +695,8 @@ struct CustomWidget: View {
                                 viewModel.favAppWidgetConfig.alignment = alignment
                             case .todolist:
                                 viewModel.checkListWidgetConfig.alignment = alignment
+                            case .cycleList:
+                                viewModel.cycleWidgetConfig.alignment = alignment
                             }
                             isDoneButtonDisabled = false
                         }
@@ -687,6 +720,8 @@ struct CustomWidget: View {
                                     viewModel.favAppWidgetConfig.fontSize = fontSize
                                 case .todolist:
                                     viewModel.checkListWidgetConfig.fontSize = fontSize
+                                case .cycleList:
+                                    viewModel.cycleWidgetConfig.fontSize = fontSize
                                 }
                                 isDoneButtonDisabled = false
                             }
@@ -710,6 +745,8 @@ struct CustomWidget: View {
                                     viewModel.favAppWidgetConfig.spacing = space
                                 case .todolist:
                                     viewModel.checkListWidgetConfig.spacing = space
+                                case .cycleList:
+                                    viewModel.cycleWidgetConfig.spacing = space
                                 }
                                 isDoneButtonDisabled = false
                             }
@@ -732,7 +769,6 @@ struct CustomWidget: View {
                                 .onTapGesture {
                                     caseText = "uppercase"
                                 }
-                            //.textCase(.uppercase)
                             Text("Ab")
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 30)
@@ -741,7 +777,6 @@ struct CustomWidget: View {
                                 .onTapGesture {
                                     caseText = "default"
                                 }
-                            //.textCase(.uppercase)
                         }
                         .onChange(of: caseText, { oldValue, newValue in
                             guard oldValue != newValue else { return }
@@ -750,6 +785,8 @@ struct CustomWidget: View {
                                 viewModel.favAppWidgetConfig.caseText = caseText
                             case .todolist:
                                 viewModel.checkListWidgetConfig.caseText = caseText
+                            case .cycleList:
+                                viewModel.cycleWidgetConfig.caseText = caseText
                             }
                             isDoneButtonDisabled = false
                         })

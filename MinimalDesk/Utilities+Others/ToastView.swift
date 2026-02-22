@@ -69,6 +69,6 @@ struct ActionCardToast: View {
                 .fill(.ultraThinMaterial)
                 .shadow(radius: 15)
         )
-        .frame(width: 400, height: 100)
+        .frame(width: 300)
     }
 }

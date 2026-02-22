@@ -36,7 +36,6 @@ public class ChecklistViewModel: ObservableObject {
         }
         getTodoCache()
     }
-    
 }
 
 extension ChecklistViewModel {
@@ -120,7 +119,6 @@ extension ChecklistViewModel {
         } else {
             for position in (cardIndex..<(cards - 1)) {
                 todoListView[position] = todoListView[position + 1]
-                //userdefault?.set(todoListView[position], forKey: todoListKey + "\(position)")
                 saveTodoList(for: position)
             }
         }

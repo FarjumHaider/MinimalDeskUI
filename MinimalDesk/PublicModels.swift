@@ -14,6 +14,7 @@ public enum UserDefaultsKeys: String {
     case currentAppIcon
     case onboardingCompleted
     case todoListCount
+    case cycleListCount
 }
 
 let wallpaperInstructions: [String] = [

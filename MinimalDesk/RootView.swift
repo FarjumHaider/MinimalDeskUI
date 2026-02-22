@@ -104,7 +104,7 @@ struct RootView: View {
                     .frame(width: 24, height: 24)
                     .foregroundColor(item == 3 ? .blue : Color("tabGray"))
                     .font(.largeTitle)
-                Text("Lock")
+                Text("To Do")
                     .font(.system(.footnote, design: .rounded).weight(item == 3 ? .bold : .medium))
                     .foregroundColor(item == 3 ? .blue : Color("tabGray"))
                     .padding(.top ,4)

@@ -260,8 +260,6 @@ struct ChecklistView: View {
                    //.presentationDetents([.fraction(0.45)])
            }
        }
-       
-
    }
 
    func setupSiren() {
@@ -323,13 +321,10 @@ struct ChecklistView: View {
                                .opacity(todo.isCompleted ? 0.4 : 1)
                                .textCase(widgetVM.checkListWidgetConfig.caseText == "default" ? nil : .uppercase)
                                .font(.system(
-                                
                                     size: widgetVM.checkListWidgetConfig.fontSize,
                                     weight: CustomWidget.FontWeightConverter(weightString:widgetVM.checkListWidgetConfig.fontWeight).value,
                                     design: CustomWidget.FontTypeConverter(FontString: widgetVM.checkListWidgetConfig.fontType).value
-                               
                                ))
-
                                .frame(maxWidth: .infinity, alignment: frameAlignment)
                                .listRowBackground(Color.clear)
                                .background(Color(hex: widgetVM.checkListWidgetConfig.backgroundColor))

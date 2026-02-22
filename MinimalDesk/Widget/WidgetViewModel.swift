@@ -65,20 +65,41 @@ class WidgetViewModel: ObservableObject {
             return (.center, .bottom)
         }
     }
+    var alignmentPairCycleList: (HorizontalAlignment, VerticalAlignment) {
+        switch checkListWidgetConfig.alignment {
+        case "left":
+            return (.leading, .center)
+
+        case "right":
+            return (.trailing, .center)
+
+        case "hCenter", "vCenter":
+            return (.center, .center)
+
+        case "top":
+            return (.center, .top)
+
+        case "bottom":
+            return (.center, .bottom)
+            
+        default:
+            return (.center, .bottom)
+        }
+    }
     
     static var shared = WidgetViewModel()
     
     private let userdefault = UserDefaults(suiteName: "group.minimaldesk")
     @Published var favAppWidgetConfig: FavAppWidgetConfig
-    
     @Published var checkListWidgetConfig: ChecklistWidgetConfig
-    
     @Published var dateConfig: DateConfig
+    @Published var cycleWidgetConfig: CycleWidgetConfig
     
     private init() {
         favAppWidgetConfig = FavAppWidgetConfig.defaultConfig
         dateConfig = DateConfig.defaultConfig
         checkListWidgetConfig = ChecklistWidgetConfig.defaultConfig
+        cycleWidgetConfig = CycleWidgetConfig.defaultConfig
         
         let config = userdefault?.value(forKey: "favorite-apps-config") as? Data ?? Data()
         if let widgetConfig = try? JSONDecoder().decode(FavAppWidgetConfig.self, from: config) {
@@ -93,6 +114,11 @@ class WidgetViewModel: ObservableObject {
         let configChecklist = userdefault?.value(forKey: "todo-list-config") as? Data ?? Data()
         if let configWidgetChecklist = try? JSONDecoder().decode(ChecklistWidgetConfig.self, from: configChecklist) {
             checkListWidgetConfig = configWidgetChecklist
+        }
+        
+        let configCycleList = userdefault?.value(forKey: "cycle-list-config") as? Data ?? Data()
+        if let configWidgetCyclelist = try? JSONDecoder().decode(CycleWidgetConfig.self, from: configCycleList) {
+            cycleWidgetConfig = configWidgetCyclelist
         }
     }
 }
@@ -130,6 +156,16 @@ extension WidgetViewModel {
         WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget3")
         WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget4")
     }
+    func setCycleWidgetConfig() {
+        userdefault?.setValue(try? JSONEncoder().encode(checkListWidgetConfig), forKey: "cycle-list-config")
+
+//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget0")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget1")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget2")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget3")
+//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget4")
+    }
+    
     
     func setDateWidgetConfig() {
         userdefault?.setValue(try? JSONEncoder().encode(dateConfig), forKey: "favorite-date-config")
