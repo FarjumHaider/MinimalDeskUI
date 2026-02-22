@@ -16,12 +16,12 @@ struct CycleDetails: View {
     
     @ObservedObject private var viewModel: CycleViewModel
     private var cardIndex: Int = 0
-    
+    private var closeDetailsSheet: () -> Void
 
-    
-    init(viewModel: CycleViewModel, cardIndex: Int) {
+    init(viewModel: CycleViewModel, cardIndex: Int, closeDetailsSheet: @escaping () -> Void) {
         self.viewModel = viewModel
         self.cardIndex = cardIndex
+        self.closeDetailsSheet = closeDetailsSheet
     }
     
     var body: some View {
@@ -61,7 +61,7 @@ struct CycleDetails: View {
                             .listRowInsets(EdgeInsets(top: 20, leading: 18, bottom: 5, trailing: 16))
                         
                         Section {
-                            Text("Mark as Do")
+                            Text(viewModel.cycleListView[cardIndex].mark ? "Mark as Do" : "Mark as Undone")
                                 .listRowBackground(Color("whiteColor"))
                         }
                         .listSectionSpacing(.compact)
@@ -76,7 +76,10 @@ struct CycleDetails: View {
         }
         .sheet(isPresented: $showCycleEdit) {
             NavigationStack {
-                CycleEdit(viewModel: viewModel, cardIndex: cardIndex)
+                CycleEdit(viewModel: viewModel, cardIndex: cardIndex, closeEditSheet: {
+                    closeDetailsSheet()
+                    dismiss()
+                })
             }
         }
         .toolbar {

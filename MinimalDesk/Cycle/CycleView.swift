@@ -24,7 +24,6 @@ struct CycleView: View {
     @State private var showNewCycleDetails = false
     @State private var currentCardIndex: Int? = 0
     @State private var showLimitCrossed = false
-    //@ObservedObject private var viewModel = FirebaseDataViewModel.shared
     @ObservedObject private var viewModel = CycleViewModel.shared
 
     @ObservedObject private var widgetVM = WidgetViewModel.shared
@@ -239,15 +238,17 @@ struct CycleView: View {
            }
            .sheet(isPresented: $showCycleDetails) {
                NavigationStack {
-                   CycleDetails(viewModel: viewModel, cardIndex: currentCardIndex ?? 0)
+                   CycleDetails(viewModel: viewModel, cardIndex: currentCardIndex ?? 0, closeDetailsSheet: {
+                       showCycleDetails = false
+                   })
                }
-                   //.presentationDetents([.fraction(0.45)])
            }
            .sheet(isPresented: $showNewCycleDetails) {
                NavigationStack {
-                   CycleEdit(viewModel: viewModel, cardIndex: currentCardIndex ?? 0)
+                   CycleEdit(viewModel: viewModel, cardIndex: currentCardIndex ?? 0, closeEditSheet: {
+                       showNewCycleDetails = false
+                   })
                }
-                   //.presentationDetents([.fraction(0.45)])
            }
            .fullScreenCover(isPresented: $presentSubscriptionView) {
                // need to understand // farjum

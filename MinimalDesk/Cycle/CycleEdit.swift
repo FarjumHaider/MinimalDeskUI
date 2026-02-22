@@ -15,11 +15,12 @@ struct CycleEdit: View {
     @ObservedObject private var viewModel: CycleViewModel
     private var cardIndex: Int = 0
     @State var showDeleteCard =  false
+    private var closeEditSheet: () -> Void
     
-    init(viewModel: CycleViewModel, cardIndex: Int) {
+    init(viewModel: CycleViewModel, cardIndex: Int, closeEditSheet: @escaping () -> Void) {
         self.viewModel = viewModel
         self.cardIndex = cardIndex
-        //initialFetch()
+        self.closeEditSheet = closeEditSheet
     }
     
     var body: some View {
@@ -140,9 +141,6 @@ struct CycleEdit: View {
 
             }
         }
-        .onAppear {
-            //viewModel.getCycleCache()
-        }
         .overlay(
             Group {
                 if showDeleteCard {
@@ -155,7 +153,7 @@ struct CycleEdit: View {
                         onDelete: {
                             viewModel.deleteCycleCard(cardIndex: cardIndex)
                             showDeleteCard = false
-                            dismiss()
+                            closeEditSheet()
                         }
                     )
                 }

@@ -13,6 +13,8 @@ struct CycleModel: Codable {
     var selectedTime: Date
     var repeatNumber: Int
     var repeatUnit: String
+    var mark: Bool = false
+    var markDate: Date = Date()
     
     var formattedDate: String {
         let formatter = DateFormatter()
