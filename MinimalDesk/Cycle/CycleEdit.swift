@@ -49,18 +49,11 @@ struct CycleEdit: View {
                                 DatePicker(
                                     "",
                                     selection: $viewModel.cycleListView[cardIndex].selectedDate,
-                                    displayedComponents: [.date]
+                                    displayedComponents: [.date, .hourAndMinute]
                                 )
                                 .datePickerStyle(.compact)
                                 .labelsHidden()
-                                
-                                DatePicker(
-                                    "",
-                                    selection: $viewModel.cycleListView[cardIndex].selectedTime,
-                                    displayedComponents: [.hourAndMinute]
-                                )
-                                .datePickerStyle(.compact)
-                                .labelsHidden()
+
                             }
                             .fixedSize()
                         }
@@ -140,6 +133,9 @@ struct CycleEdit: View {
                 }
 
             }
+        }
+        .onAppear{
+            viewModel.dateHistoryCheck(cardIndex: cardIndex)
         }
         .overlay(
             Group {

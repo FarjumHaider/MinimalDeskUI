@@ -10,22 +10,16 @@ import Foundation
 struct CycleModel: Codable {
     var title: String
     var selectedDate: Date
-    var selectedTime: Date
     var repeatNumber: Int
     var repeatUnit: String
-    var mark: Bool = false
-    var markDate: Date = Date()
+    var completedCycles: [Int: Date]
+    //var mark: Bool = false
+    //var markDate: Date = Date()
     
     var formattedDate: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM, yyyy"
+        formatter.dateFormat = "dd MMM, yyyy 'at' hh:mm a"
         return formatter.string(from: selectedDate)
-    }
-
-    var formattedTime: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter.string(from: selectedTime)
     }
 }
 
@@ -34,9 +28,9 @@ extension CycleModel {
         CycleModel(
             title: "",
             selectedDate: Date(),
-            selectedTime: Date(),
             repeatNumber: 1,
-            repeatUnit: "hours"
+            repeatUnit: "hours",
+            completedCycles: [:]
         )
     }
 }

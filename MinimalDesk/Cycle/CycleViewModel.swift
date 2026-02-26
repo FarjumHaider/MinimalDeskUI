@@ -48,7 +48,7 @@ extension CycleViewModel {
     func getCycleCache() {
         (0...cards).forEach { cardIndex in
             guard let data = userdefault?.data(forKey: cycleListKey+"\(cardIndex)") else {
-                cycleListView[cardIndex] = CycleModel(title: "", selectedDate: Date(), selectedTime: Date(), repeatNumber: 1, repeatUnit: "hours")
+                cycleListView[cardIndex] = CycleModel(title: "", selectedDate: Date(), repeatNumber: 1, repeatUnit: "hours", completedCycles: [:])
                 //saveCycleData(for: cardIndex)
                 return
             }
@@ -89,4 +89,59 @@ extension CycleViewModel {
 
 extension CycleViewModel {
     
+    func makeHistoryList(cardIndex: Int, date: Date) -> Int {
+        let selectedDate = cycleListView[cardIndex].selectedDate
+        let repeateHour = cycleListView[cardIndex].repeatNumber * (cycleListView[cardIndex].repeatUnit == "hour" ? 60 : 1440)
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.minute], from: selectedDate, to: date)
+        guard let totalMin = components.minute else { return 0 }
+        return totalMin/repeateHour
+    }
+    
+    func dateHistoryCheck(cardIndex: Int)  {
+        var dummydateHistory : [Int: Date] = [:]
+        cycleListView[cardIndex].completedCycles.forEach({ _, date in
+            var index = makeHistoryList(cardIndex: cardIndex, date: date)
+            dummydateHistory[index] = date
+        })
+        
+        cycleListView[cardIndex].completedCycles = dummydateHistory
+    }
+    
+    func currentDateIndex(cardIndex: Int) -> Int {
+        
+        return 0
+        
+    }
+}
+
+extension CycleViewModel {
+    func test()  {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        formatter.timeZone = .current
+
+        let testCases = [
+            ("2026-02-05 01:17", "2026-02-07 02:16", 2939),
+            ("2026-02-02 02:17", "2026-02-07 22:16", 8559),  // 5 days + 19h 59m = 5*24*60+19*60+59 = 8559
+            ("2026-02-01 00:00", "2026-02-01 01:00", 60),
+            ("2026-02-01 12:30", "2026-02-01 12:45", 15),
+            ("2026-02-01 12:00", "2026-02-02 12:00", 1440),
+            ("2026-02-05 01:00", "2026-02-05 04:20", 200),
+            ("2026-02-05 10:00", "2026-02-05 09:00", -60)
+        ]
+        
+//        for test in testCases {
+//            guard let start = formatter.date(from: test.0),
+//                  let end = formatter.date(from: test.1) else {
+//                print("Invalid date format for test case: \(test)")
+//                continue
+//            }
+//            
+//            let totalMinutes = Int(end.timeIntervalSince(start) / 60)
+//            let repeatUnits = totalMinutes / repeatHour
+//            print("Start: \(test.0), End: \(test.1) → Minutes: \(totalMinutes), Repeat Units: \(repeatUnits)")
+//        }
+    }
 }

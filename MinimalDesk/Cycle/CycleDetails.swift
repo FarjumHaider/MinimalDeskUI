@@ -42,7 +42,7 @@ struct CycleDetails: View {
                                 Text("Start Time")
                                 Spacer()
                                 
-                                Text("\(viewModel.cycleListView[cardIndex].formattedDate) at \( viewModel.cycleListView[cardIndex].formattedTime)")
+                                Text("\(viewModel.cycleListView[cardIndex].formattedDate)")
                                     .multilineTextAlignment(.leading)
                             }
                             .listRowBackground(Color("whiteColor"))
@@ -61,8 +61,10 @@ struct CycleDetails: View {
                             .listRowInsets(EdgeInsets(top: 20, leading: 18, bottom: 5, trailing: 16))
                         
                         Section {
-                            Text(viewModel.cycleListView[cardIndex].mark ? "Mark as Do" : "Mark as Undone")
+                            Text("mark")
                                 .listRowBackground(Color("whiteColor"))
+//                            Text(viewModel.cycleListView[cardIndex].mark ? "Mark as Do" : "Mark as Undone")
+//                                .listRowBackground(Color("whiteColor"))
                         }
                         .listSectionSpacing(.compact)
                     }
@@ -73,6 +75,9 @@ struct CycleDetails: View {
                     .listRowSeparator(.visible)
                 }
             }
+        }
+        .onAppear{
+            print("Farjum \(viewModel.cycleListView[cardIndex].selectedDate)")
         }
         .sheet(isPresented: $showCycleEdit) {
             NavigationStack {
