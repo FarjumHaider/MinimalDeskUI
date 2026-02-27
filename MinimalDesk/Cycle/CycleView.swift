@@ -295,9 +295,9 @@ struct CycleView: View {
                    VStack(spacing: widgetVM.favAppWidgetConfig.spacing) {
 
                            Text(viewModel.cycleListView[index].title)
-                               //.strikethrough(todo.isCompleted)
+                               .strikethrough(viewModel.mark(cardIndex: index))
                                .foregroundColor(Color(hex: widgetVM.cycleWidgetConfig.fontColor))
-                               //.opacity(todo.isCompleted ? 0.4 : 1)
+                               .opacity(viewModel.mark(cardIndex: index) ? 0.4 : 1)
                                .textCase(widgetVM.cycleWidgetConfig.caseText == "default" ? nil : .uppercase)
                                .font(.system(
                                     size: widgetVM.cycleWidgetConfig.fontSize,
@@ -313,7 +313,7 @@ struct CycleView: View {
     
                    }
                    .listStyle(.plain)
-                   .padding(15)
+                   //.padding(15)
                    .scrollContentBackground(.hidden)
                    .background(Color(hex: widgetVM.cycleWidgetConfig.backgroundColor))
                    .frame(

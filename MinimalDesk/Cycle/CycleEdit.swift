@@ -169,7 +169,9 @@ struct CycleEdit: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save") {
+                    viewModel.dateHistoryCheck(cardIndex: cardIndex)
                     viewModel.saveCycleData(for: cardIndex)
+                    
                     if cardIndex == viewModel.cards {
                         viewModel.cards += 1
                         UserDefaults.standard.set(viewModel.cards , forKey: UserDefaultsKeys.cycleListCount.rawValue)

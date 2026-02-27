@@ -89,30 +89,50 @@ extension CycleViewModel {
 
 extension CycleViewModel {
     
-    func makeHistoryList(cardIndex: Int, date: Date) -> Int {
+    func historyOccurIndex(cardIndex: Int, date: Date) -> Int {
         let selectedDate = cycleListView[cardIndex].selectedDate
-        let repeateHour = cycleListView[cardIndex].repeatNumber * (cycleListView[cardIndex].repeatUnit == "hour" ? 60 : 1440)
+        let repeateHour = cycleListView[cardIndex].repeatNumber * (cycleListView[cardIndex].repeatUnit == "hours" ? 60 : 1440)
         
         let calendar = Calendar.current
         let components = calendar.dateComponents([.minute], from: selectedDate, to: date)
         guard let totalMin = components.minute else { return 0 }
+        print("Farjum historyOccurIndex -> totalMin: \(totalMin), repeateHour: \(repeateHour) , date : \(date)")
         return totalMin/repeateHour
     }
     
     func dateHistoryCheck(cardIndex: Int)  {
         var dummydateHistory : [Int: Date] = [:]
         cycleListView[cardIndex].completedCycles.forEach({ _, date in
-            var index = makeHistoryList(cardIndex: cardIndex, date: date)
+            let index = historyOccurIndex(cardIndex: cardIndex, date: date)
+            print("Farjum dateHistoryCheck index : \(index)")
             dummydateHistory[index] = date
         })
         
         cycleListView[cardIndex].completedCycles = dummydateHistory
     }
     
-    func currentDateIndex(cardIndex: Int) -> Int {
+    func saveMarkDate(cardIndex: Int) {
+        let index = historyOccurIndex(cardIndex: cardIndex, date: Date())
+        //if cycleListView[cardIndex].completedCycles[index] != ni { return }
+        cycleListView[cardIndex].completedCycles[index] = Date()
+    }
+    
+    func mark(cardIndex: Int) -> Bool {
+        let index = historyOccurIndex(cardIndex: cardIndex, date: Date())
+        print("Farjum mark index : \(index)")
+        if cycleListView[cardIndex].completedCycles[index] != nil { return true}
+        else { return false }
+    }
+    
+    func deleteLastHistoryDate(cardIndex: Int) {
+        let index = historyOccurIndex(cardIndex: cardIndex, date: Date())
+        guard let lastCycleKey =  cycleListView[cardIndex].completedCycles.keys.max() else { return }
+        let lastCycleDate = cycleListView[cardIndex].completedCycles[lastCycleKey]
         
-        return 0
-        
+        if index == lastCycleKey {
+            cycleListView[cardIndex].completedCycles.removeValue(forKey: lastCycleKey)
+        }
+        dateHistoryCheck(cardIndex: cardIndex)
     }
 }
 
