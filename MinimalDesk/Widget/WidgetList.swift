@@ -877,7 +877,7 @@ struct WidgetList: View {
                 }
             }
             .onAppear {
-                selectedTheme = viewModel.getSelectedThemeForTopWidget()
+                //selectedTheme = viewModel.getSelectedThemeForTopWidget()
             }
         }
     }

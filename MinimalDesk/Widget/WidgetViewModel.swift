@@ -66,7 +66,7 @@ class WidgetViewModel: ObservableObject {
         }
     }
     var alignmentPairCycleList: (HorizontalAlignment, VerticalAlignment) {
-        switch checkListWidgetConfig.alignment {
+        switch cycleWidgetConfig.alignment {
         case "left":
             return (.leading, .center)
 
@@ -157,13 +157,13 @@ extension WidgetViewModel {
         WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget4")
     }
     func setCycleWidgetConfig() {
-        userdefault?.setValue(try? JSONEncoder().encode(checkListWidgetConfig), forKey: "cycle-list-config")
+        userdefault?.setValue(try? JSONEncoder().encode(cycleWidgetConfig), forKey: "cycle-list-config")
 
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget0")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget1")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget2")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget3")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget4")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget0")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget1")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget2")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget3")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget4")
     }
     
     

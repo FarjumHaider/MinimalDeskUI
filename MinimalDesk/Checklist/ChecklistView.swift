@@ -296,8 +296,8 @@ struct ChecklistView: View {
    private func CardView(for index: Int, geo: GeometryProxy) -> some View {
        
        let frameAlignment = Alignment(
-           horizontal: widgetVM.alignmentPairCheckList.0,
-           vertical: widgetVM.alignmentPairCheckList.1
+           horizontal: widgetVM.alignmentPairCycleList.0,
+           vertical: widgetVM.alignmentPairCycleList.1
        )
        
        ZStack(alignment: .bottomTrailing) {

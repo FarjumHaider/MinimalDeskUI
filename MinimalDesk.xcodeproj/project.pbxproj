@@ -48,12 +48,14 @@
 		1BF6DE4E2DF78D15004DE980 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4D2DF78D15004DE980 /* FirebaseFirestore */; };
 		1BF6DE502DF78D15004DE980 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE4F2DF78D15004DE980 /* FirebaseMessaging */; };
 		1BF6DE522DF78D15004DE980 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1BF6DE512DF78D15004DE980 /* FirebaseStorage */; };
+		AD60A6C12F544DE60045A53D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FB2C46279B008AD47C /* WidgetKit.framework */; };
+		AD60A6C22F544DE60045A53D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FD2C46279B008AD47C /* SwiftUI.framework */; };
+		AD60A6CF2F544DE70045A53D /* CycleWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AD60A6C02F544DE60045A53D /* CycleWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AD67AC782F479A000082FE19 /* CycleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67AC772F4799F90082FE19 /* CycleViewModel.swift */; };
 		AD67AC7A2F47A99A0082FE19 /* CycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67AC792F47A9940082FE19 /* CycleModel.swift */; };
 		AD700AF02F2BCC1D00175521 /* ChecklistInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */; };
 		AD88D55D2EE3A5460050762A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55C2EE3A5460050762A /* ChecklistView.swift */; };
 		AD88D5602EE3A5690050762A /* CycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD88D55F2EE3A5690050762A /* CycleView.swift */; };
-		AD8D43C32F486D2D00A90839 /* CycleWidgetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D43C22F486D2500A90839 /* CycleWidgetConfig.swift */; };
 		ADA0C5622F3F7DF100E80C49 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
 		ADA0C5672F3F800B00E80C49 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
 		ADA0C5692F3F802200E80C49 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
@@ -64,6 +66,9 @@
 		ADD621E42F426163002F5900 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FB2C46279B008AD47C /* WidgetKit.framework */; };
 		ADD621E52F426163002F5900 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124AF6FD2C46279B008AD47C /* SwiftUI.framework */; };
 		ADD621F22F426164002F5900 /* ChecklistWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ADD621E32F426163002F5900 /* ChecklistWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ADE23B582F5454930034339D /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */; };
+		ADE23B592F5454B60034339D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07AC1852CF79B2F001B9814 /* Store.swift */; };
+		ADE23B5A2F54589C0034339D /* CycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD67AC792F47A9940082FE19 /* CycleModel.swift */; };
 		ADEB2BF12F45CE97002B6861 /* CycleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB2BF02F45CE51002B6861 /* CycleDetails.swift */; };
 		ADEB2BF32F45CEA2002B6861 /* CycleEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEB2BF22F45CE9C002B6861 /* CycleEdit.swift */; };
 		C84B21A42C39594600825521 /* MinimalDeskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84B21A32C39594600825521 /* MinimalDeskApp.swift */; };
@@ -110,6 +115,13 @@
 			remoteGlobalIDString = 12C249132C5F77C200074874;
 			remoteInfo = FavAppWidgetExtension;
 		};
+		AD60A6CD2F544DE70045A53D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C84B21982C39594600825521 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD60A6BF2F544DE60045A53D;
+			remoteInfo = CycleWidgetExtension;
+		};
 		ADD621F02F426164002F5900 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C84B21982C39594600825521 /* Project object */;
@@ -129,6 +141,7 @@
 				12C249212C5F77C300074874 /* FavAppWidgetExtension.appex in Embed Foundation Extensions */,
 				124AF7372C47A3F6008AD47C /* MinimalDeskDateWidgetExtension.appex in Embed Foundation Extensions */,
 				ADD621F22F426164002F5900 /* ChecklistWidgetExtension.appex in Embed Foundation Extensions */,
+				AD60A6CF2F544DE70045A53D /* CycleWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,12 +181,13 @@
 		1BEDD01D2DE8CB1A0020BAB0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1BEDD01F2DE8EC9A0020BAB0 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
 		AD3845B22F1C131B00838761 /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = SDKROOT; };
+		AD60A6C02F544DE60045A53D /* CycleWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CycleWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD60A6D42F544E070045A53D /* CycleWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CycleWidgetExtension.entitlements; sourceTree = "<group>"; };
 		AD67AC772F4799F90082FE19 /* CycleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleViewModel.swift; sourceTree = "<group>"; };
 		AD67AC792F47A9940082FE19 /* CycleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleModel.swift; sourceTree = "<group>"; };
 		AD700AEF2F2BCBFA00175521 /* ChecklistInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistInputView.swift; sourceTree = "<group>"; };
 		AD88D55C2EE3A5460050762A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		AD88D55F2EE3A5690050762A /* CycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleView.swift; sourceTree = "<group>"; };
-		AD8D43C22F486D2500A90839 /* CycleWidgetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleWidgetConfig.swift; sourceTree = "<group>"; };
 		ADA0C5612F3F7DF000E80C49 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		ADA256B02EF5D55C00F68031 /* CustomDateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateWidget.swift; sourceTree = "<group>"; };
 		ADACD8A12F4326CC002C4B8E /* ChecklistWidgetExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChecklistWidgetExtensionDebug.entitlements; sourceTree = "<group>"; };
@@ -205,6 +219,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AD60A6D32F544DE70045A53D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = AD60A6BF2F544DE60045A53D /* CycleWidgetExtension */;
+		};
 		ADD621F62F426164002F5900 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -216,6 +237,13 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				ChecklistWidgetConfig.swift,
+			);
+			target = C84B219F2C39594600825521 /* MinimalDesk */;
+		};
+		ADE23B562F5453EA0034339D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CycleWidgetConfig.swift,
 			);
 			target = C84B219F2C39594600825521 /* MinimalDesk */;
 		};
@@ -312,6 +340,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		12AD57982C9F5CF3009903E9 /* Font */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ADFD201D2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ADFD201E2EE8921B00055AA8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Font; sourceTree = "<group>"; };
+		AD60A6C32F544DE60045A53D /* CycleWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ADE23B562F5453EA0034339D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, AD60A6D32F544DE70045A53D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CycleWidget; sourceTree = "<group>"; };
 		ADD621E62F426163002F5900 /* ChecklistWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (ADD621FA2F4261AF002F5900 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ADD621F62F426164002F5900 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ChecklistWidget; sourceTree = "<group>"; };
 		E045AC902CF10B0D0043E799 /* Videos */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (CE9861412DC24FC700C5D224 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Videos; sourceTree = "<group>"; };
 		E05DD7D02D04D2E7001A0266 /* Onboarding */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Onboarding; sourceTree = "<group>"; };
@@ -333,6 +362,15 @@
 			files = (
 				12C249162C5F77C200074874 /* SwiftUI.framework in Frameworks */,
 				12C249152C5F77C200074874 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD60A6BD2F544DE60045A53D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD60A6C22F544DE60045A53D /* SwiftUI.framework in Frameworks */,
+				AD60A6C12F544DE60045A53D /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +525,6 @@
 		AD88D55E2EE3A5550050762A /* Cycle */ = {
 			isa = PBXGroup;
 			children = (
-				AD8D43C22F486D2500A90839 /* CycleWidgetConfig.swift */,
 				AD67AC792F47A9940082FE19 /* CycleModel.swift */,
 				AD67AC772F4799F90082FE19 /* CycleViewModel.swift */,
 				ADEB2BF22F45CE9C002B6861 /* CycleEdit.swift */,
@@ -517,12 +554,14 @@
 				12C249252C5F792900074874 /* FavAppWidgetExtension.entitlements */,
 				124AF73B2C47D613008AD47C /* MinimalDeskDateWidgetExtension.entitlements */,
 				ADD621FB2F4261EB002F5900 /* ChecklistWidgetExtension.entitlements */,
+				AD60A6D42F544E070045A53D /* CycleWidgetExtension.entitlements */,
 				C84B21A32C39594600825521 /* MinimalDeskApp.swift */,
 				12AD57982C9F5CF3009903E9 /* Font */,
 				C84B21A22C39594600825521 /* MinimalDesk */,
 				124AF72D2C47A3F5008AD47C /* MinimalDeskDateWidget */,
 				12C249172C5F77C200074874 /* FavAppWidget */,
 				ADD621E62F426163002F5900 /* ChecklistWidget */,
+				AD60A6C32F544DE60045A53D /* CycleWidget */,
 				124AF6FA2C46279B008AD47C /* Frameworks */,
 				C84B21A12C39594600825521 /* Products */,
 			);
@@ -535,6 +574,7 @@
 				124AF72A2C47A3F5008AD47C /* MinimalDeskDateWidgetExtension.appex */,
 				12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */,
 				ADD621E32F426163002F5900 /* ChecklistWidgetExtension.appex */,
+				AD60A6C02F544DE60045A53D /* CycleWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -607,6 +647,28 @@
 			productReference = 12C249142C5F77C200074874 /* FavAppWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		AD60A6BF2F544DE60045A53D /* CycleWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD60A6D02F544DE70045A53D /* Build configuration list for PBXNativeTarget "CycleWidgetExtension" */;
+			buildPhases = (
+				AD60A6BC2F544DE60045A53D /* Sources */,
+				AD60A6BD2F544DE60045A53D /* Frameworks */,
+				AD60A6BE2F544DE60045A53D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AD60A6C32F544DE60045A53D /* CycleWidget */,
+			);
+			name = CycleWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = CycleWidgetExtension;
+			productReference = AD60A6C02F544DE60045A53D /* CycleWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		ADD621E22F426163002F5900 /* ChecklistWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADD621F32F426164002F5900 /* Build configuration list for PBXNativeTarget "ChecklistWidgetExtension" */;
@@ -644,6 +706,7 @@
 				124AF7362C47A3F6008AD47C /* PBXTargetDependency */,
 				12C249202C5F77C300074874 /* PBXTargetDependency */,
 				ADD621F12F426164002F5900 /* PBXTargetDependency */,
+				AD60A6CE2F544DE70045A53D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				12AD57982C9F5CF3009903E9 /* Font */,
@@ -688,6 +751,9 @@
 					12C249132C5F77C200074874 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					AD60A6BF2F544DE60045A53D = {
+						CreatedOnToolsVersion = 16.3;
+					};
 					ADD621E22F426163002F5900 = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -721,6 +787,7 @@
 				124AF7292C47A3F5008AD47C /* MinimalDeskDateWidgetExtension */,
 				12C249132C5F77C200074874 /* FavAppWidgetExtension */,
 				ADD621E22F426163002F5900 /* ChecklistWidgetExtension */,
+				AD60A6BF2F544DE60045A53D /* CycleWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -741,6 +808,13 @@
 			files = (
 				E07AC1822CF77092001B9814 /* MinimalDeskStoreKit.storekit in Resources */,
 				12C2491D2C5F77C300074874 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD60A6BE2F544DE60045A53D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,6 +870,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AD60A6BC2F544DE60045A53D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE23B582F5454930034339D /* ColorExtensions.swift in Sources */,
+				ADE23B592F5454B60034339D /* Store.swift in Sources */,
+				ADE23B5A2F54589C0034339D /* CycleModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ADD621DF2F426163002F5900 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -832,7 +916,6 @@
 				1223266E2CA468E50081A282 /* FavAppWidgetConfig.swift in Sources */,
 				124AF7432C480161008AD47C /* WidgetList.swift in Sources */,
 				ADEB2BF32F45CEA2002B6861 /* CycleEdit.swift in Sources */,
-				AD8D43C32F486D2D00A90839 /* CycleWidgetConfig.swift in Sources */,
 				1232B2CF2C4187E500DD2FEE /* FirebaseDataViewModel.swift in Sources */,
 				1223266B2CA462C00081A282 /* WidgetViewModel.swift in Sources */,
 				C84B21D32C396F3200825521 /* Widget.swift in Sources */,
@@ -863,6 +946,11 @@
 			isa = PBXTargetDependency;
 			target = 12C249132C5F77C200074874 /* FavAppWidgetExtension */;
 			targetProxy = 12C2491F2C5F77C300074874 /* PBXContainerItemProxy */;
+		};
+		AD60A6CE2F544DE70045A53D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD60A6BF2F544DE60045A53D /* CycleWidgetExtension */;
+			targetProxy = AD60A6CD2F544DE70045A53D /* PBXContainerItemProxy */;
 		};
 		ADD621F12F426164002F5900 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -984,6 +1072,64 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.FavAppWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AD60A6D12F544DE70045A53D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CycleWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CycleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CycleWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.CycleWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD60A6D22F544DE70045A53D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = CycleWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68W2966MBV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CycleWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CycleWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sadiqul.MinimalDesk.CycleWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1270,6 +1416,15 @@
 			buildConfigurations = (
 				12C249232C5F77C300074874 /* Debug */,
 				12C249242C5F77C300074874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD60A6D02F544DE70045A53D /* Build configuration list for PBXNativeTarget "CycleWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD60A6D12F544DE70045A53D /* Debug */,
+				AD60A6D22F544DE70045A53D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CycleModel: Codable {
+struct CycleModel: Codable, Hashable {
     var title: String
     var selectedDate: Date
     var repeatNumber: Int

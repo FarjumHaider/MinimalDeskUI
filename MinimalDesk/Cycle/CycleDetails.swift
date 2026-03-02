@@ -115,6 +115,7 @@ struct CycleDetails: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)   // 👈 clean solution
                                     .padding(.horizontal, 15)
                                     .padding(.bottom, 15)
+                                    .padding(.top, viewModel.cycleListView[cardIndex].completedCycles.count == 0 ? 15 : 0)
                                 }
                                 .background(
                                     RoundedRectangle(cornerRadius: 14)

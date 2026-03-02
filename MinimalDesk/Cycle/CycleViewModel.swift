@@ -6,6 +6,7 @@
 //
 
 import SwiftUICore
+import WidgetKit
 public class CycleViewModel: ObservableObject {
     private let cycleListKey = "cycle-list"
 
@@ -43,6 +44,12 @@ extension CycleViewModel {
         }
         
         userdefault.set(try? JSONEncoder().encode(cycleListView[cardIndex]), forKey: cycleListKey+"\(cardIndex)")
+        
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget0")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget1")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget2")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget3")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget4")
     }
     
     func getCycleCache() {
@@ -79,11 +86,11 @@ extension CycleViewModel {
             userdefault?.set(nil, forKey: cycleListKey + "\(ind)")
         }
         
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget0")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget1")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget2")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget3")
-//        WidgetCenter.shared.reloadTimelines(ofKind: "ChecklistWidget4")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget0")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget1")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget2")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget3")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget4")
     }
 }
 

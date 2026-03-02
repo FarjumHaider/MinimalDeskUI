@@ -1,18 +1,18 @@
 ////
-////  ChecklistWidgetControl.swift
-////  ChecklistWidget
+////  CycleWidgetControl.swift
+////  CycleWidget
 ////
-////  Created by Haider on 16/2/26.
+////  Created by Haider on 1/3/26.
 ////
 //
 //import AppIntents
 //import SwiftUI
 //import WidgetKit
 //
-//struct ChecklistWidgetControl: ControlWidget {
+//struct CycleWidgetControl: ControlWidget {
 //    var body: some ControlWidgetConfiguration {
 //        StaticControlConfiguration(
-//            kind: "com.sadiqul.MinimalDesk.ChecklistWidget",
+//            kind: "com.sadiqul.MinimalDesk.CycleWidget",
 //            provider: Provider()
 //        ) { value in
 //            ControlWidgetToggle(
@@ -28,7 +28,7 @@
 //    }
 //}
 //
-//extension ChecklistWidgetControl {
+//extension CycleWidgetControl {
 //    struct Provider: ControlValueProvider {
 //        var previewValue: Bool {
 //            false

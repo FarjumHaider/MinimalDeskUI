@@ -338,7 +338,7 @@ struct CycleView: View {
                    .foregroundStyle(Color(red: 160/255, green: 160/255, blue: 160/255))
                    .padding(35)
                    .onTapGesture {
-                       //viewModel.setFavOnDeleteCard(cardIndex: index)
+                       viewModel.deleteCycleCard(cardIndex: index)
                    }
            }
        }
