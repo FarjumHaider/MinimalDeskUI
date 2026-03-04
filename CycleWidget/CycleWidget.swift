@@ -55,33 +55,32 @@ struct CycleWidget: Widget {
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+        SimpleEntry(date: Date())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        let entry = SimpleEntry(date: Date())
         completion(entry)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+
         var entries: [SimpleEntry] = []
-        
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
-        for _ in 0 ..< 1 {
-            let entryDate = Calendar.current.date(byAdding: .second, value: 0, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
+
+        for minuteOffset in 0..<60 {
+            if let entryDate = Calendar.current.date(byAdding: .minute, value: minuteOffset, to: currentDate) {
+                entries.append(SimpleEntry(date: entryDate))
+            }
         }
-        
-        let timeline = Timeline(entries: entries, policy: .never)
+
+        let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let emoji: String
 }
 
 struct FontTypeConverter {
@@ -119,11 +118,12 @@ struct FontWeightConverter {
 
 // MARK: - Entry View
 struct CycleWidgetEntryView : View {
-    var entry: Provider.Entry
+    var entry: SimpleEntry
     
     @State private var cycleList: CycleModel = CycleModel.empty
     @State private var widgetConfig: CycleWidgetConfig
     let cardIndex: Int
+    @State private var testMark = false
     
     
     @State private var isSubscribed = false // Use local state for real-time check
@@ -194,7 +194,6 @@ struct CycleWidgetEntryView : View {
         
         VStack(alignment: (alignment == "horizonatal" ? getHorizontalAlignment(widgetConfig.alignment) ?? .center : .center), spacing: widgetConfig.spacing) {
             
-            //Text("\(widgetConfig)")
             Text(cycleList.title)
                 .strikethrough(mark())
                 .foregroundColor(Color(hex: widgetConfig.fontColor))
@@ -203,18 +202,25 @@ struct CycleWidgetEntryView : View {
                 .font(.system(size: widgetConfig.fontSize, weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value))
                 .fontDesign(FontTypeConverter(FontString: widgetConfig.fontType).value)
             
-//            ForEach(cycleList, id: \.self) { cycle in
-//                //Text("\(widgetConfig)")
-//                Text(cycle.title)
-//                    //.strikethrough(viewModel.mark(cardIndex: index))
-//                    .foregroundColor(Color(hex: widgetConfig.fontColor))
-//                    //.opacity(list.isCompleted ? 0.4 : 1)
-//                    .textCase(widgetConfig.caseText == "default" ? nil : .uppercase)
-//                    .font(.system(size: widgetConfig.fontSize, weight: FontWeightConverter(weightString: widgetConfig.fontWeight).value))
-//                    .fontDesign(FontTypeConverter(FontString: widgetConfig.fontType).value)
-//            }
+            //Spacer()
+            
+            HStack(spacing: 0) {
+                Text("Until ")
+                Text(
+                    untilDate(),
+                    format: .dateTime
+                        .month(.abbreviated)
+                        .day()
+                        .hour(.twoDigits(amPM: .abbreviated))
+                        .minute()
+                )
+            }
+            .font(.system(size: 12))
+            .foregroundColor(Color(hex: widgetConfig.fontColor))
+            .opacity(0.4)
         }
-        .padding(.all, 25)
+        .padding(.horizontal, 5)
+        .padding(.vertical, 15)
         
 
         
@@ -246,19 +252,41 @@ struct CycleWidgetEntryView : View {
     
     func historyOccurIndex(date: Date) -> Int {
         let selectedDate = cycleList.selectedDate
-        let repeateHour = cycleList.repeatNumber * (cycleList.repeatUnit == "hours" ? 60 : 1440)
+        let repeateMin = cycleList.repeatNumber * (cycleList.repeatUnit == "hours" ? 60 : 1440)
         
         let calendar = Calendar.current
         let components = calendar.dateComponents([.minute], from: selectedDate, to: date)
         guard let totalMin = components.minute else { return 0 }
-        print("Farjum historyOccurIndex -> totalMin: \(totalMin), repeateHour: \(repeateHour) , date : \(date)")
-        return totalMin/repeateHour
+        return totalMin/repeateMin
     }
     
     func mark() -> Bool {
-        let index = historyOccurIndex(date: Date())
+        let index = historyOccurIndex(date: entry.date)
         print("Farjum mark index : \(index)")
         if cycleList.completedCycles[index] != nil { return true}
         else { return false }
+    }
+    
+    func untilDate() -> Date {
+        let selectedDate = cycleList.selectedDate
+        let repeateMin = cycleList.repeatNumber * (cycleList.repeatUnit == "hours" ? 60 : 1440)
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.minute], from: selectedDate, to: entry.date)
+        guard var totalMin = components.minute else { return Date() }
+        
+        totalMin = totalMin + repeateMin
+        
+        let untilIndex = totalMin/repeateMin
+        let untilMin = untilIndex*repeateMin
+        
+        let newDate = Calendar.current.date(
+            byAdding: .minute,
+            value: untilMin,
+            to: selectedDate
+        )
+        //print("Farjum historyOccurIndex -> totalMin: \(totalMin), repeateHour: \(repeateMin) , date : \(date)")
+        //return totalMin/repeateMin
+        return newDate ?? entry.date
     }
 }

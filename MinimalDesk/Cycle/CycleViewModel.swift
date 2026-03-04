@@ -122,6 +122,12 @@ extension CycleViewModel {
         let index = historyOccurIndex(cardIndex: cardIndex, date: Date())
         //if cycleListView[cardIndex].completedCycles[index] != ni { return }
         cycleListView[cardIndex].completedCycles[index] = Date()
+        saveCycleData(for: cardIndex)
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget0")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget1")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget2")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget3")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget4")
     }
     
     func mark(cardIndex: Int) -> Bool {
@@ -129,6 +135,12 @@ extension CycleViewModel {
         print("Farjum mark index : \(index)")
         if cycleListView[cardIndex].completedCycles[index] != nil { return true}
         else { return false }
+        
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget0")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget1")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget2")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget3")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget4")
     }
     
     func deleteLastHistoryDate(cardIndex: Int) {
@@ -140,6 +152,13 @@ extension CycleViewModel {
             cycleListView[cardIndex].completedCycles.removeValue(forKey: lastCycleKey)
         }
         dateHistoryCheck(cardIndex: cardIndex)
+        saveCycleData(for: cardIndex)
+        
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget0")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget1")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget2")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget3")
+        WidgetCenter.shared.reloadTimelines(ofKind: "CycleWidget4")
     }
 }
 

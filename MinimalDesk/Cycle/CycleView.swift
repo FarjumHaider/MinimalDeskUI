@@ -276,10 +276,9 @@ struct CycleView: View {
 
    @ViewBuilder
    private func CardView(for index: Int, geo: GeometryProxy) -> some View {
-       
        let frameAlignment = Alignment(
-        horizontal: widgetVM.alignmentPairCycleList.0,
-           vertical: widgetVM.alignmentPairCycleList.1
+            horizontal: widgetVM.alignmentPairCycleList.0,
+            vertical: widgetVM.alignmentPairCycleList.1
        )
        
        ZStack(alignment: .bottomTrailing) {
@@ -313,7 +312,7 @@ struct CycleView: View {
     
                    }
                    .listStyle(.plain)
-                   //.padding(15)
+                   .padding(15)
                    .scrollContentBackground(.hidden)
                    .background(Color(hex: widgetVM.cycleWidgetConfig.backgroundColor))
                    .frame(
@@ -327,7 +326,6 @@ struct CycleView: View {
            .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.45)
            .background(index == viewModel.cards ? Color.gray.opacity(0.3) : Color.clear)
            .clipShape(RoundedRectangle(cornerRadius: 30))
-
            .padding()
            if index < viewModel.cards {
                // delete the card // farjum
